@@ -34,8 +34,8 @@ const ContactUs = () => {
 
         emailjs
             .send(
-                "service_zmdaupt",
-                "template_e6d4izv",
+                "",
+                "",
                 // "",
                 // "",
                 {

@@ -3,19 +3,21 @@ import { essentialsData, EssentialType, Store } from "../../essentialsData";
 import Essentials from "../../components/commonComponents/essentials/Essentials";
 
 const EssentialsPage = () => {
-  const { city, type } = useParams();
+  const { city, type } = useParams<{ city?: string; type?: string }>();
 
-  // Type guard for essential type
+  // ✅ Type guard for essential type
   const isEssentialType = (t: string | undefined): t is EssentialType =>
-    t === "food" || t === "hospitals" || t === "petrolpumps";
+    ["food", "hospitals", "petrolpumps"].includes(t ?? "");
 
-  let stores: Store[] = [];
-  if (city && type && isEssentialType(type)) {
-    stores = essentialsData[city]?.[type] ?? [];
-  }
+  // ✅ Fetch stores safely
+  const stores: Store[] =
+    city && type && isEssentialType(type)
+      ? essentialsData[city]?.[type] ?? []
+      : [];
 
+  // ✅ Human-friendly title
   const title =
-    city && type
+    city && type && isEssentialType(type)
       ? `${city} - ${type.charAt(0).toUpperCase() + type.slice(1)}`
       : "Essentials";
 
