@@ -139,6 +139,9 @@ const PropertyDetails = () => {
         }
     };
 
+    console.log(renderIcon, "renderIcon");
+    
+
     const getSocialIcon = (type: string) => {
         switch (type.toLowerCase()) {
             case 'instagram': return <FaInstagram />;

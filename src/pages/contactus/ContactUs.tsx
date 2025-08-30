@@ -34,10 +34,10 @@ const ContactUs = () => {
 
         emailjs
             .send(
-                // "service_zmdaupt",
-                // "template_e6d4izv",
-                "",
-                "",
+                "service_zmdaupt",
+                "template_e6d4izv",
+                // "",
+                // "",
                 {
                     user_name: formData.name,
                     user_email: formData.email,
