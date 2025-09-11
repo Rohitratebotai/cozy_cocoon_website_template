@@ -25,11 +25,11 @@ const ValueCard: React.FC<ValueCardProps> = ({ icon, title, description }) => {
 
 const About = () => {
     return (
-        <section className='bg-black !text-white'>
+        <section className=''>
             <div className=''>
                 <CommonBanner image={img2} PageName={'About Us'} />
             </div>
-            <div className="tracking-wide text-white py-20 px-8 lg:px-32 flex flex-col gap-8 text-justify">
+            <div className="tracking-wide py-20 px-8 lg:px-32 flex flex-col gap-8 text-justify">
                 {/* Title */}
                 <div>
                     <span className="text-4xl font-medium">
@@ -54,7 +54,7 @@ const About = () => {
             </div>
 
             {/* Core Values Section */}
-            <section className="py-16 bg-black text-white">
+            <section className="py-16 bg-slate-50 ">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 ">Our Core Values</h2>
 
