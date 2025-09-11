@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import CommonBanner from "../../components/commonComponents/banner/CommonBanner";
-import img2 from "../../assets/Banner_images/Homepage_banner5.jpg";
+import img2 from "../../assets/cosy_villa_images/img_11.jpeg";
 
 const TermsAndConditions = () => {
     return (

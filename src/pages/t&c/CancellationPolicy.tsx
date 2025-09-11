@@ -1,7 +1,7 @@
 import React from 'react';
 import CommonBanner from "../../components/commonComponents/banner/CommonBanner";
 // import img1 from "../../assets/Banner_images/Homepage_banner7.jpg";
-import img2 from "../../assets/Banner_images/Homepage_banner5.jpg";
+import img2 from "../../assets/cosy_villa_images/img_4.jpeg";
 
 const CancellationPolicy: React.FC = () => {
     return (

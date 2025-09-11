@@ -1,7 +1,7 @@
 import React from 'react';
 import CommonBanner from "../../components/commonComponents/banner/CommonBanner";
-import img1 from "../../assets/Banner_images/Homepage_banner7.jpg";
-import img2 from "../../assets/Banner_images/Homepage_banner5.jpg";
+import img1 from "../../assets/cosy_villa_images/img_14.jpeg";
+import img2 from "../../assets/cosy_villa_images/img_4.jpeg";
 import Parallax from "../../components/commonComponents/parallax/Parallax";
 // import NearByPlaces from "../../components/aboutpage_component/nearbyplaces/NearByPlaces";
 
@@ -33,13 +33,13 @@ const About = () => {
                 {/* Title */}
                 <div>
                     <span className="text-4xl font-medium">
-                        Welcome to Cosy Villa
+                        Welcome to Cult Escape
                     </span>
                 </div>
                 {/* Description */}
                 <div className="text-base font-thin flex flex-col gap-6 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 py-8 max-w-7xl mx-auto">
                     <p className=" text-justify">
-                        Welcome to Cosy Villa, where luxury and tranquility converge to create an unparalleled escape. Our journey began with a passion for redefining hospitality, establishing a retreat that goes beyond accommodation to offer an immersive experience.
+                        Welcome to Cult Escape, where luxury and tranquility converge to create an unparalleled escape. Our journey began with a passion for redefining hospitality, establishing a retreat that goes beyond accommodation to offer an immersive experience.
                     </p>
                     <p className=" text-justify">
                         At the heart of our ethos is a commitment to excellence. We pride ourselves on delivering exceptional hospitality, from the moment you step through our doors to the conclusion of your stay. Every detail, meticulously curated, reflects our dedication to providing a stay that exceeds expectations.
@@ -62,7 +62,7 @@ const About = () => {
                         <ValueCard
                             icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>}
                             title="Excellence in Hospitality"
-                            description="At Cosy Villa, we are committed to delivering unparalleled hospitality. From the moment you arrive until your departure, our focus is on ensuring every aspect of your stay exceeds expectations."
+                            description="At Cult Escape, we are committed to delivering unparalleled hospitality. From the moment you arrive until your departure, our focus is on ensuring every aspect of your stay exceeds expectations."
                         />
 
                         <ValueCard
@@ -92,7 +92,7 @@ const About = () => {
 
             {/* Parallax */}
             <div>
-                <Parallax image={img1} title={"Cosy Villa – Where Luxury Meets Tranquility"} description={`Escape to Cosy Villa, a sanctuary where elegance and serenity blend seamlessly. Experience unmatched hospitality, thoughtfully designed spaces, and a deep connection with nature—crafted to create moments that last a lifetime.`} />
+                <Parallax image={img1} title={"Cult Escape – Where Luxury Meets Tranquility"} description={`Escape to Cult Escape, a sanctuary where elegance and serenity blend seamlessly. Experience unmatched hospitality, thoughtfully designed spaces, and a deep connection with nature—crafted to create moments that last a lifetime.`} />
             </div>
             {/* Nearby Places */}
             <div>

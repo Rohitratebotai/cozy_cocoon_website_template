@@ -7,24 +7,25 @@ import Homepage_Testimonial from "../../components/homepage_components/homepage_
 import Homepage_WhyChoose from "../../components/homepage_components/homepage_whychoose/Homepage_WhyChoose"
 import Slider from "../../components/homepage_components/slider/Slider"
 import img from '../../assets/cosy_villa_images/img_19.jpeg'
+import Team from "../../components/homepage_components/team/Team"
 // import HomePage_Locations from "../../components/homepage_components/homepage_locations/HomePage_Locations"
 // import CounterUp from "../../components/homepage_components/counterup/CounterUp"
 
 const Home = () => {
     // Slider Images 
     return (
-        <section className="relative bg-black text-white">
+        <section className="relative ">
             <div className="w-full h-fit ">
                 <Slider />
             </div>
-            <div>
+            <div className="bg-slate-50">
                 <Homepage_Properties />
             </div>
             <div>
                 {/* <HomePage_Locations /> */}
             </div>
             <div>
-                <Parallax image={img} title={'Cosy Villa – Where Luxury Meets Tranquility'} description={'Escape to Cosy Villa, a sanctuary where elegance and serenity blend seamlessly. Experience unmatched hospitality, thoughtfully designed spaces, and a deep connection with nature—crafted to create moments that last a lifetime.'} />
+                <Parallax image={img} title={'Cult Escape – Where Luxury Meets Tranquility'} description={'Escape to Cult Escape, a sanctuary where elegance and serenity blend seamlessly. Experience unmatched hospitality, thoughtfully designed spaces, and a deep connection with nature—crafted to create moments that last a lifetime.'} />
             </div>
             {/* <div className=" px-4 lg:px-20 ">
                 <Amenities />
@@ -32,16 +33,19 @@ const Home = () => {
             {/* <div className=" px-4 lg:px-20 ">
                 <CounterUp />
             </div> */}
-            <div className="">
+            <div className="bg-white text-gray-800">
                 <Homepage_LetUsGuide />
+            </div>
+            <div className="bg-slate-50">
+                <Team />
             </div>
             {/* <div className="">
                 <Homepage_ExclusiveService />
             </div> */}
-            <div className="">
+            <div className="bg-white text-gray-800">
                 <Homepage_WhyChoose />
             </div>
-            <div className="">
+            <div className="bg-slate-50">
                 <Homepage_Testimonial />
             </div>
         </section>

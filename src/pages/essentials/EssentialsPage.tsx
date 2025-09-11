@@ -7,7 +7,7 @@ const EssentialsPage = () => {
 
   // ✅ Type guard for essential type
   const isEssentialType = (t: string | undefined): t is EssentialType =>
-    ["food", "hospitals", "petrolpumps"].includes(t ?? "");
+    ["food", "hospitals", , "railways", "petrolpumps"].includes(t ?? "");
 
   // ✅ Fetch stores safely
   const stores: Store[] =

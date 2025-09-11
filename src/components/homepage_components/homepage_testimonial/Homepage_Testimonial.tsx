@@ -1,15 +1,15 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCards } from 'swiper/modules';
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
-import img1 from '../../../assets/testionial_reviewSection/review1.jpg';
-import img2 from '../../../assets/testionial_reviewSection/soumils_review2.jpg';
-import img3 from '../../../assets/testionial_reviewSection/soumils_review3.jpg';
-import img4 from '../../../assets/testionial_reviewSection/review4.jpg';
-import img5 from '../../../assets/testionial_reviewSection/review5.jpg';
-import img6 from '../../../assets/testionial_reviewSection/review6.jpg';
-import Heading from '../../commonComponents/heading/Heading';
-import logo from '../../../assets/cosylogo.jpeg';
+import img1 from '../../../assets/testionial_reviewSection/cr1.png';
+import img2 from '../../../assets/testionial_reviewSection/cr2.png';
+import img3 from '../../../assets/testionial_reviewSection/cr3.png';
+import img4 from '../../../assets/testionial_reviewSection/cr3.png';
+import img5 from '../../../assets/testionial_reviewSection/cr5.png';
+import img6 from '../../../assets/testionial_reviewSection/cr3.png';
+import logo from '../../../assets/cultlogo.png';
+import { FaQuoteLeft } from 'react-icons/fa';
 
 interface reviews {
     icon: any;
@@ -23,108 +23,141 @@ const Homepage_Testimonial = () => {
     const data: reviews[] = [
         {
             icon: logo,
-            review: "Cosy Villa was a perfect weekend escape. Just a 10-minute walk from the beach and in a peaceful neighborhood. The pool was sparkling clean, and Mr. Mokal, the caretaker, was always ready to help. Would definitely return!",
-            clientName: 'Abhijit',
+            review: " vibes, refreshing stayStayed over here for 5 days with my family for a workation kinda peaceful outing.We had to search a lot before selecting an appropriate place for a longer stay, and this turned out to be just too perfect. We just relaxed, worked and had a great family time. The place was calm and soothing. The swimming pool and kitchen met our everyday requirements of an outing. The host was wonderful in helping us with the areas around the property.",
+            clientName: 'nagaveni dc',
             thumbnail: img1,
-            rating: 4.5
+            rating: 5
         },
         {
             icon: logo,
-            review: "Visited with my family and we had a relaxing stay. The villa is spacious and cozy, with plenty of indoor and outdoor games for everyone. The homemade food by the caretaker was a highlight—fresh, simple, and delicious!",
-            clientName: 'Snehal',
+            review: "From cult interiors to top-notch service, every detail was thoughtfully arranged to make the experience feel special.Highly recommend for anyone looking to disconnect and recharge — a short stay that left a lasting impression",
+            clientName: 'kanika verma',
             thumbnail: img2,
             rating: 5
         },
         {
             icon: logo,
-            review: "Such a comfortable stay! The caretaker was super helpful. I’d recommend trying the home-cooked meals, especially the prawns fry and sol kadhi—they were mouthwatering. Worth every rupee.",
-            clientName: 'Archit',
+            review: "Perfect party place Stayed over at this place with a group of friends. We had all that we required for a weekend outing and felt at home too The host was reachable to help with smallest of the things. Everything in the villa gave us a positive vibe. Loved the stay",
+            clientName: 'Arjun Abrol',
             thumbnail: img3,
-            rating: 4.7
+            rating: 5
         },
         {
             icon: logo,
-            review: "Everything was clean and well-maintained—from the rooms to the pool. The caretaker went above and beyond to make sure we were comfortable. Definitely one of the better villa experiences I’ve had.",
-            clientName: 'Shatayu',
+            review: "A cult place , been thre with my family.Destination with beautiful interior with all required aminites. Smallest of detailing in the house reflects creative vision of the owner.Owner was very welcoming and responsive.A must visit place with family and friends, highly recommended.",
+            clientName: 'Akshay Rawat',
             thumbnail: img4,
-            rating: 4.5
+            rating: 5
         },
         {
             icon: logo,
-            review: "Akshay’s villa was ideal for our group of 8. Spacious, quiet, and well-equipped. We didn’t have to worry about food either—the caretaker arranged amazing home-cooked meals. Felt like a home away from home!",
+            review: "Very nice stay , we relaxed and swimming pool as we require to stay cool and refreshing full fill our requirment . Thanks",
             clientName: 'Ashish',
             thumbnail: img5,
-            rating: 4.8
+            rating: 5
         },
         {
             icon: logo,
-            review: "Stayed here with family and absolutely loved it. The garden area is peaceful and perfect for morning walks. The villa has a great vibe, and the food arranged by Mr. Mokal was a real treat. Will be back soon!",
-            clientName: 'Marci',
+            review: "Absolutely Perfect Getaway in Karjat! We had a wonderful stay at this villa in Karjat. The property is beautifully maintained, spacious, and surrounded by lush greenery—making it the perfect escape from city life. The rooms were clean, well-furnished, and had a cult vibe that made us feel right at home.",
+            clientName: 'arpit oksiya',
             thumbnail: img6,
             rating: 5
         }
     ];
 
+
+    const renderStars = (rating: number = 5) => {
+        return (
+            <div className="flex gap-1 mt-2">
+                {[...Array(5)].map((_, i) => (
+                    <svg
+                        key={i}
+                        className={`w-4 h-4 ${i < rating ? "text-yellow-400" : "text-gray-300"}`}
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                    >
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                ))}
+            </div>
+        )
+    };
+
     return (
-        <div className=''>
-            <span className='text-center'>
-                <Heading title='Hear What Our Happy Guests Are Saying' />
-            </span>
-            <div className="relative w-full h-full px-4 sm:px-6 lg:px-10 pb-10 ">
-                <Swiper
-                    modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-                    spaceBetween={10}
-                    slidesPerView={1}
-                    navigation={{ nextEl: '.NextElement', prevEl: '.PrevElement' }}
-                    autoplay={{ delay: 2500, disableOnInteraction: false }}
-                    breakpoints={{
-                        468: { slidesPerView: 2, spaceBetween: 15 },
-                        768: { slidesPerView: 2, spaceBetween: 20 },
-                        1024: { slidesPerView: 4, spaceBetween: 30 }
-                    }}
-                    className="w-full"
-                >
-                    {data.map((item, index) => (
-                        <SwiperSlide key={index}>
-                            <div className="w-full max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl border-2 bg-sky-100 border-sky-300 shadow-lg rounded-lg p-4 lg:p-6 flex flex-col gap-4 transform transition duration-300 h-[300px] md:h-[350px]">
-                                {/* Logo Section */}
-                                <div className="flex items-center gap-3">
-                                    <img className="w-12 h-12 md:w-16 md:h-16 border rounded-full bg-black" src={logo} alt="Logo" />
-                                </div>
-
-                                {/* ⭐ Rating Section */}
-                                <div className="flex items-center gap-1 text-yellow-500">
-                                    {Array.from({ length: 5 }, (_, i) => (
-                                        <span key={i}>{i + 1 <= Math.floor(item.rating) ? '★' : '☆'}</span>
-                                    ))}
-                                    <span className="text-gray-600 text-sm">({item.rating})</span>
-                                </div>
-
-                                {/* Review Text */}
-                                <p className="text-sm text-gray-600 lg:text-lg leading-relaxed">
-                                    {item.review.substring(0, 100)}...
-                                </p>
-
-                                {/* Client Info */}
-                                <div className="flex items-center justify-between border-t pt-3">
-                                    <p className="font-medium text-sm lg:text-base text-gray-700">{item.clientName}</p>
-                                    <img className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border" src={item.thumbnail} alt="Client Image" />
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-                <div className='absolute top-1/2 left-0 right-0 z-20 flex justify-between items-center px-1 md:px-5 transform -translate-y-1/2'>
-                    <div className='PrevElement flex text-xl md:text-2xl border justify-center items-center bg-white cursor-pointer h-10 w-10 md:h-14 md:w-14 rounded-full text-black'>
-                        <GrFormPrevious />
+        <div className="py-12 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <section>
+                    <div className="py-10 text-primary md:py-14 tracking-wide flex justify-center items-center text-xl md:text-2xl lg:text-5xl font-medium relative">
+                        <p className="relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-full after:h-[3px] after:bg-primary after:rounded-full after:transition-all after:duration-500 after:ease-in-out hover:after:w-0 cursor-pointer">
+                            Hear What Our Happy Guests Are Saying
+                        </p>
                     </div>
-                    <div className='NextElement flex text-xl md:text-2xl border justify-center items-center bg-white cursor-pointer h-10 w-10 md:h-14 md:w-14 rounded-full text-black'>
-                        <MdOutlineNavigateNext />
+                </section>
+                <div className="relative w-full">
+                    <Swiper
+                        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCards]}
+                        spaceBetween={24}
+                        slidesPerView={1}
+                        pagination={{
+                            clickable: true,
+                            bulletClass: 'swiper-pagination-bullet bg-primary w-2 h-2 inline-block rounded-full mx-1 opacity-60 cursor-pointer transition-opacity',
+                            bulletActiveClass: 'swiper-pagination-bullet-active opacity-100',
+                        }}
+                        navigation={{
+                            nextEl: '.NextElement',
+                            prevEl: '.PrevElement'
+                        }}
+                        autoplay={{
+                            delay: 3500,
+                            disableOnInteraction: false
+                        }}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 2,
+                                spaceBetween: 20
+                            },
+                            1024: {
+                                slidesPerView: 3,
+                                spaceBetween: 24
+                            }
+                        }}
+                        className="testimonial-swiper pb-12"
+                    >
+                        {data?.map((item, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="h-auto min-h-72 bg-white border border-gray-200 shadow-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary">
+                                    <div className="p-6 h-full flex flex-col">
+                                        <div className="mb-4">
+                                            <FaQuoteLeft className="text-primary text-3xl opacity-50" />
+                                        </div>
+                                        <p className="text-gray-700 flex-grow mb-4">
+                                            {item.review.length > 100
+                                                ? item.review.substring(0, 150) + "..."
+                                                : item.review}
+                                        </p>
+                                        <div className="mt-auto">
+                                            {renderStars(item.rating)}
+                                            <p className="font-medium text-gray-900 mt-3">{item.clientName}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+
+                    <div className="absolute top-1/2 left-0 right-0 z-20 flex justify-between items-center px-2 transform -translate-y-1/2">
+                        <button className="PrevElement flex justify-center items-center bg-white shadow-md hover:bg-primary hover:text-white transition-colors duration-300 cursor-pointer h-10 w-10 md:h-12 md:w-12 rounded-full text-gray-800 border border-gray-200">
+                            <GrFormPrevious className="text-xl md:text-2xl" />
+                        </button>
+                        <button className="NextElement flex justify-center items-center bg-white shadow-md hover:bg-primary hover:text-white transition-colors duration-300 cursor-pointer h-10 w-10 md:h-12 md:w-12 rounded-full text-gray-800 border border-gray-200">
+                            <MdOutlineNavigateNext className="text-xl md:text-2xl" />
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     );
-};
+}
 
 export default Homepage_Testimonial;

@@ -10,7 +10,7 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/module
 import PropertyModal from "../propertymodal/PropertyModal";
 import { useState } from "react";
 import CommonBanner from "../../commonComponents/banner/CommonBanner";
-import img from '../../../assets/Banner_images/Homepage_banner7.jpg'
+import img from '../../../assets/cosy_villa_images/img_22.jpeg'
 
 const Homepage_LocationDetails = () => {
     const location = useLocation();
