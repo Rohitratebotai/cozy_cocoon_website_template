@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './navbar.css';
 import { IoIosMail, IoIosCall } from 'react-icons/io';
 import { navbarData, propertyData } from '../../../data';
@@ -16,9 +16,9 @@ const Navbar = () => {
     const [isApartmentsDropdownOpen, setIsApartmentsDropdownOpen] = useState(false);
     const [isNearbyOpen, setIsNearbyOpen] = useState(false);
     const [isSanskritiOpen, setIsSanskritiOpen] = useState(false);
-    const [isKaradyaOpen, setIsKaradyaOpen] = useState(false);
+    const [iskanakiaOpen, setIskanakiaOpen] = useState(false);
     const [isSanskritiEssentialsOpen, setIsSanskritiEssentialsOpen] = useState(false);
-    const [isKaradyaEssentialsOpen, setIsKaradyaEssentialsOpen] = useState(false);
+    const [iskanakiaEssentialsOpen, setIskanakiaEssentialsOpen] = useState(false);
     // const [selectedCity, setSelectedCity] = useState(cityOptions[0]);
     const [openDropdown, setOpenDropdown] = useState(false);
 
@@ -51,39 +51,39 @@ const Navbar = () => {
         closeMenu();
     };
 
-    useEffect(() => {
-        const onLoadfunction = () => {
-            const navbar = document.getElementById('navbar_container');
-            const navlinks = document.getElementById('navlinks');
-            const dropmenus = document.getElementById('dropmenus');
-            if (navbar && navlinks && dropmenus) {
-                if (window.scrollY > 20) {
-                    // Change background to black and text to white
-                    navbar.classList.add('bg-black', 'border-b-1', 'border-bg-primary', 'text-white');
-                    navbar.classList.remove('bg-white');
-                    navlinks.classList.add('text-white',);
-                    navlinks.classList.remove('text-black');
-                    dropmenus.classList.add('bg-black',);
-                    dropmenus.classList.remove('bg-white');
-                } else {
-                    // Initial state: Background white, text black
-                    navbar.classList.add('bg-white', 'text-black');
-                    navbar.classList.remove('bg-black', 'border-b-1', 'border-bg-primary');
-                    navlinks.classList.add('text-black');
-                    navlinks.classList.remove('text-white');
-                    dropmenus.classList.add('bg-white',);
-                    dropmenus.classList.remove('bg-black');
-                }
-            }
-        };
+    // useEffect(() => {
+    //     const onLoadfunction = () => {
+    //         const navbar = document.getElementById('navbar_container');
+    //         const navlinks = document.getElementById('navlinks');
+    //         const dropmenus = document.getElementById('dropmenus');
+    //         if (navbar && navlinks && dropmenus) {
+    //             if (window.scrollY > 20) {
+    //                 // Change background to black and text to white
+    //                 navbar.classList.add('bg-black', 'border-b-1', 'border-bg-primary', 'text-white');
+    //                 navbar.classList.remove('bg-white');
+    //                 navlinks.classList.add('text-white',);
+    //                 navlinks.classList.remove('text-black');
+    //                 dropmenus.classList.add('bg-black',);
+    //                 dropmenus.classList.remove('bg-white');
+    //             } else {
+    //                 // Initial state: Background white, text black
+    //                 navbar.classList.add('bg-white', 'text-black');
+    //                 navbar.classList.remove('bg-black', 'border-b-1', 'border-bg-primary');
+    //                 navlinks.classList.add('text-black');
+    //                 navlinks.classList.remove('text-white');
+    //                 dropmenus.classList.add('bg-white',);
+    //                 dropmenus.classList.remove('bg-black');
+    //             }
+    //         }
+    //     };
 
-        window.addEventListener('scroll', onLoadfunction);
-        onLoadfunction();
+    //     window.addEventListener('scroll', onLoadfunction);
+    //     onLoadfunction();
 
-        return () => {
-            window.removeEventListener('scroll', onLoadfunction);
-        };
-    }, []);
+    //     return () => {
+    //         window.removeEventListener('scroll', onLoadfunction);
+    //     };
+    // }, []);
 
 
     return (
@@ -169,14 +169,7 @@ const Navbar = () => {
             </div>
 
             {/* Main Nav */}
-            <div id='navbar_container' className='transition-all bg-white duration-300 border-b border-transparent w-full h-full flex items-center justify-between px-4 py-3 md:px-12 md:justify-start md:gap-40 overflow-visible'>
-                <div className="flex items-center">
-                    {/* Logo */}
-                    <Link to='/'>
-                        <img className='w-14 h-14 md:w-16 md:h-16 rounded-full' src={navbarData.logo[0].image} alt='Logo' />
-                    </Link>
-                </div>
-
+            <div id='navbar_container' className='transition-all bg-white duration-300 border-b-2 w-full h-full flex items-center justify-center px-4 py-3 md:px-12 md:justify-center md:gap-40 overflow-visible'>
                 {/* Menu Toggle Button (for mobile) */}
                 <button className='md:hidden text-primary text-2xl' onClick={toggleMenu}>
                     {isMenuOpen ? <HiX /> : <HiMenuAlt3 />}
@@ -208,7 +201,7 @@ const Navbar = () => {
                                                         Destination 1
                                                     </div>
                                                     <div
-                                                        onClick={() => handleScroll("karadya")}
+                                                        onClick={() => handleScroll("kanakia")}
                                                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                                                     >
                                                         Destination 2
@@ -360,23 +353,23 @@ const Navbar = () => {
                                                             </ul>
                                                         )}
 
-                                                        {/* Karadya */}
+                                                        {/* kanakia */}
                                                         <li
                                                             className='px-4 py-2 hover:bg-gray-500 cursor-pointer font-semibold flex justify-between items-center'
-                                                            onClick={() => setIsKaradyaOpen(!isKaradyaOpen)}
+                                                            onClick={() => setIskanakiaOpen(!iskanakiaOpen)}
                                                         >
-                                                            Karadya <span>{isKaradyaOpen ? '▲' : '▼'}</span>
+                                                            Kanakia <span>{iskanakiaOpen ? '▲' : '▼'}</span>
                                                         </li>
-                                                        {isKaradyaOpen && (
+                                                        {iskanakiaOpen && (
                                                             <ul className='pl-6 text-sm'>
-                                                                <li className='hover:bg-gray-500 px-2 py-1 cursor-pointer'>Tourism</li>
+                                                                <li className='hover:bg-gray-500 px-2 py-1 cursor-pointer'>Business</li>
                                                                 <li
                                                                     className='px-4 py-2 hover:bg-gray-500 cursor-pointer font-semibold flex justify-between items-center'
-                                                                    onClick={() => setIsKaradyaEssentialsOpen(!isKaradyaEssentialsOpen)}
+                                                                    onClick={() => setIskanakiaEssentialsOpen(!iskanakiaEssentialsOpen)}
                                                                 >
-                                                                    Essentials <span>{isKaradyaEssentialsOpen ? '▲' : '▼'}</span>
+                                                                    Essentials <span>{iskanakiaEssentialsOpen ? '▲' : '▼'}</span>
                                                                 </li>
-                                                                {isKaradyaEssentialsOpen && (
+                                                                {iskanakiaEssentialsOpen && (
                                                                     <ul className='pl-4 text-xs'>
                                                                         <li>
                                                                             <Link
@@ -432,6 +425,16 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
+
+            <div className='w-full h-fit flex justify-center md:justify-center px-4 md:px-12 py-2 md:py-3 bg-white border-b border-transparent'>
+                <div className="flex items-center">
+                    {/* Logo */}
+                    <Link to='/'>
+                        <img className='w-14 h-14 md:w-16 md:h-16 rounded-full' src={navbarData.logo[0].image} alt='Logo' />
+                    </Link>
+                </div>
+            </div>
+
 
             {/* Mobile Menu - Fixed positioning */}
             {
@@ -586,27 +589,27 @@ const Navbar = () => {
                                                             </ul>
                                                         )}
 
-                                                        {/* Karadya */}
+                                                        {/* kanakia */}
                                                         <li
                                                             className='px-6 py-3 hover:bg-gray-100 cursor-pointer font-semibold flex justify-between items-center border-b border-gray-200'
-                                                            onClick={() => setIsKaradyaOpen(!isKaradyaOpen)}
+                                                            onClick={() => setIskanakiaOpen(!iskanakiaOpen)}
                                                         >
-                                                            Karadya <span className="text-xs">{isKaradyaOpen ? '▲' : '▼'}</span>
+                                                            kanakia <span className="text-xs">{iskanakiaOpen ? '▲' : '▼'}</span>
                                                         </li>
-                                                        {isKaradyaOpen && (
+                                                        {iskanakiaOpen && (
                                                             <ul className='bg-gray-100'>
-                                                                <li className='px-8 py-2 hover:bg-gray-200 cursor-pointer border-b border-gray-300'>Tourism</li>
+                                                                <li className='px-8 py-2 hover:bg-gray-200 cursor-pointer border-b border-gray-300'>Business</li>
                                                                 <li
                                                                     className='px-8 py-2 hover:bg-gray-200 cursor-pointer font-medium flex justify-between items-center border-b border-gray-300'
-                                                                    onClick={() => setIsKaradyaEssentialsOpen(!isKaradyaEssentialsOpen)}
+                                                                    onClick={() => setIskanakiaEssentialsOpen(!iskanakiaEssentialsOpen)}
                                                                 >
-                                                                    Essentials <span className="text-xs">{isKaradyaEssentialsOpen ? '▲' : '▼'}</span>
+                                                                    Essentials <span className="text-xs">{iskanakiaEssentialsOpen ? '▲' : '▼'}</span>
                                                                 </li>
-                                                                {isKaradyaEssentialsOpen && (
+                                                                {iskanakiaEssentialsOpen && (
                                                                     <ul className='bg-gray-200'>
                                                                         <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
                                                                             <Link
-                                                                                to="/essentials/karadya/food"
+                                                                                to="/essentials/kanakia/food"
                                                                                 className='block text-black text-xs'
                                                                                 onClick={closeMenu}
                                                                             >
@@ -615,7 +618,7 @@ const Navbar = () => {
                                                                         </li>
                                                                         <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
                                                                             <Link
-                                                                                to="/essentials/karadya/railwaystations"
+                                                                                to="/essentials/kanakia/railwaystations"
                                                                                 className='block text-black text-xs'
                                                                                 onClick={closeMenu}
                                                                             >
@@ -624,7 +627,7 @@ const Navbar = () => {
                                                                         </li>
                                                                         <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
                                                                             <Link
-                                                                                to="/essentials/karadya/hospitals"
+                                                                                to="/essentials/kanakia/hospitals"
                                                                                 className='block text-black text-xs'
                                                                                 onClick={closeMenu}
                                                                             >
@@ -633,7 +636,7 @@ const Navbar = () => {
                                                                         </li>
                                                                         <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
                                                                             <Link
-                                                                                to="/essentials/karadya/petrolpumps"
+                                                                                to="/essentials/kanakia/petrolpumps"
                                                                                 className='block text-black text-xs'
                                                                                 onClick={closeMenu}
                                                                             >

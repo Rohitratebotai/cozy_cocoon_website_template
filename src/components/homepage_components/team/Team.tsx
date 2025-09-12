@@ -36,8 +36,8 @@ const Team: React.FC = () => {
     ];
 
     return (
-        <section className="py-16 ">
-            <div className="max-w-6xl mx-auto px-6">
+        <section className="py-16">
+            <div className="max-w-7xl mx-auto px-6">
                 {/* Header */}
                 <div className="text-center mb-12">
                     <h2 className="text-4xl font-bold text-gray-800 mb-3">
@@ -48,31 +48,29 @@ const Team: React.FC = () => {
                     </p>
                 </div>
 
-                {/* Team Grid */}
-                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                {/* Team Layout - two cards per row */}
+                <div className="grid w-full gap-8 sm:grid-cols-2 border px-5 py-2 rounded-3xl bg-white">
                     {teamMembers.map((member) => (
                         <div
                             key={member.id}
-                            className="text-center group"
+                            className="flex items-center gap-5 rounded-2xl p-3 transition duration-300"
                         >
-                            {/* Avatar */}
-                            <div className="mb-4 inline-block">
-                                <img
-                                    src={member.image}
-                                    alt={member.name}
-                                    className="w-32 h-32 rounded-full object-cover mx-auto shadow-lg border-4 border-white group-hover:shadow-xl transition-shadow duration-300"
-                                />
+                            {/* Circle (Image) */}
+                            <img
+                                src={member.image}
+                                alt={member.name}
+                                className="h-60 w-40 rounded-full object-cover border-4 border-white"
+                            />
+
+                            {/* Details */}
+                            <div>
+                                <h3 className="text-xl font-semibold text-gray-800">
+                                    {member.name}
+                                </h3>
+                                <p className="text-gray-600 font-medium">
+                                    {member.role}
+                                </p>
                             </div>
-
-                            {/* Name */}
-                            <h3 className="text-xl font-semibold text-gray-800 mb-1">
-                                {member.name}
-                            </h3>
-
-                            {/* Role */}
-                            <p className="text-gray-600 font-medium">
-                                {member.role}
-                            </p>
                         </div>
                     ))}
                 </div>

@@ -160,7 +160,7 @@ const PropertyDetails = () => {
     };
 
     return (
-        <section className="w-full mt-[25vh] py-6 tracking-wide">
+        <section className="w-full mt-[35vh] py-6 tracking-wide">
             <div className="w-full flex flex-col gap-8 px-8 lg:px-32">
                 <div className="sm:hidden fixed bottom-9 right-4 z-50">
                     <button

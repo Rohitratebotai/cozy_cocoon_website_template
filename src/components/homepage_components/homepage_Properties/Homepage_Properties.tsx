@@ -55,11 +55,11 @@ const Homepage_Properties = () => {
     return (
 
         <>
-            <div className="flex flex-col gap-10 px-20 md:gap-20 py-8 md:py-16">
+            <div className="flex flex-col gap-10 px-20 md:gap-20 py-8 md:pt-44 ">
 
                 {/* Sanskruti Section */}
                 <section id="sanskurti" className="">
-                    <Heading title="Sanskruti" />
+                    <Heading title="Sanskruti , Kashele, Karjat" />
                     <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-6">
                         {propertyData
                             ?.filter((property) => property.location === "sanskurti")
@@ -77,29 +77,31 @@ const Homepage_Properties = () => {
                                                     />
                                                 </div>
                                                 {/* Modal View Button */}
-                                                <span
+                                                {/* <span
                                                     onClick={handleModal(data)}
                                                     className="absolute right-3 bottom-3 cursor-pointer z-10 text-2xl text-white h-8 w-8 bg-black/50 flex justify-center items-center rounded-full"
                                                 >
                                                     <RxOpenInNewWindow />
-                                                </span>
+                                                </span> */}
                                             </div>
                                             {/* Content */}
                                             <div className="p-4 flex flex-col gap-1 md:gap-3">
-                                                <div className="flex justify-between items-center gap-1 md:gap-4">
-                                                    <div className="flex-1">
+                                                <div className="flex justify-center items-center gap-1 md:gap-4">
+                                                    <h2 className="text-sm text-center md:text-2xl font-semibold text-gray-800">{data.property_name}</h2>
+
+                                                    {/* <div className="flex-1">
                                                         <h2 className="text-sm md:text-base font-semibold text-gray-800">{data.property_name}</h2>
                                                         <p className="text-xs md:text-sm text-gray-500">{data.property_location}</p>
-                                                    </div>
+                                                    </div> */}
                                                     {/* Book Now Button */}
-                                                    <div className="sm:flex">
+                                                    {/* <div className="sm:flex">
                                                         <button
                                                             onClick={handleBookNow(data)}
                                                             className="bg-[#01B7C2] hover:bg-[#01B7C2] text-white font-semibold py-2 px-3 md:py-2 md:px-5 rounded-lg transition-colors duration-300 flex items-center gap-2 text-sm sm:text-base whitespace-nowrap"
                                                         >
                                                             Book Now
                                                         </button>
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -110,10 +112,10 @@ const Homepage_Properties = () => {
 
                 {/* Karadya BKC Section */}
                 <section id="karadya" className="">
-                    <Heading title="Karadya BKC" />
+                    <Heading title="Kanakia, BKC, Mumbai" />
                     <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-6">
                         {propertyData
-                            ?.filter((property) => property.location === "karadya")
+                            ?.filter((property) => property.location === "kanakia")
                             ?.map((property) =>
                                 property?.properties.filter((data: any) => data.id !== 9)
                                     ?.map((data: any) => (
@@ -128,29 +130,31 @@ const Homepage_Properties = () => {
                                                     />
                                                 </div>
                                                 {/* Modal View Button */}
-                                                <span
+                                                {/* <span
                                                     onClick={handleModal(data)}
                                                     className="absolute right-3 bottom-3 cursor-pointer z-10 text-2xl text-white h-8 w-8 bg-black/50 flex justify-center items-center rounded-full"
                                                 >
                                                     <RxOpenInNewWindow />
-                                                </span>
+                                                </span> */}
                                             </div>
                                             {/* Content */}
                                             <div className="p-4 flex flex-col gap-1 md:gap-3">
-                                                <div className="flex justify-between items-center gap-1 md:gap-4">
-                                                    <div className="flex-1">
+                                                <div className="flex justify-center items-center gap-1 md:gap-4">
+
+                                                    <h2 className="text-sm text-center md:text-2xl font-semibold text-gray-800">{data.property_name}</h2>
+                                                    {/* <div className="flex-1">
                                                         <h2 className="text-sm md:text-base font-semibold text-gray-800">{data.property_name}</h2>
                                                         <p className="text-xs md:text-sm text-gray-500">{data.property_location}</p>
-                                                    </div>
+                                                    </div> */}
                                                     {/* Book Now Button */}
-                                                    <div className="sm:flex">
+                                                    {/* <div className="sm:flex">
                                                         <button
                                                             onClick={handleBookNow(data)}
                                                             className="bg-[#01B7C2] hover:bg-[#01B7C2] text-white font-semibold py-2 px-3 md:py-2 md:px-5 rounded-lg transition-colors duration-300 flex items-center gap-2 text-sm sm:text-base whitespace-nowrap"
                                                         >
                                                             Book Now
                                                         </button>
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -158,7 +162,6 @@ const Homepage_Properties = () => {
                             )}
                     </div>
                 </section>
-
 
             </div>
 
