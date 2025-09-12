@@ -1,5 +1,5 @@
 // import { FaBed, FaShower, FaSwimmingPool, FaCar } from "react-icons/fa";
-import { RxOpenInNewWindow } from "react-icons/rx";
+// import { RxOpenInNewWindow } from "react-icons/rx";
 import Heading from "../../commonComponents/heading/Heading";
 import { useNavigate } from "react-router-dom";
 import { propertyData } from "../../../data";
@@ -41,7 +41,10 @@ const Homepage_Properties = () => {
         setSelectedProperty(property);
         setIsModalOpen(true);
     };
-
+    console.log(handleModal, "handleModal");
+    
+    
+    
     const handleBookNow = (property: any) => (e: any) => {
         e.stopPropagation(); // Prevent triggering other click events
         if (property.booking_link) {
@@ -51,6 +54,7 @@ const Homepage_Properties = () => {
             alert(`Booking link is not available for, ${property.property_name}. Please contact us for Booking Details.`);
         }
     };
+    console.log(handleBookNow, "handleBookNow");
 
     return (
 
