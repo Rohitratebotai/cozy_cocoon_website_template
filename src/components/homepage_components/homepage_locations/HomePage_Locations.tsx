@@ -1,7 +1,7 @@
 
 import { useNavigate } from "react-router-dom"
 import { propertyData } from "../../../data"
-import Heading from "../../commonComponents/heading/Heading"
+import HighlightedHeading from "../../commonComponents/heading/HighlightedHeading"
 
 const HomePage_Locations = () => {
     const navigate = useNavigate()
@@ -11,7 +11,14 @@ const HomePage_Locations = () => {
     }
     return (
         <section className="pb-20">
-            <Heading title={"Travel Destination"} />
+            <HighlightedHeading
+                beforeText=""
+                highlightedText="Travel Destination"
+                description=""
+                highlightColor="#7DD3FC"
+                textColor="#fff"
+                descriptionColor="#7DD3FC"
+            />
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 px-32 p-6 place-items-center">
                 {/* <Homepage_LocationBasedProperties /> */}
                 {

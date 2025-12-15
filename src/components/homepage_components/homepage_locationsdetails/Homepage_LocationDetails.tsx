@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom"
 // import Slider from "../slider/Slider"
-import Heading from "../../commonComponents/heading/Heading"
 import '../../../App.css'
 // import { FaBed, FaShower, FaSwimmingPool, FaCar } from "react-icons/fa";
 import { RxOpenInNewWindow } from "react-icons/rx";
@@ -11,6 +10,7 @@ import PropertyModal from "../propertymodal/PropertyModal";
 import { useState } from "react";
 import CommonBanner from "../../commonComponents/banner/CommonBanner";
 import img from '../../../assets/cosy_villa_images/img_22.jpeg'
+import HighlightedHeading from "../../commonComponents/heading/HighlightedHeading";
 
 const Homepage_LocationDetails = () => {
     const location = useLocation();
@@ -75,7 +75,14 @@ const Homepage_LocationDetails = () => {
                 <CommonBanner image={img} PageName={"Our Destinations"} />
             </div>
             <section className="px-4 lg:px-20 py-8 pb-10 md:pb-20">
-                <Heading title="Explore Our Villas" />
+                <HighlightedHeading
+                    beforeText="Explore Our"
+                    highlightedText="Villas"
+                    description=""
+                    highlightColor="#7DD3FC"
+                    textColor="#fff"
+                    descriptionColor="#7DD3FC"
+                />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {locationViseData?.map((data: any) => (
                         // property.properties?.map((data: any) => (

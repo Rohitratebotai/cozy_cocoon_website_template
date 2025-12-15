@@ -1,7 +1,7 @@
-import img1 from '../../../assets/soumils2_images/s2_i1.jpg'
-import img4 from '../../../assets/soumils4_images/s4_4.jpg'
-import img2 from '../../../assets/pinnacle_images/p_5.jpeg'
-import img3 from '../../../assets/parambi_images/prm_4.jpg'
+import img1 from '../../../assets/NearByplaces/Nagaon_Beach.jpg'
+import img4 from '../../../assets/NearByplaces/murund_janjira.jpg'
+import img2 from '../../../assets/NearByplaces/peth fort.webp'
+import img3 from '../../../assets/about_images/mandwa_beach.jpeg'
 
 interface Room {
     title: string,
@@ -36,7 +36,7 @@ const ExclusiveService_Card = () => {
 
     return (
         <section>
-            <div className='h-full w-full'>
+            <div className='h-full w-full  py-10 rounded-lg '>
                 {/* mapping Card  */}
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 px-6 '>
                     {data?.map((item) => {
@@ -51,7 +51,7 @@ const ExclusiveService_Card = () => {
                                     alt="BackgroundImage"
                                 />
                                 <div className="h-2/6 flex flex-col justify-start items-center gap-1 text-center px-5 py-4">
-                                    <p className="text-base font-light lg:text-xl ">{item.description}</p>
+                                    <p className="text-base font-light lg:text-base ">{item.description}</p>
                                 </div>
                                 <span className="cursor-pointer text-xl md:text-2xl font-bold absolute inset-0 flex justify-center items-center text-white  text-center group-hover:-top-20 transform duration-200 px-4 py-[6px]">
                                     {item.title}

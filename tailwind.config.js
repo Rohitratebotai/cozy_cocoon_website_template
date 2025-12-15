@@ -13,8 +13,8 @@ export default {
       },
       colors: {
         Bg_Primary: ' var(--primary-background-color)',
-        Bg_secondary: ' var(--secondary-background-color)',
-        primary: 'var(--primary-color)',
+        // Bg_secondary: ' var(--secondary-background-color)',
+        primary: 'var(--primary-text-color)',
       },
     },
   },

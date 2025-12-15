@@ -41,8 +41,8 @@ const Homepage_WhyChoose = () => {
 
 
     return (
-        <section className="py-10 lg:py-20">
-            <div className="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16 px-6 sm:px-10 lg:px-20 tracking-widest">
+        <section className="bg-Bg_Primary text-primary py-10 lg:py-20">
+            <div className="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16 px-6 sm:px-10 lg:px-20 tracking-wider">
                 {/* Left side - Images */}
                 <div className="flex-1 flex justify-center items-center relative">
                     <img
@@ -86,7 +86,7 @@ const Homepage_WhyChoose = () => {
                     <div className="flex justify-center lg:justify-start">
                         <Link
                             to={'/contact'}
-                            className="bg-primary  px-6 py-3 rounded-lg font-medium flex items-center gap-2 transition-colors hover:bg-primary-dark"
+                            className="bg-primary text-Bg_Primary px-6 py-3 rounded-lg font-medium flex items-center gap-2 transition-colors hover:bg-primary-dark"
                         >
                             <span>Contact</span>
                             <FaArrowRightLong />

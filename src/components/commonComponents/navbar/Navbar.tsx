@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './navbar.css';
 import { IoIosMail, IoIosCall } from 'react-icons/io';
 import { navbarData, propertyData } from '../../../data';
@@ -21,6 +21,7 @@ const Navbar = () => {
     const [iskanakiaEssentialsOpen, setIskanakiaEssentialsOpen] = useState(false);
     // const [selectedCity, setSelectedCity] = useState(cityOptions[0]);
     const [openDropdown, setOpenDropdown] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     const handleScroll = (id: any) => {
         const section = document.getElementById(id);
@@ -51,45 +52,20 @@ const Navbar = () => {
         closeMenu();
     };
 
-    // useEffect(() => {
-    //     const onLoadfunction = () => {
-    //         const navbar = document.getElementById('navbar_container');
-    //         const navlinks = document.getElementById('navlinks');
-    //         const dropmenus = document.getElementById('dropmenus');
-    //         if (navbar && navlinks && dropmenus) {
-    //             if (window.scrollY > 20) {
-    //                 // Change background to black and text to white
-    //                 navbar.classList.add('bg-black', 'border-b-1', 'border-bg-primary', 'text-white');
-    //                 navbar.classList.remove('bg-white');
-    //                 navlinks.classList.add('text-white',);
-    //                 navlinks.classList.remove('text-black');
-    //                 dropmenus.classList.add('bg-black',);
-    //                 dropmenus.classList.remove('bg-white');
-    //             } else {
-    //                 // Initial state: Background white, text black
-    //                 navbar.classList.add('bg-white', 'text-black');
-    //                 navbar.classList.remove('bg-black', 'border-b-1', 'border-bg-primary');
-    //                 navlinks.classList.add('text-black');
-    //                 navlinks.classList.remove('text-white');
-    //                 dropmenus.classList.add('bg-white',);
-    //                 dropmenus.classList.remove('bg-black');
-    //             }
-    //         }
-    //     };
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
 
-    //     window.addEventListener('scroll', onLoadfunction);
-    //     onLoadfunction();
-
-    //     return () => {
-    //         window.removeEventListener('scroll', onLoadfunction);
-    //     };
-    // }, []);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
 
     return (
         <section className='navbar-container w-full h-fit fixed top-0 z-50 shadow-md'>
             {/* Email and Phone */}
-            <div className="bg-[#1A2B48] flex flex-wrap text-white justify-between items-center gap-2 p-2 md:p-4 md:flex-nowrap">
+            <div className="bg-Bg_Primary flex flex-wrap text-primary justify-between items-center gap-2 p-2 md:p-4 md:flex-nowrap">
                 <div className="flex flex-col md:flex-row justify-center items-center gap-2 w-full md:w-auto">
                     {/* Email */}
                     <div className="flex flex-col md:flex-row gap-2 text-center md:text-left">
@@ -118,7 +94,7 @@ const Navbar = () => {
                                     +91 9515192575
                                 </a>
                             </div>
-                            <span className="text-slate-400 hidden md:block">|</span>
+                            {/* <span className="text-slate-400 hidden md:block">|</span> */}
 
                             {/* Phone 2 */}
                             {/* <div className="flex items-center gap-1 font-semibold md:font-medium">
@@ -169,14 +145,22 @@ const Navbar = () => {
             </div>
 
             {/* Main Nav */}
-            <div id='navbar_container' className='transition-all bg-white duration-300 border-b-2 w-full h-full flex items-center justify-center px-4 py-3 md:px-12 md:justify-center md:gap-40 overflow-visible'>
+            <div id='navbar_container' className={`transition-all ${isScrolled ? "bg-Bg_Primary text-white border-primary" : "bg-white text-black"
+                } duration-300 w-full h-full flex items-center justify-center px-4 py-3 md:px-12 md:justify-between md:gap-40 overflow-visible`}>
                 {/* Menu Toggle Button (for mobile) */}
                 <button className='md:hidden text-primary text-2xl' onClick={toggleMenu}>
                     {isMenuOpen ? <HiX /> : <HiMenuAlt3 />}
                 </button>
 
+                <div className="flex items-center">
+                    {/* Logo */}
+                    <Link to='/'>
+                        <img className='w-14 h-14 md:w-20 md:h-16 rounded-full' src={navbarData.logo[0].image} alt='Logo' />
+                    </Link>
+                </div>
+
                 {/* Nav Links (Desktop) */}
-                <div id='navlinks' className='hidden md:flex items-center gap-4 text-black md:gap-8 static'>
+                <div id='navlinks' className={`hidden md:flex items-center gap-4 ${isScrolled ? "text-white" : "text-black"} md:gap-8 static`}>
                     <ul className='flex items-center gap-4 md:gap-8 static'>
                         {navbarData?.navmenu?.map((item) => (
                             <li key={item.id} className='relative '>
@@ -187,7 +171,7 @@ const Navbar = () => {
                                             className="relative"
                                             onClick={() => setOpenDropdown(!openDropdown)}
                                         >
-                                            <button className="hover:text-primary text-sm md:text-xl font-bold cursor-pointer">
+                                            <button className=" text-sm md:text-xl font-bold cursor-pointer">
                                                 {item.title}
                                             </button>
 
@@ -195,13 +179,13 @@ const Navbar = () => {
                                             {openDropdown && (
                                                 <div className="absolute top-full left-0 bg-white shadow-lg rounded-md mt-2 w-48">
                                                     <div
-                                                        onClick={() => handleScroll("sanskurti")}
+                                                        onClick={() => handleScroll("sanskruti")}
                                                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                                                     >
                                                         Destination 1
                                                     </div>
                                                     <div
-                                                        onClick={() => handleScroll("kanakia")}
+                                                        onClick={() => handleScroll("BKC")}
                                                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                                                     >
                                                         Destination 2
@@ -284,14 +268,14 @@ const Navbar = () => {
                                     ) : item.title === 'Near By Locations' ? (
                                         <div className='relative group flex flex-col items-start gap-2 '>
                                             <span
-                                                className='hover:text-primary text-sm md:text-xl font-bold cursor-pointer'
+                                                className=' text-sm md:text-xl font-bold cursor-pointer'
                                                 onClick={() => setIsNearbyOpen(!isNearbyOpen)}
                                             >
                                                 {item.title} <span className="text-xs ml-1">{isNearbyOpen ? '▲' : '▼'}</span>
                                             </span>
 
                                             {isNearbyOpen && (
-                                                <div id='dropmenus' className='absolute top-full left-0 bg-white border shadow-lg rounded-md min-w-[220px] max-h-80 overflow-y-auto z-[9999] transition-all duration-300 mt-1'>
+                                                <div id='dropmenus' className={`absolute top-full left-0 ${isScrolled ? "bg-black text-white border-primary" : "bg-white text-black"} border shadow-lg rounded-md min-w-[220px] max-h-80 overflow-y-auto z-[9999] transition-all duration-300 mt-1`}>
                                                     <ul className='py-2 text-sm'>
 
                                                         {/* Sanskriti */}
@@ -416,7 +400,7 @@ const Navbar = () => {
                                             )}
                                         </div>
                                     ) :
-                                        <Link onClick={closeMenu} to={item.link} className='hover:text-primary text-sm md:text-xl font-bold cursor-pointer'>
+                                        <Link onClick={closeMenu} to={item.link} className=' text-sm md:text-xl font-bold cursor-pointer'>
                                             {item.title}
                                         </Link>
                                 }
@@ -425,16 +409,6 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-
-            <div className='w-full h-fit flex justify-center md:justify-center px-4 md:px-12 py-2 md:py-3 bg-white border-b border-transparent'>
-                <div className="flex items-center">
-                    {/* Logo */}
-                    <Link to='/'>
-                        <img className='w-14 h-14 md:w-16 md:h-16 rounded-full' src={navbarData.logo[0].image} alt='Logo' />
-                    </Link>
-                </div>
-            </div>
-
 
             {/* Mobile Menu - Fixed positioning */}
             {

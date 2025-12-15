@@ -23,7 +23,7 @@ const Slider = () => {
 
     return (
         <section className="relative text-black w-full flex justify-center items-center">
-            <div className='h-[50vh] md:h-[110vh] w-full'>
+            <div className='h-[50vh] md:h-[90vh] w-full'>
                 <Swiper
                     modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                     spaceBetween={10}
@@ -32,7 +32,7 @@ const Slider = () => {
                 >
                     {images.map((image) => (
                         <SwiperSlide key={image.id}>
-                            <div className="h-[70vh] md:h-[110vh] w-full">
+                            <div className="h-[70vh] md:h-[90vh] w-full">
                                 <img src={image.src} alt={image.alt} className="object-contain md:object-cover -mt-2  md:mt-0 object-center w-[100%]  md:w-full h-[100%] md:h-full " />
                             </div>
                         </SwiperSlide>

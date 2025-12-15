@@ -10,6 +10,7 @@ import img5 from '../../../assets/testionial_reviewSection/cr5.png';
 import img6 from '../../../assets/testionial_reviewSection/cr3.png';
 import logo from '../../../assets/cultlogo.png';
 import { FaQuoteLeft } from 'react-icons/fa';
+import HighlightedHeading from '../../commonComponents/heading/HighlightedHeading';
 
 interface reviews {
     icon: any;
@@ -85,15 +86,16 @@ const Homepage_Testimonial = () => {
     };
 
     return (
-        <div className="py-12 bg-gray-50">
+        <div className="py-12 bg-Bg_Primary text-primary">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <section>
-                    <div className="py-10 text-primary md:py-14 tracking-wide flex justify-center items-center text-xl md:text-2xl lg:text-5xl font-medium relative">
-                        <p className="relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-full after:h-[3px] after:bg-primary after:rounded-full after:transition-all after:duration-500 after:ease-in-out hover:after:w-0 cursor-pointer">
-                            Hear What Our Happy Guests Are Saying
-                        </p>
-                    </div>
-                </section>
+                <HighlightedHeading
+                    beforeText="Hear What Our "
+                    highlightedText=" Happy Guests"
+                    description="Are Saying"
+                    highlightColor="#7DD3FC"
+                    textColor="#fff"
+                    descriptionColor="#7DD3FC"
+                />
                 <div className="relative w-full">
                     <Swiper
                         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCards]}
@@ -147,10 +149,10 @@ const Homepage_Testimonial = () => {
                     </Swiper>
 
                     <div className="absolute top-1/2 left-0 right-0 z-20 flex justify-between items-center px-2 transform -translate-y-1/2">
-                        <button className="PrevElement flex justify-center items-center bg-white shadow-md hover:bg-primary hover:text-white transition-colors duration-300 cursor-pointer h-10 w-10 md:h-12 md:w-12 rounded-full text-gray-800 border border-gray-200">
+                        <button className="PrevElement flex justify-center items-center bg-white shadow-md hover:bg-primary hover:text-primary transition-colors duration-300 cursor-pointer h-10 w-10 md:h-12 md:w-12 rounded-full text-gray-800 border border-gray-200">
                             <GrFormPrevious className="text-xl md:text-2xl" />
                         </button>
-                        <button className="NextElement flex justify-center items-center bg-white shadow-md hover:bg-primary hover:text-white transition-colors duration-300 cursor-pointer h-10 w-10 md:h-12 md:w-12 rounded-full text-gray-800 border border-gray-200">
+                        <button className="NextElement flex justify-center items-center bg-white shadow-md hover:bg-primary hover:text-primary transition-colors duration-300 cursor-pointer h-10 w-10 md:h-12 md:w-12 rounded-full text-gray-800 border border-gray-200">
                             <MdOutlineNavigateNext className="text-xl md:text-2xl" />
                         </button>
                     </div>

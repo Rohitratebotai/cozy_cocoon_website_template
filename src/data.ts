@@ -18,7 +18,7 @@ import img from './assets/cosy_villa_images/img_23.jpeg'
 export const propertyData = [
     {
         id: 1,
-        location: "kanakia",
+        location: "BKC",
         location_image: Dapoli,
         properties: [
             // Array of properties in Dapoli 
@@ -298,7 +298,7 @@ export const propertyData = [
     },
     {
         id: 2,
-        location: "sanskurti",
+        location: "sanskruti",
         location_image: apartment,
         properties: [
             {

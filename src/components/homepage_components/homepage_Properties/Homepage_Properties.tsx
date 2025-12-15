@@ -1,12 +1,12 @@
 // import { FaBed, FaShower, FaSwimmingPool, FaCar } from "react-icons/fa";
 // import { RxOpenInNewWindow } from "react-icons/rx";
-import Heading from "../../commonComponents/heading/Heading";
 import { useNavigate } from "react-router-dom";
 import { propertyData } from "../../../data";
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import PropertyModal from "../propertymodal/PropertyModal";
 import { useState } from "react";
+import HighlightedHeading from "../../commonComponents/heading/HighlightedHeading";
 
 const Homepage_Properties = () => {
     const navigate = useNavigate();
@@ -42,9 +42,8 @@ const Homepage_Properties = () => {
         setIsModalOpen(true);
     };
     console.log(handleModal, "handleModal");
-    
-    
-    
+
+
     const handleBookNow = (property: any) => (e: any) => {
         e.stopPropagation(); // Prevent triggering other click events
         if (property.booking_link) {
@@ -57,56 +56,65 @@ const Homepage_Properties = () => {
     console.log(handleBookNow, "handleBookNow");
 
     return (
-
         <>
-            <div className="flex flex-col gap-10 px-20 md:gap-20 py-8 md:pt-44 ">
+            <div className="bg-Bg_Primary text-white flex flex-col gap-10 px-20 md:gap-10 py-8 md:pt-0">
 
                 {/* Sanskruti Section */}
-                <section id="sanskurti" className="">
-                    <Heading title="Sanskruti , Kashele, Karjat" />
-                    <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-6">
+                <section id="sanskruti" className="">
+                    <div className="">
+                        <style>
+                            {`
+          @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Playfair+Display:wght@400;700;900&display=swap');
+        `}
+                        </style>
+
+                        {/* Heading 4 - Green Highlight */}
+                        <HighlightedHeading
+                            beforeText="Your dream home in"
+                            highlightedText="Karjat, Kashele"
+                            description="Explore exclusive properties offering luxury and serenity!"
+                            highlightColor="#7DD3FC"
+                            textColor="#fff"
+                            descriptionColor="#7DD3FC"
+                        />
+                    </div>
+                    <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 place-items-center">
                         {propertyData
-                            ?.filter((property) => property.location === "sanskurti")
+                            ?.filter((property) => property.location === "sanskruti")
                             ?.map((property) =>
                                 property?.properties.filter((data: any) => data.id !== 9)
                                     ?.map((data: any) => (
-                                        <div key={data.id} className="relative bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300">
+                                        <div
+                                            key={data.id}
+                                            className="group w-full relative bg-white rounded-md overflow-hidden  transition-all duration-300 hover:shadow-2xl"
+                                        >
                                             {/* Image Container */}
-                                            <div className="relative h-64 md:h-80">
-                                                <div onClick={() => handleNavigate(data.id)} className="h-full w-full">
-                                                    <img
-                                                        src={data.property_img[0]}
-                                                        alt={`${data.property_name} - Image 1`}
-                                                        className="object-cover cursor-pointer w-full h-full transition-transform duration-300 overflow-hidden"
-                                                    />
-                                                </div>
-                                                {/* Modal View Button */}
-                                                {/* <span
-                                                    onClick={handleModal(data)}
-                                                    className="absolute right-3 bottom-3 cursor-pointer z-10 text-2xl text-white h-8 w-8 bg-black/50 flex justify-center items-center rounded-full"
-                                                >
-                                                    <RxOpenInNewWindow />
-                                                </span> */}
+                                            <div className="relative h-72 overflow-hidden">
+                                                <img
+                                                    src={data.property_img[0]}
+                                                    alt={`${data.property_name}`}
+                                                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                                                />
                                             </div>
-                                            {/* Content */}
-                                            <div className="p-4 flex flex-col gap-1 md:gap-3">
-                                                <div className="flex justify-center items-center gap-1 md:gap-4">
-                                                    <h2 className="text-sm text-center md:text-2xl font-semibold text-gray-800">{data.property_name}</h2>
 
-                                                    {/* <div className="flex-1">
-                                                        <h2 className="text-sm md:text-base font-semibold text-gray-800">{data.property_name}</h2>
-                                                        <p className="text-xs md:text-sm text-gray-500">{data.property_location}</p>
-                                                    </div> */}
-                                                    {/* Book Now Button */}
-                                                    {/* <div className="sm:flex">
-                                                        <button
-                                                            onClick={handleBookNow(data)}
-                                                            className="bg-[#01B7C2] hover:bg-[#01B7C2] text-white font-semibold py-2 px-3 md:py-2 md:px-5 rounded-lg transition-colors duration-300 flex items-center gap-2 text-sm sm:text-base whitespace-nowrap"
-                                                        >
-                                                            Book Now
-                                                        </button>
-                                                    </div> */}
+                                            {/* Content Section */}
+                                            <div className="p-6 flex flex-col gap-4">
+                                                <div className="flex flex-col gap-1">
+                                                    <h2 className="text-xl font-bold text-gray-900 text-center tracking-tight">
+                                                        {data.property_name}
+                                                    </h2>
+                                                    <p className="text-sm text-gray-500 text-center">
+                                                        {data.property_location}
+                                                    </p>
                                                 </div>
+
+                                                {/* Explore Now Button */}
+                                                <button
+                                                    onClick={() => handleNavigate(data.id)}
+                                                    className="w-full bg-[#01B7C2] hover:bg-[#0198A1] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                                                >
+                                                    Explore Now
+                                                </button>
                                             </div>
                                         </div>
                                     ))
@@ -115,51 +123,53 @@ const Homepage_Properties = () => {
                 </section>
 
                 {/* Karadya BKC Section */}
-                <section id="karadya" className="">
-                    <Heading title="Kanakia, BKC, Mumbai" />
-                    <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-6">
+                <section id="BKC" className="">
+                    <HighlightedHeading
+                        beforeText="Your dream home in"
+                        highlightedText="BKC, Mumbai"
+                        description="Explore exclusive properties offering luxury and serenity!"
+                        highlightColor="#7DD3FC"
+                        textColor="#fff"
+                        descriptionColor="#7DD3FC"
+                    />
+                    <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 place-items-center">
                         {propertyData
-                            ?.filter((property) => property.location === "kanakia")
+                            ?.filter((property) => property.location === "BKC")
                             ?.map((property) =>
-                                property?.properties.filter((data: any) => data.id !== 9)
-                                    ?.map((data: any) => (
-                                        <div key={data.id} className="relative bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300">
+                                property?.properties
+                                    .filter((data) => data.id !== 9)
+                                    ?.map((data) => (
+                                        <div
+                                            key={data.id}
+                                            className="group w-full relative bg-white rounded-md overflow-hidden  transition-all duration-300 hover:shadow-2xl"
+                                        >
                                             {/* Image Container */}
-                                            <div className="relative h-64 md:h-80">
-                                                <div onClick={() => handleNavigate(data.id)} className="h-full w-full">
-                                                    <img
-                                                        src={data.property_img[0]}
-                                                        alt={`${data.property_name} - Image 1`}
-                                                        className="object-cover cursor-pointer w-full h-full transition-transform duration-300 overflow-hidden"
-                                                    />
-                                                </div>
-                                                {/* Modal View Button */}
-                                                {/* <span
-                                                    onClick={handleModal(data)}
-                                                    className="absolute right-3 bottom-3 cursor-pointer z-10 text-2xl text-white h-8 w-8 bg-black/50 flex justify-center items-center rounded-full"
-                                                >
-                                                    <RxOpenInNewWindow />
-                                                </span> */}
+                                            <div className="relative h-72 overflow-hidden">
+                                                <img
+                                                    src={data.property_img[0]}
+                                                    alt={`${data.property_name}`}
+                                                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                                                />
                                             </div>
-                                            {/* Content */}
-                                            <div className="p-4 flex flex-col gap-1 md:gap-3">
-                                                <div className="flex justify-center items-center gap-1 md:gap-4">
 
-                                                    <h2 className="text-sm text-center md:text-2xl font-semibold text-gray-800">{data.property_name}</h2>
-                                                    {/* <div className="flex-1">
-                                                        <h2 className="text-sm md:text-base font-semibold text-gray-800">{data.property_name}</h2>
-                                                        <p className="text-xs md:text-sm text-gray-500">{data.property_location}</p>
-                                                    </div> */}
-                                                    {/* Book Now Button */}
-                                                    {/* <div className="sm:flex">
-                                                        <button
-                                                            onClick={handleBookNow(data)}
-                                                            className="bg-[#01B7C2] hover:bg-[#01B7C2] text-white font-semibold py-2 px-3 md:py-2 md:px-5 rounded-lg transition-colors duration-300 flex items-center gap-2 text-sm sm:text-base whitespace-nowrap"
-                                                        >
-                                                            Book Now
-                                                        </button>
-                                                    </div> */}
+                                            {/* Content Section */}
+                                            <div className="p-6 flex flex-col gap-4">
+                                                <div className="flex flex-col gap-1">
+                                                    <h2 className="text-xl font-bold text-gray-900 text-center tracking-tight">
+                                                        {data.property_name}
+                                                    </h2>
+                                                    <p className="text-sm text-gray-500 text-center">
+                                                        {data.property_location}
+                                                    </p>
                                                 </div>
+
+                                                {/* Explore Now Button */}
+                                                <button
+                                                    onClick={() => handleNavigate(data.id)}
+                                                    className="w-full bg-[#01B7C2] hover:bg-[#0198A1] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                                                >
+                                                    Explore Now
+                                                </button>
                                             </div>
                                         </div>
                                     ))
