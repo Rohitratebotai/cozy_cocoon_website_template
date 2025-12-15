@@ -146,9 +146,9 @@ const Navbar = () => {
 
             {/* Main Nav */}
             <div id='navbar_container' className={`transition-all ${isScrolled ? "bg-Bg_Primary text-white border-primary" : "bg-white text-black"
-                } duration-300 w-full h-full flex items-center justify-center px-4 py-3 md:px-12 md:justify-between md:gap-40 overflow-visible`}>
+                } duration-300 w-full h-full flex items-center justify-between px-4 py-3 md:px-12 md:justify-between md:gap-40 overflow-visible`}>
                 {/* Menu Toggle Button (for mobile) */}
-                <button className='md:hidden text-primary text-2xl' onClick={toggleMenu}>
+                <button className={`md:hidden ${isScrolled ? "text-primary" : "text-Bg_Primary"} text-2xl`} onClick={toggleMenu}>
                     {isMenuOpen ? <HiX /> : <HiMenuAlt3 />}
                 </button>
 

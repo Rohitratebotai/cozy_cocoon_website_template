@@ -32,8 +32,9 @@ const Slider = () => {
                 >
                     {images.map((image) => (
                         <SwiperSlide key={image.id}>
-                            <div className="h-[70vh] md:h-[90vh] w-full">
-                                <img src={image.src} alt={image.alt} className="object-contain md:object-cover -mt-2  md:mt-0 object-center w-[100%]  md:w-full h-[100%] md:h-full " />
+                            <div className="h-[55vh] md:h-[90vh] w-full">
+                                <img src={image.src} alt={image.alt} className="object-cover -mt-2  md:mt-0 object-center w-full 
+                                h-[55vh]  md:w-full  md:h-full " />
                             </div>
                         </SwiperSlide>
                     ))}

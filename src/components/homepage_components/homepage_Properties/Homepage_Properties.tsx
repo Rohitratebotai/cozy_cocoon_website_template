@@ -57,7 +57,7 @@ const Homepage_Properties = () => {
 
     return (
         <>
-            <div className="bg-Bg_Primary text-white flex flex-col gap-10 px-20 md:gap-10 py-8 md:pt-0">
+            <div className="bg-Bg_Primary text-white flex flex-col gap-10 px-8 md:gap-10 py-8 md:pt-0">
 
                 {/* Sanskruti Section */}
                 <section id="sanskruti" className="">
