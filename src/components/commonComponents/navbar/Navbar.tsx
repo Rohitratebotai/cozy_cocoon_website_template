@@ -413,7 +413,7 @@ const Navbar = () => {
             {/* Mobile Menu - Fixed positioning */}
             {
                 isMenuOpen && (
-                    <div className='md:hidden bg-white w-full absolute top-full left-0 z-50 shadow-lg max-h-[70vh] overflow-y-auto border-t border-gray-200'>
+                    <div className='md:hidden  bg-white w-52 absolute top-full left-0 z-50 shadow-lg min-h-screen overflow-y-auto border-t border-gray-200'>
                         <ul className='flex flex-col items-start gap-0'>
                             {navbarData?.navmenu?.map((item) => (
                                 <li key={item.id} className='w-full border-b border-gray-100'>

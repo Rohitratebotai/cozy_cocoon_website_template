@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { FaBed, FaShower, FaSwimmingPool, FaCar, FaWifi, FaInstagram, FaYoutube, FaExternalLinkAlt } from "react-icons/fa";
+import { FaBed, FaShower, FaSwimmingPool, FaCar, FaWifi } from "react-icons/fa";
 import { TbAirConditioning } from "react-icons/tb";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
@@ -24,6 +24,11 @@ import NdStudio from '../../../assets/NearByplaces/5. ND Studio.webp'
 import kondhana from '../../../assets/NearByplaces/6. Kondhana Caves.webp'
 import ulhas from '../../../assets/NearByplaces/7. Ulhas Valley.webp'
 import kondeshwar from '../../../assets/NearByplaces/8. Kondeshwar Temple.webp'
+
+// fancybox 
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
 
 export const amenitiesImages = [
     { name: "Club House", img: clubhouse },
@@ -92,6 +97,7 @@ interface PropertyAmenityImage {
 interface Property {
     id: number;
     property_name: string;
+    property_logo?: string;
     property_subtitle?: string;
     property_img: string[];
     property_amenities: PropertyAmenity[];
@@ -115,6 +121,7 @@ const PropertyDetails = () => {
     const slug = location.pathname.split('/')[2];
     const [data, setData] = useState<Property | null>(null);
 
+
     useEffect(() => {
         propertyData.forEach(item => {
             item.properties.forEach((prop: any) => {
@@ -124,6 +131,22 @@ const PropertyDetails = () => {
             });
         });
     }, [slug]);
+
+
+    useEffect(() => {
+        Fancybox.bind("[data-fancybox='property-gallery']", {
+            Thumbs: {
+                autoStart: true,
+            },
+            Toolbar: {
+                display: ["zoom", "fullscreen", "close"],
+            },
+        } as any);
+
+        return () => {
+            Fancybox.destroy();
+        };
+    }, []);
 
     if (!data) return <p>Loading...</p>;
 
@@ -140,16 +163,15 @@ const PropertyDetails = () => {
     };
 
     console.log(renderIcon, "renderIcon");
-    
 
-    const getSocialIcon = (type: string) => {
-        switch (type.toLowerCase()) {
-            case 'instagram': return <FaInstagram />;
-            case 'youtube': return <FaYoutube />;
-            case 'booking': return <FaExternalLinkAlt />;
-            default: return <FaExternalLinkAlt />;
-        }
-    };
+    // const getSocialIcon = (type: string) => {
+    //     switch (type.toLowerCase()) {
+    //         case 'instagram': return <FaInstagram />;
+    //         case 'youtube': return <FaYoutube />;
+    //         case 'booking': return <FaExternalLinkAlt />;
+    //         default: return <FaExternalLinkAlt />;
+    //     }
+    // };
 
     const handleBookNow = () => {
         if (data?.booking_link) {
@@ -160,8 +182,8 @@ const PropertyDetails = () => {
     };
 
     return (
-        <section className="w-full mt-[35vh] py-6 tracking-wide">
-            <div className="w-full flex flex-col gap-8 px-8 lg:px-32">
+        <section className="w-full mt-[20vh] py-6 tracking-wide">
+            <div className="w-full flex flex-col gap-8 px-4 lg:px-32">
                 <div className="sm:hidden fixed bottom-9 right-4 z-50">
                     <button
                         onClick={handleBookNow}
@@ -171,9 +193,24 @@ const PropertyDetails = () => {
                     </button>
                 </div>
 
-                <div className='w-full h-fit flex md:flex-row flex-col justify-between items-center gap-4'>
+                <div className='flex w-full '>
+                    {data.property_logo && (
+                        <div className="w-full flex gap-3 sm:gap-5 items-center">
+                            <img
+                                src={data.property_logo}
+                                alt={data.property_name}
+                                className="h-14 sm:h-16 object-contain rounded-full"
+                            />
+                            <h1 className="text-2xl sm:text-3xl uppercase font-bold  mb-2">{data.property_name}</h1>
+                        </div>
+                    )}
+                    <div>
+                    </div>
+                </div>
+
+                <div className='w-full h-fit flex md:flex-row flex-col justify-between items-center gap-2 sm:gap-4'>
                     <div className='w-full md:flex-1 h-[60vh] flex flex-col gap-1 overflow-hidden'>
-                        <div className="w-full h-[90%] relative">
+                        <div className="w-full h-[100%] relative">
                             <Swiper
                                 modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                                 spaceBetween={0}
@@ -181,35 +218,57 @@ const PropertyDetails = () => {
                                 navigation={{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }}
                                 loop={true}
                                 autoplay={{ delay: 3000, disableOnInteraction: false }}
-                                className="w-full h-full rounded-lg"
+                                className="w-full h-full "
                             >
                                 {data.property_img.map((image, index) => (
                                     <SwiperSlide key={index}>
-                                        <img src={image} alt={`Property ${index + 1}`} className="w-full h-full object-cover" />
+                                        <a
+                                            href={image}
+                                            data-fancybox="property-gallery"
+                                            data-caption={`Property Image ${index + 1}`}
+                                            className="block w-full h-full"
+                                        >
+                                            <img
+                                                src={image}
+                                                alt={`Property ${index + 1}`}
+                                                className="w-full h-full object-cover cursor-pointer"
+                                            />
+                                        </a>
                                     </SwiperSlide>
                                 ))}
+
                                 <div className="swiper-button-prev !text-white !bg-black/30 !w-10 !h-10 !rounded-full grid place-items-center !left-2"></div>
                                 <div className="swiper-button-next !text-white !bg-black/30 !w-10 !h-10 !rounded-full grid place-items-center !right-2"></div>
                             </Swiper>
+                            {/* SHOW MORE BUTTON */}
+                            <button
+                                onClick={() =>
+                                    Fancybox.show(
+                                        data.property_img.map((img) => ({
+                                            src: img,
+                                            type: "image",
+                                        }))
+                                    )
+                                }
+                                className="absolute bottom-4 right-4 z-20 bg-black/60 text-white text-sm px-4 py-2 rounded-md hover:bg-black transition"
+                            >
+                                Show more photos
+                            </button>
                         </div>
-                        <div className='w-full h-[10%] flex items-center justify-between px-2'>
-
-                            <p className="text-3xl capitalize font-medium">{data.property_name}</p>
-                            {data.property_subtitle && <p className="text-lg italic text-gray-700">{data.property_subtitle}</p>}
-                        </div>
-
                     </div>
+
 
                     <div className='flex-1 flex flex-col gap-4 justify-start items-start h-80 self-start'>
                         <div>
                             {data.property_description && (
-                                <div className="w-full h-full flex flex-col gap-3 overflow-y-auto">
+                                <div className="w-full h-full p-3 sm:p-10 flex flex-col gap-3 overflow-y-auto">
                                     <h2 className="text-xl font-semibold">Description</h2>
                                     <p className='text-justify'>{data.property_description}</p>
+                                    <p className='cursor-pointer text-xl bg-Bg_Primary capitalize text-primary px-3 py-2 w-fit rounded-md'>Take a Tour</p>
                                 </div>
                             )}
                         </div>
-                        <div className='h-[10%] flex items-start justify-start'>
+                        {/* <div className='h-[10%] flex items-start justify-start'>
                             <div>
                                 {data.property_social_links && (
                                     <div className="flex gap-4 mt-2">
@@ -228,12 +287,12 @@ const PropertyDetails = () => {
                                     </div>
                                 )}
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
                 {data.host_details && (
-                    <div className="border p-6 rounded-md w-full">
+                    <div className="border-b p-6 rounded-md w-full">
                         <h2 className="text-xl font-semibold mb-2">Host Details</h2>
                         <p><strong>Name:</strong> {data.host_details.name}</p>
                         <p><strong>About:</strong> {data.host_details.about}</p>
@@ -242,7 +301,7 @@ const PropertyDetails = () => {
                 )}
 
                 {data.contact_details && (
-                    <div className="border p-6 rounded-md w-full">
+                    <div className="border-b p-6 rounded-md w-full">
                         <h2 className="text-xl font-semibold mb-2">Contact Information</h2>
                         <p><strong>Phone:</strong> {data.contact_details.phone}</p>
                         <p><strong>Email:</strong> {data.contact_details.email}</p>
@@ -251,9 +310,9 @@ const PropertyDetails = () => {
                 )}
 
                 {/* amenitiesImages is declared in the top  */}
-                <div className="w-full flex flex-col gap-8 border p-6 rounded-md">
+                <div className="w-full flex flex-col gap-8 border-b p-6 rounded-md">
                     <h2 className="text-xl font-semibold ">Amenities</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-2 pb-10">
                         {amenitiesImages.map((feature, index) => (
                             <div
                                 key={index}
@@ -271,7 +330,7 @@ const PropertyDetails = () => {
                 </div>
 
                 {/* Declared on the top  */}
-                <div className="w-full flex flex-col gap-8 border p-6 rounded-md">
+                <div className="w-full flex flex-col gap-8 border-b p-6 rounded-md">
                     <h2 className="text-2xl font-bold mb-4 text-center">Nearby Places</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {nearbyPlaceImages.map((place, index) => (
@@ -283,14 +342,14 @@ const PropertyDetails = () => {
                 </div>
 
                 {data.api_display && (
-                    <div className="border p-4 rounded-md flex items-center justify-between text-xl">
+                    <div className="border-b p-4 rounded-md flex items-center justify-between text-xl">
                         <span>{data.api_display.icon_left}</span>
                         <span className="font-semibold">{data.api_display.center_text}</span>
                         <span>{data.api_display.icon_right}</span>
                     </div>
                 )}
 
-                <div className="w-full border p-0 rounded-md">
+                <div className="w-full border-b p-0 rounded-md">
                     {data?.property_mapSrc && (
                         <div className='flex flex-col items-center lg:items-start'>
                             <iframe

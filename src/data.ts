@@ -1,4 +1,5 @@
 import logo from "../src/assets/cultlogo.png";
+import dummylogo from "../src/assets/cosylogo.jpeg";
 // common ameneties images 
 import clubhouse from './assets/comon_amenities_img/Clubhouse.webp'
 import pool from './assets/comon_amenities_img/Swimming pool.webp'
@@ -15,6 +16,21 @@ import apartment from './assets/apartment.jpg'
 // All Properties Data
 import img from './assets/cosy_villa_images/img_23.jpeg'
 
+// cosy cocoon property images
+import cimg1 from './assets/cosy_cocoon_images/img_1.jpg'
+import cimg2 from './assets/cosy_cocoon_images/img_2.jpg'
+import cimg3 from './assets/cosy_cocoon_images/img_3.jpg'
+import cimg4 from './assets/cosy_cocoon_images/img_4.jpg'
+import cimg5 from './assets/cosy_cocoon_images/img_5.jpg'
+import cimg6 from './assets/cosy_cocoon_images/img_6.jpg'
+import cimg7 from './assets/cosy_cocoon_images/img_7.jpg'
+import cimg8 from './assets/cosy_cocoon_images/img_8.jpg'
+import cimg9 from './assets/cosy_cocoon_images/img_9.jpg'
+import cimg10 from './assets/cosy_cocoon_images/img_10.jpg'
+import cimg11 from './assets/cosy_cocoon_images/img_11.jpg'
+import cimg12 from './assets/cosy_cocoon_images/img_12.jpg'
+
+
 export const propertyData = [
     {
         id: 1,
@@ -26,6 +42,7 @@ export const propertyData = [
                 id: 6,
                 property_name: "BKC ABC",
                 property_deal: "Deal Price",
+                property_logo: dummylogo,
                 property_description: "Scenic 2BHK Bungalow in Dapoli with 180° Beach View Unwind at this peaceful bungalow, perched atop a mountain with breathtaking 180° beach views. Designed for relaxation, this cozy retreat is part of a gated community featuring a massive clubhouse with a large swimming pool, pool table, lawn tennis, box cricket, basketball, air hockey, and more. Perfect for those looking to escape the city's hustle and soak in nature, this home offers serenity with modern recreational facilities.",
                 property_location: "Kolthare, Dapoli",
                 property_img: [img],
@@ -162,6 +179,7 @@ export const propertyData = [
                 id: 7,
                 property_name: "BKC xyz",
                 property_deal: "Deal Price",
+                property_logo: dummylogo,
                 property_description: "Scenic 2BHK Bungalow in Dapoli with 180° Beach View Unwind at this peaceful bungalow, perched atop a mountain with breathtaking 180° beach views. Designed for relaxation, this cozy retreat is part of a gated community featuring a massive clubhouse with a large swimming pool, pool table, lawn tennis, box cricket, basketball, air hockey, and more. Perfect for those looking to escape the city's hustle and soak in nature, this home offers serenity with modern recreational facilities.",
                 property_location: "Kolthare, Dapoli",
                 property_img: [img],
@@ -305,9 +323,10 @@ export const propertyData = [
                 id: 1,
                 property_name: "Cosy Cocoon",
                 property_deal: "Deal Price",
+                property_logo: dummylogo,
                 property_description: "Welcome to Cosy Cocoon Villa, where timeless elegance meets the quiet charm of nature. Tucked away in a peaceful haven, this luxurious retreat lives up to its name—Cosy Cocoon, meaning \"blessing\"—offering a life of comfort, grace, and soulful beauty. From the moment you arrive, you're greeted by grand architecture that blends modern sophistication with classic design elements. The villa opens into spacious, light-filled interiors adorned with tasteful décor, flowing seamlessly into tranquil outdoor spaces. Every corner is thoughtfully curated to inspire warmth and well-being.",
                 property_location: "Nandgaon, karjat",
-                property_img: [img],
+                property_img: [cimg1, cimg2, cimg3, cimg4, cimg5, cimg6, cimg7, cimg8, cimg9, cimg10, cimg11, cimg12],
                 property_brandId: "158",
                 // property_amenities: [
                 //     {
@@ -441,6 +460,7 @@ export const propertyData = [
                 id: 2,
                 property_name: "Rustic Charm",
                 property_deal: "Deal Price",
+                property_logo: dummylogo,
                 property_description: "Welcome to Rustic Charm Villa, where timeless elegance meets the quiet charm of nature. Tucked away in a peaceful haven, this luxurious retreat lives up to its name—Rustic Charm, meaning \"blessing\"—offering a life of comfort, grace, and soulful beauty. From the moment you arrive, you're greeted by grand architecture that blends modern sophistication with classic design elements. The villa opens into spacious, light-filled interiors adorned with tasteful décor, flowing seamlessly into tranquil outdoor spaces. Every corner is thoughtfully curated to inspire warmth and well-being.",
                 property_location: "Nandgaon, karjat",
                 property_img: [img],
