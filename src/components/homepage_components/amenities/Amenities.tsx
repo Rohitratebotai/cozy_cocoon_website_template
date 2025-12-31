@@ -52,7 +52,7 @@ const Amenities = () => {
                 <div className="image w-full h-full flex-1 flex justify-center items-center gap-6">
                     <div className="flex flex-col gap-10">
                         <h3 className='text-2xl sm:text-3xl md:text-6xl font-medium'>The Essentials</h3>
-                        <p className="text-base text-justify md:text-xl font-light">Experience the outstanding amenities that make your stay at Soumil Stay's truly unforgettable! Whether you're here to relax, explore, or enjoy the perfect mix of both, our hotels offer a carefully curated range of modern comforts and services, ensuring a seamless and delightful experience every time.</p>
+                        <p className="text-base text-justify md:text-xl font-light">Experience the outstanding amenities that make your stay at cult escape truly unforgettable! Whether you're here to relax, explore, or enjoy the perfect mix of both, our hotels offer a carefully curated range of modern comforts and services, ensuring a seamless and delightful experience every time.</p>
                         <Link to="/contact" className="text-primary font-semibold text-sm md:text-2xl">Know More...</Link>
                     </div>
                 </div>

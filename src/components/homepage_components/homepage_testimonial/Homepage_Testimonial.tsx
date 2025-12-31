@@ -149,10 +149,10 @@ const Homepage_Testimonial = () => {
                     </Swiper>
 
                     <div className="absolute top-1/2 left-0 right-0 z-20 flex justify-between items-center px-2 transform -translate-y-1/2">
-                        <button className="PrevElement flex justify-center items-center bg-white shadow-md hover:bg-primary hover:text-primary transition-colors duration-300 cursor-pointer h-10 w-10 md:h-12 md:w-12 rounded-full text-gray-800 border border-gray-200">
+                        <button className="PrevElement flex justify-center items-center bg-white shadow-md hover:bg-Bg_Primary hover:text-primary transition-colors duration-300 cursor-pointer h-10 w-10 md:h-12 md:w-12 rounded-full text-gray-800 border border-gray-200">
                             <GrFormPrevious className="text-xl md:text-2xl" />
                         </button>
-                        <button className="NextElement flex justify-center items-center bg-white shadow-md hover:bg-primary hover:text-primary transition-colors duration-300 cursor-pointer h-10 w-10 md:h-12 md:w-12 rounded-full text-gray-800 border border-gray-200">
+                        <button className="NextElement flex justify-center items-center bg-white shadow-md hover:bg-Bg_Primary hover:text-primary transition-colors duration-300 cursor-pointer h-10 w-10 md:h-12 md:w-12 rounded-full text-gray-800 border border-gray-200">
                             <MdOutlineNavigateNext className="text-xl md:text-2xl" />
                         </button>
                     </div>

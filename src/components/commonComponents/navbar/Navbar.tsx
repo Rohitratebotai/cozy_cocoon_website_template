@@ -74,10 +74,10 @@ const Navbar = () => {
                             <a href="mailto:priyanka.cultescape@gmail.com" className="text-xs md:text-base hover:text-gray-300">
                                 priyanka.cultescape@gmail.com
                             </a>
-                            {/* <IoIosMail className="text-base md:text-2xl" />
+                            <IoIosMail className="text-base md:text-2xl" />
                             <a href="mailto:arti.cultescape@gmail.com" className="text-xs md:text-base hover:text-gray-300">
                                 arti.cultescape@gmail.com
-                            </a> */}
+                            </a>
                         </div>
                     </div>
                 </div>

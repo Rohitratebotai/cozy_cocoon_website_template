@@ -10,6 +10,7 @@ export default {
     extend: {
       fontFamily: {
         roboto: ["Winky Sans", "sans-serif"],
+        emas: ['"e-emas-ghozalu"', "serif"],
       },
       colors: {
         Bg_Primary: ' var(--primary-background-color)',

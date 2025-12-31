@@ -61,19 +61,19 @@ const ContactUs = () => {
     };
 
     return (
-        <section className="py-20">
+        <section className="py-20  bg-Bg_Primary text-primary">
             {/* Banner */}
             <div>
                 <CommonBanner image={img} PageName={'Contact Us'} />
             </div>
 
             {/* Contact Info Section */}
-            <div className="flex flex-col md:flex-row gap-8 px-4 lg:px-20 py-8">
+            <div className="flex bg-Bg_Primary text-primary flex-col md:flex-row gap-8 px-4 lg:px-20 py-8">
                 {/* Left Section */}
                 <div className="w-full  text-lg leading-relaxed">
                     <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
                     <p>
-                        At <span className="text-orange-500 font-semibold">Soumil Stay's</span>, we prioritize your comfort and convenience. Whether you have questions about reservations, special requests, or need assistance, our team is always here to help.
+                        At <span className="text-orange-500 font-semibold">cult escape</span>, we prioritize your comfort and convenience. Whether you have questions about reservations, special requests, or need assistance, our team is always here to help.
                     </p>
                     <p className="mt-4">
                         Visit us at any of our locations or reach out through the contact details provided. We look forward to hosting you!
@@ -91,7 +91,7 @@ const ContactUs = () => {
                 </div> */}
             </div>
             {/* Contact Us form  */}
-            <div className="max-w-md mx-auto p-6 py-8 border bg-white text-black rounded-lg shadow-md">
+            <div className="max-w-md mx-auto p-6 py-8 border bg-Bg_Primary text-primary rounded-lg shadow-md">
                 <h2 className="text-2xl font-semibold  text-center">Contact Us</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input
@@ -125,7 +125,7 @@ const ContactUs = () => {
                         name="destination"
                         value={formData.destination}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded-md"
+                        className="w-full text-gray-400 p-2 border rounded-md"
                     >
                         <option value="">Select Destination</option>
                         <option value="Lonavala">Lonavala</option>

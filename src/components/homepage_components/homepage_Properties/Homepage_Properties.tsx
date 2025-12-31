@@ -43,7 +43,6 @@ const Homepage_Properties = () => {
     };
     console.log(handleModal, "handleModal");
 
-
     const handleBookNow = (property: any) => (e: any) => {
         e.stopPropagation(); // Prevent triggering other click events
         if (property.booking_link) {
@@ -58,7 +57,6 @@ const Homepage_Properties = () => {
     return (
         <>
             <div className="bg-Bg_Primary text-white flex flex-col gap-10 px-8 md:gap-10 py-8 md:pt-0">
-
                 {/* Sanskruti Section */}
                 <section id="sanskruti" className="">
                     <div className="">
@@ -67,7 +65,6 @@ const Homepage_Properties = () => {
           @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Playfair+Display:wght@400;700;900&display=swap');
         `}
                         </style>
-
                         {/* Heading 4 - Green Highlight */}
                         <HighlightedHeading
                             beforeText="Your dream home in"
@@ -121,7 +118,6 @@ const Homepage_Properties = () => {
                             )}
                     </div>
                 </section>
-
                 {/* Karadya BKC Section */}
                 <section id="BKC" className="">
                     <HighlightedHeading
@@ -176,7 +172,6 @@ const Homepage_Properties = () => {
                             )}
                     </div>
                 </section>
-
             </div>
 
             {/* Modal */}

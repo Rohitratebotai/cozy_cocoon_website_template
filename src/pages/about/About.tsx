@@ -45,7 +45,7 @@ const About = () => {
                         At the heart of our ethos is a commitment to excellence. We pride ourselves on delivering exceptional hospitality, from the moment you step through our doors to the conclusion of your stay. Every detail, meticulously curated, reflects our dedication to providing a stay that exceeds expectations.
                     </p>
                     <p className=" text-justify">
-                        Immerse yourself in the serenity of Soumil's stay, where a guest-centric approach ensures your comfort and satisfaction. From lavishly designed bedrooms to thoughtful amenities and a harmonious connection with nature, each element is crafted to elevate your experience.
+                        Immerse yourself in the serenity of cult escape, where a guest-centric approach ensures your comfort and satisfaction. From lavishly designed bedrooms to thoughtful amenities and a harmonious connection with nature, each element is crafted to elevate your experience.
                     </p>
                     <p className=" text-justify">
                         Join us and embark on a journey where luxury meets a profound sense of tranquility, creating moments that linger long after your departure.
@@ -54,7 +54,7 @@ const About = () => {
             </div>
 
             {/* Core Values Section */}
-            <section className="py-16 bg-slate-50 ">
+            <section className="py-16 bg-Bg_Primary text-primary Uppercase">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 ">Our Core Values</h2>
 
