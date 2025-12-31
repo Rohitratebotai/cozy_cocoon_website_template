@@ -5,14 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { useEffect, useRef, useState } from 'react';
 import { MdLocationOn } from "react-icons/md";
-import {
-    FaHome,
-    FaSpa,
-    FaTableTennis,
-    FaGlassCheers,
-    FaUtensils,
-    FaSeedling,
-} from "react-icons/fa";
+
 
 import { propertyData } from '../../../data';
 import hotelbookingSVG from '../../../assets/Hotel Booking-rafiki.svg'
@@ -30,7 +23,7 @@ import organicfarm from '../../../assets/comon_amenities_img/Organic Farming.web
 // fancybox 
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import {  FaChevronUp } from "react-icons/fa";
 import {
     FaTv,
     FaLeaf,
@@ -420,7 +413,7 @@ const PropertyDetails = () => {
                         {/* Tabs container */}
                         <div className="flex border-b-2 border-amber-900 overflow-x-auto pl-8 bg-white"
                             style={{ scrollbarWidth: 'thin' }}>
-                            {tabs.map((tab, index) => {
+                            {tabs.map((tab) => {
                                 const isActive = activeTab === tab.id;
                                 return (
                                     <button
