@@ -30,6 +30,27 @@ import cimg10 from './assets/cosy_cocoon_images/img_10.jpg'
 import cimg11 from './assets/cosy_cocoon_images/img_11.jpg'
 import cimg12 from './assets/cosy_cocoon_images/img_12.jpg'
 
+// bkc  xyz property images
+import bimg1 from './assets/bkc_xyz/img_16.jpeg'
+import bimg2 from './assets/bkc_xyz/img_8.jpeg'
+import bimg3 from './assets/bkc_xyz/img_12.jpeg'
+import bimg4 from './assets/bkc_xyz/img_21.jpeg'
+import bimg5 from './assets/bkc_xyz/img_27.jpeg'
+import bimg6 from './assets/bkc_xyz/img_25.jpeg'
+import bimg7 from './assets/bkc_xyz/img_13.jpeg'
+
+// bkc StayOn ABC images
+import bsimg1 from './assets/bkc_stayone_abc/img_1.jpeg'
+import bsimg2 from './assets/bkc_stayone_abc/img_2.jpeg'
+import bsimg3 from './assets/bkc_stayone_abc/img_3.jpeg'
+import bsimg4 from './assets/bkc_stayone_abc/img_4.jpeg'
+import bsimg5 from './assets/bkc_stayone_abc/img_5.jpeg'
+import bsimg6 from './assets/bkc_stayone_abc/img_6.jpeg'
+import bsimg7 from './assets/bkc_stayone_abc/img_7.jpeg'
+import bsimg8 from './assets/bkc_stayone_abc/img_8.jpeg'
+import bsimg9 from './assets/bkc_stayone_abc/img_9.jpeg'
+import bsimg10 from './assets/bkc_stayone_abc/img_10.jpeg'
+
 // ota icons 
 import agoda from './assets/socialIcons/agoda.png'
 import booking from './assets/socialIcons/booking.png'
@@ -49,7 +70,7 @@ export const propertyData = [
         properties: [
             {
                 id: 3,
-                property_name: "BKC ABC",
+                property_name: "BKC StayOn ABC",
                 property_deal: "Deal Price",
                 property_logo: dummylogo,
                 property_overview: `Only a couple? Larger Group (20-30 pax)? Longer stays?
@@ -70,7 +91,7 @@ export const propertyData = [
                     ]
                 },
                 property_location: "Kolthare, Dapoli",
-                property_img: [img],
+                property_img: [bsimg1, bsimg2, bsimg3, bsimg4, bsimg5, bsimg6, bsimg7, bsimg8, bsimg9, bsimg10],
                 property_brandId: "158",
                 property_amenities: [
                     { amenities_type: "Bedrooms", amenities_count: 2, amenities_icon: "bed" },
@@ -292,7 +313,7 @@ export const propertyData = [
                     ]
                 },
                 property_location: "Kolthare, Dapoli",
-                property_img: [img],
+                property_img: [bimg1, bimg2, bimg3, bimg4, bimg5, bimg6, bimg7],
                 property_brandId: "158",
                 property_amenities: [
                     { amenities_type: "Bedrooms", amenities_count: 2, amenities_icon: "bed" },
