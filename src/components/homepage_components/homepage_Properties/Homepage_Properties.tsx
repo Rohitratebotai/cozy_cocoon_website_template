@@ -67,9 +67,9 @@ const Homepage_Properties = () => {
                         </style>
                         {/* Heading 4 - Green Highlight */}
                         <HighlightedHeading
-                            beforeText="Your dream home in"
-                            highlightedText="Karjat, Kashele"
-                            description="Explore exclusive properties offering luxury and serenity!"
+                            beforeText="Karjat "
+                            highlightedText="(Mumbai-Pune Outskirts)"
+                            description="Holiday homes that redefine your staycation experience"
                             highlightColor="#7DD3FC"
                             textColor="#fff"
                             descriptionColor="#7DD3FC"
@@ -121,9 +121,9 @@ const Homepage_Properties = () => {
                 {/* Karadya BKC Section */}
                 <section id="BKC" className="">
                     <HighlightedHeading
-                        beforeText="Your dream home in"
-                        highlightedText="BKC, Mumbai"
-                        description="Explore exclusive properties offering luxury and serenity!"
+                        beforeText="BKC "
+                        highlightedText="(Heart of Mumbai)"
+                        description="Apartments that offer you comfort with business park next door"
                         highlightColor="#7DD3FC"
                         textColor="#fff"
                         descriptionColor="#7DD3FC"

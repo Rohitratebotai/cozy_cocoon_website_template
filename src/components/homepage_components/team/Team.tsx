@@ -13,19 +13,19 @@ const Team: React.FC = () => {
         {
             id: 2,
             name: "Priyanka",
-            role: "MBA, Don Bosco Bangalore ",
+            role: "Masters",
             image: "https://randomuser.me/api/portraits/women/44.jpg",
         },
         {
             id: 1,
             name: "Vikas ",
-            role: "MTech, IIT Bombay",
+            role: "Masters, IIT Bombay",
             image: "https://randomuser.me/api/portraits/men/32.jpg",
         },
         {
             id: 3,
             name: "Khushboo ",
-            role: "Masters,",
+            role: "Masters",
             image: "https://randomuser.me/api/portraits/women/68.jpg",
         }
     ];
@@ -35,7 +35,7 @@ const Team: React.FC = () => {
             <div className="max-w-7xl mx-auto px-6">
                 {/* Header */}
                 <HighlightedHeading
-                    beforeText="Your dream home in"
+                    beforeText=""
                     highlightedText="Our Team"
                     description="Meet the talented people behind our success"
                     highlightColor="#7DD3FC"

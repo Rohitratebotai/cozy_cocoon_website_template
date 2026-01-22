@@ -30,6 +30,16 @@ import cimg10 from './assets/cosy_cocoon_images/img_10.jpg'
 import cimg11 from './assets/cosy_cocoon_images/img_11.jpg'
 import cimg12 from './assets/cosy_cocoon_images/img_12.jpg'
 
+// ota icons 
+import agoda from './assets/socialIcons/agoda.png'
+import booking from './assets/socialIcons/booking.png'
+import airbnb from './assets/socialIcons/airbnb.png'
+import makemytrip from './assets/socialIcons/mmt.jfif'
+// media 
+import facebook from './assets/socialIcons/facebook.avif'
+import instagram from './assets/socialIcons/instagram.avif'
+import youtube from './assets/socialIcons/youtube.avif'
+
 
 export const propertyData = [
     {
@@ -42,7 +52,23 @@ export const propertyData = [
                 property_name: "BKC ABC",
                 property_deal: "Deal Price",
                 property_logo: dummylogo,
-                property_description: "Scenic 2BHK Bungalow in Dapoli with 180° Beach View Unwind at this peaceful bungalow, perched atop a mountain with breathtaking 180° beach views. Designed for relaxation, this cozy retreat is part of a gated community featuring a massive clubhouse with a large swimming pool, pool table, lawn tennis, box cricket, basketball, air hockey, and more. Perfect for those looking to escape the city's hustle and soak in nature, this home offers serenity with modern recreational facilities.",
+                property_overview: `Only a couple? Larger Group (20-30 pax)? Longer stays?
+                Connect for customized solutions to all your queries.
+                Our Aim - Add value to your experience ❤️`,
+                property_description: "Located near Karjat on the Mumbai–Pune outskirts, this villa offers a comfortable stay with a private pool and jacuzzi. It accommodates up to 8 adults and is situated within a secure gated resort premises. The villa features premium, cosy, and minimalist interiors and is suitable for families, friends, and couples. It is pet-friendly and easily accessible by road.The property is fully air-conditioned, including the living area and bedrooms, and includes battery backup for power fluctuations. It has three washrooms with geysers and hair dryers, along with a well-equipped kitchen featuring a microwave, refrigerator, induction cooktop, RO water purifier, and hob with gas cylinder.",
+                property_socialicons: {
+                    media: [
+                        { type: instagram, url: "#" },
+                        { type: facebook, url: "#" },
+                        { type: youtube, url: "#" }
+                    ],
+                    otas: [
+                        { type: airbnb, url: "#" },
+                        { type: agoda, url: "#" },
+                        { type: booking, url: "#" },
+                        { type: makemytrip, url: "#" }
+                    ]
+                },
                 property_location: "Kolthare, Dapoli",
                 property_img: [img],
                 property_brandId: "158",
@@ -248,7 +274,23 @@ export const propertyData = [
                 property_name: "BKC xyz",
                 property_deal: "Deal Price",
                 property_logo: dummylogo,
+                property_overview: `Only a couple? Larger Group (20-30 pax)? Longer stays?
+                Connect for customized solutions to all your queries.
+                Our Aim - Add value to your experience ❤️`,
                 property_description: "Scenic 2BHK Bungalow in Dapoli with 180° Beach View Unwind at this peaceful bungalow, perched atop a mountain with breathtaking 180° beach views. Designed for relaxation, this cozy retreat is part of a gated community featuring a massive clubhouse with a large swimming pool, pool table, lawn tennis, box cricket, basketball, air hockey, and more. Perfect for those looking to escape the city's hustle and soak in nature, this home offers serenity with modern recreational facilities.",
+                property_socialicons: {
+                    media: [
+                        { type: instagram, url: "#" },
+                        { type: facebook, url: "#" },
+                        { type: youtube, url: "#" }
+                    ],
+                    otas: [
+                        { type: airbnb, url: "#" },
+                        { type: agoda, url: "#" },
+                        { type: booking, url: "#" },
+                        { type: makemytrip, url: "#" }
+                    ]
+                },
                 property_location: "Kolthare, Dapoli",
                 property_img: [img],
                 property_brandId: "158",
@@ -464,7 +506,22 @@ export const propertyData = [
                 property_subtitle: "Luxury Villa in Karjat",
                 property_img: [cimg1, cimg2, cimg3, cimg4, cimg5, cimg6, cimg7, cimg8, cimg9, cimg10, cimg11, cimg12
                 ],
-                property_description: `Welcome to Cosy Cocoon Villa, your luxurious escape nestled in the heart of Karjat. This elegant 3-bedroom villa offers a harmonious blend of modern comfort and natural beauty, making it the perfect destination for families, friends, or couples seeking relaxation and rejuvenation. Enjoy spacious living areas filled with natural light, tastefully decorated interiors, and seamless access to tranquil outdoor spaces. The villa features a private swimming pool, lush gardens, and scenic views of the surrounding hills. Guests can unwind in the cozy lounge, prepare meals in a fully equipped kitchen, and dine al fresco on the patio. With amenities like high-speed WiFi, air conditioning, secure parking, and attentive host support, every detail is designed for your comfort. Nearby attractions include Peth Fort, Bhimashankar Hills, and Matheran, offering opportunities for adventure and exploration. Whether you’re planning a peaceful retreat or a memorable celebration, Cosy Cocoon Villa promises an unforgettable stay in a serene setting.`,
+                property_overview: `Only a couple? Larger Group (20-30 pax)? Longer stays?Connect for customized solutions to all your queries.Our Aim - Add value to your experience ❤️Tucked among the lush green lanes of the Ullas Valley, Cosy Cocoon is a 2.5 BHK villa that offers you the best of both worlds – peaceful surroundings with green views and an easy access to Karjat’s popular holiday locations. There are sufficient in-villa amenities and a few common resort amenities too, with complete safety & security.
+                Weather here to relax, explore or reconnect with family, friends, colleagues or as a couple, we have carefully chosen every element to add value to your stay & give you an experience you deserve.`,
+                property_description: `Located near Karjat on the Mumbai–Pune outskirts, this villa offers a comfortable stay with a private pool and jacuzzi. It accommodates up to 8 adults and is situated within a secure gated resort premises. The villa features premium, cosy, and minimalist interiors and is suitable for families, friends, and couples. It is pet-friendly and easily accessible by road.The property is fully air-conditioned, including the living area and bedrooms, and includes battery backup for power fluctuations. It has three washrooms with geysers and hair dryers, along with a well-equipped kitchen featuring a microwave, refrigerator, induction cooktop, RO water purifier, and hob with gas cylinder.`,
+                property_socialicons: {
+                    media: [
+                        { type: instagram, url: "#" },
+                        { type: facebook, url: "#" },
+                        { type: youtube, url: "#" }
+                    ],
+                    otas: [
+                        { type: airbnb, url: "#" },
+                        { type: agoda, url: "#" },
+                        { type: booking, url: "#" },
+                        { type: makemytrip, url: "#" }
+                    ]
+                },
                 property_amenities: [
                     { amenities_type: "Bedrooms", amenities_count: 3, amenities_icon: "bed" },
                     { amenities_type: "Washrooms", amenities_count: 2, amenities_icon: "shower" },
@@ -602,7 +659,23 @@ export const propertyData = [
                 property_name: "Rustic Charm",
                 property_deal: "Deal Price",
                 property_logo: dummylogo,
+                property_overview: `Only a couple? Larger Group (20-30 pax)? Longer stays?
+                Connect for customized solutions to all your queries.
+                Our Aim - Add value to your experience ❤️`,
                 property_description: "Welcome to Rustic Charm Villa, where timeless elegance meets the quiet charm of nature. Tucked away in a peaceful haven, this luxurious retreat lives up to its name—Rustic Charm, meaning \"blessing\"—offering a life of comfort, grace, and soulful beauty. From the moment you arrive, you're greeted by grand architecture that blends modern sophistication with classic design elements. The villa opens into spacious, light-filled interiors adorned with tasteful décor, flowing seamlessly into tranquil outdoor spaces. Every corner is thoughtfully curated to inspire warmth and well-being.",
+                property_socialicons: {
+                    media: [
+                        { type: instagram, url: "#" },
+                        { type: facebook, url: "#" },
+                        { type: youtube, url: "#" }
+                    ],
+                    otas: [
+                        { type: airbnb, url: "#" },
+                        { type: agoda, url: "#" },
+                        { type: booking, url: "#" },
+                        { type: makemytrip, url: "#" }
+                    ]
+                },
                 property_location: "Nandgaon, karjat",
                 property_img: [img],
                 property_brandId: "158",
@@ -850,6 +923,12 @@ export const navbarData = {
             link: "/",
             submenu: []
         },
+        {
+            id: 7,
+            title: "Near By Locations",
+            link: "/nearbylocations",
+            submenu: []
+        },
         // {
         //     id: 3,
         //     title: "Villas",
@@ -873,12 +952,7 @@ export const navbarData = {
             link: "/contact",
             submenu: []
         },
-        {
-            id: 7,
-            title: "Near By Locations",
-            link: "/nearbylocations",
-            submenu: []
-        },
+
     ],
     button: [
         {

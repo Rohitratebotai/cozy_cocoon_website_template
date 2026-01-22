@@ -1,11 +1,10 @@
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaBed, FaShower, FaSwimmingPool, FaCar, FaWifi, FaCheckCircle } from "react-icons/fa";
 import { TbAirConditioning } from "react-icons/tb";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { useEffect, useRef, useState } from 'react';
-import { MdLocationOn } from "react-icons/md";
-
+// import { MdLocationOn } from "react-icons/md";
 
 import { propertyData } from '../../../data';
 import hotelbookingSVG from '../../../assets/Hotel Booking-rafiki.svg'
@@ -23,7 +22,7 @@ import organicfarm from '../../../assets/comon_amenities_img/Organic Farming.web
 // fancybox 
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
-import {  FaChevronUp } from "react-icons/fa";
+import { FaChevronUp } from "react-icons/fa";
 import {
     FaTv,
     FaLeaf,
@@ -112,7 +111,12 @@ interface Property {
     property_subtitle?: string;
     property_img: string[];
     property_amenities: PropertyAmenity[];
+    property_overview: string;
     property_description: string;
+    property_socialicons: {
+        media: SocialLink[];
+        otas: SocialLink[];
+    };
     property_amenities_img: PropertyAmenityImage[];
     property_nearplaces: PropertyNearPlace[]; // <-- FIXED HERE
     property_details: PropertyDetail[];
@@ -221,7 +225,7 @@ const PropertyDetails = () => {
         <div className="w-full min-h-screen bg-Bg_Primary pt-44 pb-8 px-4">
             <div className="w-[90%] mx-auto relative">
                 {/* Header */}
-                <div className="flex gap-4 items-center mb-6">
+                {/* <div className="flex gap-4 items-center mb-6">
                     {data.property_logo && (
                         <img
                             src={data.property_logo}
@@ -237,12 +241,17 @@ const PropertyDetails = () => {
                             <MdLocationOn className="text-red-500" /> Karjat, Maharashtra
                         </p>
                     </div>
+                </div> */}
+                <div className='my-2 pb-4'>
+                    <Link to="/"><span style={{
+                        fontFamily: "'Caveat', cursive"
+                    }} className='rounded-md bg-white text-Bg_Primary text-2xl px-4 py-1'>Take me home</span></Link>
                 </div>
 
                 {/* Slider and Description Combo */}
                 <div className="w-full flex md:flex-row flex-col justify-between items-start gap-4 mb-8">
                     {/* Left side swiper */}
-                    <div className="w-full md:flex-1 h-[60vh] flex flex-col gap-1 overflow-hidden">
+                    <div className="w-full md:flex-1 h-[70vh] flex flex-col gap-1 overflow-hidden">
                         <div className="w-full h-full relative overflow-hidden rounded-xl">
                             {/* Elegant Border Frame */}
                             <div className="pointer-events-none absolute inset-0 z-20">
@@ -287,7 +296,7 @@ const PropertyDetails = () => {
                     </div>
 
                     {/* Right side description */}
-                    <div className="flex-1 flex flex-col gap-4 justify-start items-start h-auto md:h-[60vh] self-start">
+                    <div className="flex-1 flex flex-col gap-4 justify-start items-start h-auto md:h-[70vh] self-start">
                         <div className="relative w-full h-full bg-amber-50 rounded-xl border-2 border-amber-900 shadow-lg overflow-hidden"
                             style={{
                                 boxShadow: '6px 6px 0px rgba(120, 53, 15, 0.2)',
@@ -305,7 +314,7 @@ const PropertyDetails = () => {
                             {/* Red margin line like notebook */}
                             <div className="absolute left-12 top-0 bottom-0 w-0.5 bg-red-400 opacity-30"></div>
 
-                            <div className="w-full h-full p-3 sm:p-6 pl-16 flex flex-col gap-4 overflow-y-auto"
+                            <div className="w-full h-full p-3 sm:p-3 pl-16 flex flex-col gap-4 overflow-y-auto"
                                 style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgb(120, 53, 15) transparent' }}>
 
                                 {/* Title with hand-drawn underline */}
@@ -337,7 +346,7 @@ const PropertyDetails = () => {
                                             textIndent: '2em',
                                             hyphens: 'auto'
                                         }}>
-                                        {data.property_description.slice(0, 701)}...
+                                        {data.property_description.slice(0, 500)}...
                                     </p>
 
                                     {/* Decorative dots at end */}
@@ -345,6 +354,25 @@ const PropertyDetails = () => {
                                         <div className="w-1.5 h-1.5 bg-amber-900 rounded-full opacity-30"></div>
                                         <div className="w-1.5 h-1.5 bg-amber-900 rounded-full opacity-30"></div>
                                         <div className="w-1.5 h-1.5 bg-amber-900 rounded-full opacity-30"></div>
+                                    </div>
+                                </div>
+                                {/* social icons  */}
+                                <div className='flex justify-between'>
+                                    {/* Media Links: */}
+                                    <div className="flex gap-4 mt-4">
+                                        {data.property_socialicons.media.map((social, index) => (
+                                            <a key={index} href={social.url} target="_blank" rel="noopener noreferrer">
+                                                <img src={social.type} alt={social.type} className="w-10 h-10 rounded-full object-cover" />
+                                            </a>
+                                        ))}
+                                    </div>
+                                    {/* Ota links  */}
+                                    <div className="flex gap-4 mt-4">
+                                        {data.property_socialicons.otas.map((social, index) => (
+                                            <a key={index} href={social.url} target="_blank" rel="noopener noreferrer">
+                                                <img src={social.type} alt={social.type} className="w-10 h-10 rounded-full object-cover" />
+                                            </a>
+                                        ))}
                                     </div>
                                 </div>
 
@@ -367,17 +395,6 @@ const PropertyDetails = () => {
                                     <span className="absolute -bottom-2 -right-2 text-amber-900 text-sm opacity-50">✦</span>
                                 </button>
 
-                                {/* Sticky note decoration at bottom */}
-                                <div className="mt-auto self-end w-32 h-24 bg-yellow-200 shadow-md transform rotate-3 border border-yellow-300 flex items-center justify-center relative"
-                                    style={{
-                                        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px)'
-                                    }}>
-                                    <span className="text-3xl">📝</span>
-                                    {/* Pin on sticky note */}
-                                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full border-2 border-red-700 shadow-sm">
-                                        <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-0.5 h-3 bg-red-700"></div>
-                                    </div>
-                                </div>
                             </div>
 
                             {/* Bottom corner decorations */}
@@ -486,7 +503,7 @@ const PropertyDetails = () => {
                 </div>
 
                 {/* Overview Section */}
-                <div ref={overviewRef} className="relative bg-amber-50 rounded-xl p-8 md:p-12 mb-6 scroll-mt-32 border-2 border-amber-900"
+                <div ref={overviewRef} className="relative bg-amber-50 rounded-xl p-8 md:p-5 mb-6 scroll-mt-32 border-2 border-amber-900"
                     style={{
                         boxShadow: '8px 8px 0px rgba(120, 53, 15, 0.15)',
                         backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(120, 53, 15, 0.04) 30px, rgba(120, 53, 15, 0.04) 31px)'
@@ -538,7 +555,7 @@ const PropertyDetails = () => {
 
                     <div className="pl-8">
                         {/* Text content with journal style */}
-                        <div className="relative bg-white rounded-lg border-2 border-amber-900 p-6 mb-6 shadow-md"
+                        <div className="relative bg-white rounded-lg border-2 border-amber-900 p-3 mb-6 shadow-md"
                             style={{ boxShadow: '4px 4px 0px rgba(120, 53, 15, 0.15)' }}>
 
                             {/* Corner fold effect */}
@@ -549,15 +566,15 @@ const PropertyDetails = () => {
                             <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-amber-900 opacity-20"></div>
 
                             {/* Highlighter effect on first line */}
-                            <div className="absolute top-6 left-6 right-24 h-7 bg-yellow-200 opacity-30 rounded"></div>
+                            <div className="absolute top-3 left-6 right-24 h-7 bg-yellow-200 opacity-30 rounded"></div>
 
                             <p className={`relative text-gray-800 leading-relaxed text-justify text-base z-10 ${showFullDescription ? '' : 'line-clamp-4'}`}
                                 style={{ textIndent: '2em' }}>
-                                {data.property_description}
+                                {data.property_overview}
                             </p>
 
                             {/* Decorative dots if text is collapsed */}
-                            {!showFullDescription && data.property_description.length > 300 && (
+                            {!showFullDescription && data.property_overview.length > 300 && (
                                 <div className="flex gap-1 mt-2 justify-center">
                                     <div className="w-2 h-2 bg-amber-900 rounded-full opacity-40"></div>
                                     <div className="w-2 h-2 bg-amber-900 rounded-full opacity-40"></div>
@@ -567,7 +584,7 @@ const PropertyDetails = () => {
                         </div>
 
                         {/* Toggle button with sketch style */}
-                        {data.property_description.length > 300 && (
+                        {data.property_overview.length > 300 && (
                             <button
                                 style={{
                                     fontFamily: "'Caveat', cursive"
@@ -633,7 +650,7 @@ const PropertyDetails = () => {
                 {/* Host details Section */}
                 <div
                     ref={hostRef}
-                    className="relative bg-amber-50 rounded-xl p-8 md:p-12 mb-6 scroll-mt-32 border-2 border-amber-900"
+                    className="relative bg-amber-50 rounded-xl p-8 md:p-5 mb-6 scroll-mt-32 border-2 border-amber-900"
                     style={{
                         boxShadow: '8px 8px 0px rgba(120, 53, 15, 0.15)',
                         backgroundImage:
@@ -652,7 +669,7 @@ const PropertyDetails = () => {
                     <div className="absolute left-16 top-0 bottom-0 w-0.5 bg-red-400 opacity-30" />
 
                     {/* Title */}
-                    <div className="mb-8 pl-8">
+                    <div className="mb-3 pl-8">
                         <h2
                             style={{ fontFamily: "'Caveat', cursive" }}
                             className="text-4xl md:text-5xl font-semibold text-amber-900 relative inline-block"
@@ -675,62 +692,46 @@ const PropertyDetails = () => {
                         {/* Host Card */}
                         {data.host_details && (
                             <div
-                                className="relative bg-white rounded-lg border-2 border-amber-900 p-6 shadow-md"
+                                className="relative bg-white rounded-lg border-2 border-amber-900 p-3 shadow-md"
                                 style={{ boxShadow: '4px 4px 0px rgba(120, 53, 15, 0.15)' }}
                             >
                                 {/* Fold */}
                                 <div className="absolute top-0 right-0 w-0 h-0 border-t-[22px] border-r-[22px] border-t-amber-200 border-r-transparent" />
 
-                                <h3
-                                    style={{ fontFamily: "'Caveat', cursive" }}
-                                    className="text-3xl font-semibold text-amber-900 mb-4"
-                                >
-                                    Your Host
-                                </h3>
+                                <div className="flex justify-between items-start gap-4">
+                                    <div className='flex gap-5'>
+                                        <div className="w-16 h-16 rounded-full bg-amber-900 text-amber-50 flex items-center justify-center text-2xl font-bold shadow">
+                                            {data.host_details.name.charAt(0)}
+                                        </div>
 
-                                <div className="flex items-start gap-4">
-                                    <div className="w-16 h-16 rounded-full bg-amber-900 text-amber-50 flex items-center justify-center text-2xl font-bold shadow">
-                                        {data.host_details.name.charAt(0)}
+                                        <div>
+                                            <h4 className="font-semibold text-lg text-gray-800">
+                                                {data.host_details.name}
+                                            </h4>
+                                            <p className="text-gray-600 text-sm mt-1">
+                                                {data.host_details.about}
+                                            </p>
+                                            <p className="text-sm text-gray-500 mt-2">
+                                                <span className="font-medium">Languages:</span>{' '}
+                                                {data.host_details.languages.join(', ')}
+                                            </p>
+                                        </div>
                                     </div>
-
                                     <div>
-                                        <h4 className="font-semibold text-lg text-gray-800">
-                                            {data.host_details.name}
-                                        </h4>
-                                        <p className="text-gray-600 text-sm mt-1">
-                                            {data.host_details.about}
-                                        </p>
-                                        <p className="text-sm text-gray-500 mt-2">
-                                            <span className="font-medium">Languages:</span>{' '}
-                                            {data.host_details.languages.join(', ')}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
+                                        {
+                                            data.contact_details && (
+                                                <div className="space-y-3">
+                                                    <div className="flex items-center gap-3 bg-amber-100 px-4 py-3 rounded-lg border border-amber-900/30">
+                                                        <span className="font-medium text-amber-900">📞 Phone:</span>
+                                                        <span className="text-gray-700">{data.contact_details.phone}</span>
+                                                    </div>
 
-                        {/* Contact Card */}
-                        {data.contact_details && (
-                            <div
-                                className="relative bg-white rounded-lg border-2 border-amber-900 p-6 shadow-md"
-                                style={{ boxShadow: '4px 4px 0px rgba(120, 53, 15, 0.15)' }}
-                            >
-                                <h3
-                                    style={{ fontFamily: "'Caveat', cursive" }}
-                                    className="text-3xl font-semibold text-amber-900 mb-4"
-                                >
-                                    Contact Information
-                                </h3>
-
-                                <div className="space-y-3">
-                                    <div className="flex items-center gap-3 bg-amber-100 px-4 py-3 rounded-lg border border-amber-900/30">
-                                        <span className="font-medium text-amber-900">📞 Phone:</span>
-                                        <span className="text-gray-700">{data.contact_details.phone}</span>
-                                    </div>
-
-                                    <div className="flex items-center gap-3 bg-amber-100 px-4 py-3 rounded-lg border border-amber-900/30">
-                                        <span className="font-medium text-amber-900">✉️ Email:</span>
-                                        <span className="text-gray-700">{data.contact_details.email}</span>
+                                                    <div className="flex items-center gap-3 bg-amber-100 px-4 py-3 rounded-lg border border-amber-900/30">
+                                                        <span className="font-medium text-amber-900">✉️ Email:</span>
+                                                        <span className="text-gray-700">{data.contact_details.email}</span>
+                                                    </div>
+                                                </div>)
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -746,7 +747,7 @@ const PropertyDetails = () => {
                 {/* Amenities Section */}
                 <div
                     ref={amenitiesRef}
-                    className="relative bg-amber-50 rounded-xl p-8 md:p-12 mb-6 scroll-mt-32 border-2 border-amber-900"
+                    className="relative bg-amber-50 rounded-xl p-8 md:p-5 mb-6 scroll-mt-32 border-2 border-amber-900"
                     style={{
                         boxShadow: '8px 8px 0px rgba(120, 53, 15, 0.15)',
                         backgroundImage:
@@ -765,7 +766,7 @@ const PropertyDetails = () => {
                     <div className="absolute left-16 top-0 bottom-0 w-0.5 bg-red-400 opacity-30" />
 
                     {/* Title */}
-                    <div className="mb-8 pl-8">
+                    <div className="mb-4 pl-8">
                         <h2
                             style={{ fontFamily: "'Caveat', cursive" }}
                             className="text-4xl md:text-5xl font-semibold text-amber-900 relative inline-block"
@@ -785,7 +786,7 @@ const PropertyDetails = () => {
                     </div>
 
                     {/* Amenities grid */}
-                    <div className="pl-8 grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+                    <div className="pl-8 grid grid-cols-1 md:grid-cols-4 gap-3 mb-6">
                         {(showAllAmenities
                             ? data.property_amenities
                             : data.property_amenities.slice(0, 6)
@@ -799,7 +800,7 @@ const PropertyDetails = () => {
                                 <div className="absolute top-0 right-0 w-0 h-0 border-t-[18px] border-r-[18px] border-t-amber-200 border-r-transparent" />
 
                                 {/* Icon */}
-                                <div className="w-12 h-12 bg-amber-900 rounded-full flex items-center justify-center text-white text-xl shadow">
+                                <div className="w-8 h-8 bg-amber-900 rounded-full flex items-center justify-center text-white text-xl shadow">
                                     {renderIcon[amenity.amenities_icon]}
                                 </div>
 
@@ -845,7 +846,7 @@ const PropertyDetails = () => {
 
 
                 {/* property amenities images section */}
-                <div ref={propertyRef} className="bg-white rounded-xl shadow-sm p-6 mb-6 scroll-mt-32">
+                <div ref={propertyRef} className="bg-white rounded-xl shadow-sm p-3 mb-6 scroll-mt-32">
                     <h3
                         style={{
                             fontFamily: "'Caveat', cursive"
@@ -915,7 +916,7 @@ const PropertyDetails = () => {
                                             </div>
 
                                             {/* Points list with notebook style */}
-                                            <div className="relative bg-amber-50 rounded-lg border-2 border-amber-900 p-6 md:p-8"
+                                            <div className="relative bg-amber-50 rounded-lg border-2 border-amber-900 p-3 md:p-8"
                                                 style={{
                                                     boxShadow: '4px 4px 0px rgba(120, 53, 15, 0.1)',
                                                     backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(120, 53, 15, 0.04) 28px, rgba(120, 53, 15, 0.04) 29px)'
@@ -945,7 +946,7 @@ const PropertyDetails = () => {
                 </div>
 
                 {/* Location Section */}
-                <div ref={locationRef} className="relative bg-amber-50 rounded-xl p-8 md:p-12 mb-6 scroll-mt-32 border-2 border-amber-900"
+                <div ref={locationRef} className="relative bg-amber-50 rounded-xl p-8 md:p-5 mb-6 scroll-mt-32 border-2 border-amber-900"
                     style={{ boxShadow: '8px 8px 0px rgba(120, 53, 15, 0.15)' }}>
 
                     {/* Sketch-style corner decorations */}
@@ -978,7 +979,7 @@ const PropertyDetails = () => {
                     {/* Map container with sketch frame */}
                     <div className="relative">
                         {/* Pin/thumbtack decoration */}
-                        <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-20">
+                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
                             <div className="relative">
                                 <div className="w-6 h-6 bg-red-500 rounded-full border-2 border-red-700 shadow-lg"></div>
                                 <div className="absolute top-2 left-1/2 -translate-x-1/2 w-1 h-4 bg-red-700"></div>
@@ -1029,7 +1030,7 @@ const PropertyDetails = () => {
                 </div>
 
                 {/* Nearby Places Section */}
-                <div ref={nearbyRef} className="relative bg-amber-50 rounded-xl p-8 md:p-12 mb-6 scroll-mt-32 border-2 border-amber-900"
+                <div ref={nearbyRef} className="relative bg-amber-50 rounded-xl p-8 md:p-5 mb-6 scroll-mt-32 border-2 border-amber-900"
                     style={{ boxShadow: '8px 8px 0px rgba(120, 53, 15, 0.15)' }}>
 
                     {/* Sketch-style corner decorations */}
@@ -1087,17 +1088,17 @@ const PropertyDetails = () => {
                                         </div>
 
                                         {/* Caption area with notebook lines */}
-                                        <div className="mt-3 p-3 bg-amber-50 rounded border border-amber-300 relative"
+                                        <div className="p-1 bg-amber-50 rounded border border-amber-300 relative"
                                             style={{
                                                 backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 22px, rgba(120, 53, 15, 0.08) 22px, rgba(120, 53, 15, 0.08) 23px)'
                                             }}>
-                                            <p className="text-base md:text-lg font-medium text-amber-900 relative"
+                                            {/* <p className="text-base md:text-xl font-medium text-amber-900 relative"
                                                 style={{ fontFamily: "'Caveat', cursive" }}>
                                                 {place.name}
-                                            </p>
+                                            </p> */}
 
                                             {/* Small decorative corner */}
-                                            <div className="absolute bottom-1 right-1 w-4 h-4 border-r border-b border-amber-900 opacity-30"></div>
+                                            {/* <div className="absolute bottom-1 right-1 w-4 h-4 border-r border-b border-amber-900 opacity-30"></div> */}
                                         </div>
 
                                         {/* Corner stamp effect */}
@@ -1125,7 +1126,7 @@ const PropertyDetails = () => {
                 </div>
 
                 {/* House Rules Section */}
-                <div ref={rulesRef} className="relative bg-amber-50 rounded-xl p-8 md:p-12 mb-6 scroll-mt-32 border-2 border-amber-900"
+                <div ref={rulesRef} className="relative bg-amber-50 rounded-xl p-8 md:p-5 mb-6 scroll-mt-32 border-2 border-amber-900"
                     style={{ boxShadow: '8px 8px 0px rgba(120, 53, 15, 0.15)' }}>
 
                     {/* Sketch-style corner decorations */}
@@ -1133,7 +1134,7 @@ const PropertyDetails = () => {
                     <div className="absolute top-3 right-3 w-12 h-12 border-r-2 border-t-2 border-amber-900 opacity-30"></div>
 
                     {/* Clipboard clip at top */}
-                    <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-20">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
                         <div className="w-24 h-8 bg-gray-700 rounded-t-lg shadow-lg relative">
                             <div className="absolute inset-x-2 top-2 h-3 bg-gray-600 rounded"></div>
                         </div>
@@ -1167,7 +1168,7 @@ const PropertyDetails = () => {
                     </div>
 
                     {/* Rules list with notebook style */}
-                    <div className="relative bg-white rounded-lg border-2 border-amber-900 p-6 md:p-8"
+                    <div className="relative bg-white rounded-lg border-2 border-amber-900 p-3 md:p-8"
                         style={{
                             boxShadow: '6px 6px 0px rgba(120, 53, 15, 0.2)',
                             backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 32px, rgba(120, 53, 15, 0.05) 32px, rgba(120, 53, 15, 0.05) 33px)'
@@ -1183,7 +1184,7 @@ const PropertyDetails = () => {
                         <div className="space-y-4 relative pl-6">
                             {data.house_rules?.map((rule, index) => (
                                 <div key={index}
-                                    className="flex items-start gap-4 p-4 bg-amber-50 rounded border-l-4 border-green-600 shadow-sm hover:shadow-md transition-shadow"
+                                    className="flex items-start gap-4 p-2 bg-amber-50 rounded border-l-4 border-green-600 shadow-sm hover:shadow-md transition-shadow"
                                     style={{
                                         transform: index % 2 === 0 ? 'rotate(-0.5deg)' : 'rotate(0.5deg)',
                                         backgroundImage: 'linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, transparent 100%)'
@@ -1217,7 +1218,7 @@ const PropertyDetails = () => {
                         </div>
 
                         {/* Signature line at bottom */}
-                        <div className="mt-8 pt-6 border-t-2 border-dashed border-amber-300">
+                        {/* <div className="mt-8 pt-6 border-t-2 border-dashed border-amber-300">
                             <div className="flex items-center justify-between text-sm text-gray-500">
                                 <span style={{ fontFamily: "'Caveat', cursive" }} className="text-lg">
                                     Please follow these rules
@@ -1227,7 +1228,7 @@ const PropertyDetails = () => {
                                     <div className="w-32 border-b-2 border-amber-900 opacity-30"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Bottom corner decorations */}
@@ -1243,17 +1244,16 @@ const PropertyDetails = () => {
                         <span className="text-2xl">📋</span>
                     </div>
                 </div>
-
             </div>
 
             {/* Promotional Banner */}
             <div className="w-full bg-Bg_Primary py-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
-                    <div className="relative bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-8 sm:p-12 lg:p-16 overflow-hidden border-4 border-dashed border-cyan-200 shadow-xl">
+                    <div className="relative bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-8 sm:p-5 lg:p-16 overflow-hidden border-4 border-dashed border-cyan-200 shadow-xl">
                         {/* Decorative Elements */}
                         <div className="absolute top-10 right-10 w-20 h-20 border-4 border-dashed border-purple-300 rounded-full opacity-40"></div>
                         <div className="absolute bottom-10 left-10 w-16 h-16 border-4 border-dashed border-orange-300 rounded-lg opacity-40 rotate-12"></div>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center relative z-10">
                             {/* Text Content */}
                             <div className="space-y-6">
                                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-teal-900 leading-tight">

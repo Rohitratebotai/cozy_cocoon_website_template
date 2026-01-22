@@ -44,7 +44,6 @@ const Home = () => {
                 All your business on <span className="highlight-yellow">one platform.</span>
             </h2> */}
 
-
             <div className="">
                 <Homepage_Properties />
             </div>

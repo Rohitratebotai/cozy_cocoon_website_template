@@ -2,11 +2,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
 import './navbar.css';
-import { IoIosMail, IoIosCall } from 'react-icons/io';
+import { IoIosCall } from 'react-icons/io';
 import { navbarData, propertyData } from '../../../data';
 import { IoLogoWhatsapp } from "react-icons/io";
-
-// const cityOptions = ["sanskruti", "Mumbai", "Alibaug"];
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { RiArrowDropUpLine } from "react-icons/ri";
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -19,7 +19,6 @@ const Navbar = () => {
     const [iskanakiaOpen, setIskanakiaOpen] = useState(false);
     const [isSanskritiEssentialsOpen, setIsSanskritiEssentialsOpen] = useState(false);
     const [iskanakiaEssentialsOpen, setIskanakiaEssentialsOpen] = useState(false);
-    // const [selectedCity, setSelectedCity] = useState(cityOptions[0]);
     const [openDropdown, setOpenDropdown] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -27,7 +26,7 @@ const Navbar = () => {
         const section = document.getElementById(id);
         if (section) {
             section.scrollIntoView({ behavior: "smooth" });
-            setOpenDropdown(false); // close dropdown after selecting
+            setOpenDropdown(false);
         }
     };
 
@@ -40,6 +39,11 @@ const Navbar = () => {
         setIsVillasDropdownOpen(false);
         setIsDestinationsDropdownOpen(false);
         setIsApartmentsDropdownOpen(false);
+        setIsNearbyOpen(false);
+        setIsSanskritiOpen(false);
+        setIskanakiaOpen(false);
+        setIsSanskritiEssentialsOpen(false);
+        setIskanakiaEssentialsOpen(false);
     };
 
     const handleDestinationNavigate = (property: any) => {
@@ -53,94 +57,54 @@ const Navbar = () => {
     };
 
     useEffect(() => {
-        const handleScroll = () => {
+        const handleScrollEvent = () => {
             setIsScrolled(window.scrollY > 20);
         };
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScrollEvent);
+        return () => window.removeEventListener("scroll", handleScrollEvent);
     }, []);
-
 
     return (
         <section className='navbar-container w-full h-fit fixed top-0 z-50 shadow-md'>
             {/* Email and Phone */}
-            <div className="bg-Bg_Primary flex flex-wrap text-primary justify-between items-center gap-2 p-2 md:p-4 md:flex-nowrap">
-                <div className="flex flex-col md:flex-row justify-center items-center gap-2 w-full md:w-auto">
-                    {/* Email */}
-                    <div className="flex flex-col md:flex-row gap-2 text-center md:text-left">
-                        <div className="flex items-center gap-1 font-semibold md:font-medium">
-                            <IoIosMail className="text-base md:text-2xl" />
-                            <a href="mailto:priyanka.cultescape@gmail.com" className="text-xs md:text-base hover:text-gray-300">
-                                priyanka.cultescape@gmail.com
-                            </a>
-                            <IoIosMail className="text-base md:text-2xl" />
-                            <a href="mailto:arti.cultescape@gmail.com" className="text-xs md:text-base hover:text-gray-300">
-                                arti.cultescape@gmail.com
-                            </a>
-                        </div>
-                    </div>
+            <div className="bg-white flex items-center justify-between px-2 md:p-4">
+                {/* Left Spacer (keeps center alignment) */}
+                <div className="hidden md:block w-1/3" />
+
+                {/* Center Text */}
+                <div className="flex-1 text-center">
+                    <h2 style={{
+                        fontFamily: "'Caveat', cursive"
+                    }} className="py-2 md:py-0 font-semibold text-lg md:text-2xl">
+                        Welcome to Cult Escape, experience redefined
+                    </h2>
                 </div>
 
-                <div className='flex flex-col md:flex-row justify-center items-center gap-2 w-full md:w-auto'>
-                    {/* Contact Section */}
-                    <div className='flex flex-col md:flex-row justify-center items-center gap-2 w-full md:w-auto'>
-                        {/* Contact Section */}
-                        <div className="flex flex-row flex-wrap justify-center items-center gap-2 w-full md:w-auto">
-                            {/* Phone 1 */}
-                            <div className="flex items-center gap-1 font-semibold md:font-medium">
-                                <IoIosCall className="text-base md:text-xl" />
-                                <a href="tel:+919515192575" className="text-xs md:text-base hover:underline">
-                                    +91 9515192575
-                                </a>
-                            </div>
-                            {/* <span className="text-slate-400 hidden md:block">|</span> */}
-
-                            {/* Phone 2 */}
-                            {/* <div className="flex items-center gap-1 font-semibold md:font-medium">
-                                <IoIosCall className="text-base md:text-xl" />
-                                <a href="tel:+917208068702" className="text-xs md:text-base hover:underline">
-                                    +91 7208068702
-                                </a>
-                            </div> */}
-                        </div>
-                    </div>
-
-
-                    <div className='flex flex-row flex-wrap justify-center items-center gap-2 w-full md:w-auto'>
-                        <span className="text-slate-400 hidden md:block">|</span>
-                        {/* WhatsApp */}
+                {/* Right Section */}
+                <div className="hidden md:flex items-center gap-2 md:gap-3 w-1/3 justify-end">
+                    {/* Phone */}
+                    <div className="flex items-center gap-1 font-medium">
+                        <IoIosCall className="text-base md:text-xl" />
                         <a
-                            href="https://wa.me/9515192575"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-green-500 text-xl md:text-2xl"
+                            href="tel:+919515192575"
+                            className="text-xs md:text-base hover:underline"
                         >
-                            <IoLogoWhatsapp />
-                        </a>
-                        <span className="text-slate-400 hidden md:block">|</span>
-
-                        {/* Instagram */}
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                className="md:w-6 md:h-6"
-                            >
-                                <path
-                                    d="M7 2C4.24 2 2 4.24 2 7V17C2 19.76 4.24 22 7 22H17C19.76 22 22 19.76 22 17V7C22 4.24 19.76 2 17 2H7ZM7 4H17C18.66 4 20 5.34 20 7V17C20 18.66 18.66 20 17 20H7C5.34 20 4 18.66 4 17V7C4 5.34 5.34 4 7 4ZM17 6C16.45 6 16 6.45 16 7C16 7.55 16.45 8 17 8C17.55 8 18 7.55 18 7C18 6.45 17.55 6 17 6ZM12 7C9.24 7 7 9.24 7 12C7 14.76 9.24 17 12 17C14.76 17 17 14.76 17 12C17 9.24 14.76 7 12 7ZM12 9C13.66 9 15 10.34 15 12C15 13.66 13.66 15 12 15C10.34 15 9 13.66 9 12C9 10.34 10.34 9 12 9Z"
-                                    fill="#E4405F"
-                                />
-                            </svg>
+                            +91 9515192575
                         </a>
                     </div>
+
+                    <span className="text-slate-400 hidden md:block">|</span>
+
+                    {/* WhatsApp */}
+                    <a
+                        href="https://wa.me/9515192575"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green-500 text-xl md:text-2xl"
+                    >
+                        <IoLogoWhatsapp />
+                    </a>
                 </div>
             </div>
 
@@ -163,244 +127,275 @@ const Navbar = () => {
                 <div id='navlinks' className={`hidden md:flex items-center gap-4 ${isScrolled ? "text-white" : "text-black"} md:gap-8 static`}>
                     <ul className='flex items-center gap-4 md:gap-8 static'>
                         {navbarData?.navmenu?.map((item) => (
-                            <li key={item.id} className='relative '>
+                            <li key={item.id} className='relative'>
                                 {
                                     item.title === 'Destinations' ? (
                                         <div
                                             key={item.id}
                                             className="relative"
-                                            onClick={() => setOpenDropdown(!openDropdown)}
+                                            onMouseEnter={() => setOpenDropdown(true)}
+                                            onMouseLeave={() => setOpenDropdown(false)}
                                         >
-                                            <button className=" text-sm md:text-xl font-bold cursor-pointer">
-                                                {item.title}
+                                            <button
+                                                className="text-sm md:text-xl flex items-end font-bold cursor-pointer"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    setOpenDropdown(!openDropdown);
+                                                }}
+                                                aria-expanded={openDropdown}
+                                                aria-haspopup="true"
+                                            >
+                                                {item.title} {openDropdown ? <RiArrowDropUpLine /> : <RiArrowDropDownLine />}
                                             </button>
 
                                             {/* Dropdown */}
                                             {openDropdown && (
-                                                <div className="absolute top-full left-0 bg-white shadow-lg rounded-md mt-2 w-48">
+                                                <div
+                                                    className={`absolute top-full left-0 ${isScrolled
+                                                        ? "bg-black text-white border-primary"
+                                                        : "bg-white text-black"
+                                                        } shadow-lg rounded-md w-36 z-[9999]`}
+                                                    style={{ marginTop: '0px' }}
+                                                    role="menu"
+                                                >
                                                     <div
-                                                        onClick={() => handleScroll("sanskruti")}
-                                                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            handleScroll("sanskruti");
+                                                            setOpenDropdown(false);
+                                                        }}
+                                                        className={`px-4 py-2 cursor-pointer ${isScrolled ? "hover:bg-gray-700" : "hover:bg-gray-100"
+                                                            }`}
+                                                        role="menuitem"
                                                     >
-                                                        Destination 1
+                                                        Karjat
                                                     </div>
                                                     <div
-                                                        onClick={() => handleScroll("BKC")}
-                                                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            handleScroll("BKC");
+                                                            setOpenDropdown(false);
+                                                        }}
+                                                        className={`px-4 py-2 cursor-pointer ${isScrolled ? "hover:bg-gray-700" : "hover:bg-gray-100"
+                                                            }`}
+                                                        role="menuitem"
                                                     >
-                                                        Destination 2
+                                                        BKC
                                                     </div>
                                                 </div>
                                             )}
                                         </div>
-
-                                        // <div className='relative group flex flex-col items-start gap-2 '>
-                                        //     <Link
-                                        //         onClick={closeMenu}
-                                        //         to={item.link}
-                                        //         className='hover:text-primary after-effect text-sm md:text-xl font-bold cursor-pointer'
-                                        //     >
-                                        //         {item.title}
-                                        //     </Link>
-                                        //     <div className='absolute top-full left-0 hidden group-hover:block bg-white border shadow-lg rounded-md min-w-[200px] z-[9999] transition-all duration-300 mt-1'>
-                                        //         <ul className='py-2'>
-                                        //             {propertyData?.filter((item) => item.location !== "Apartments")
-                                        //                 ?.map((property, index) => (
-                                        //                     <li key={index} className='px-4 py-2 hover:bg-gray-100 cursor-pointer'>
-                                        //                         <div onClick={() => handleDestinationNavigate(property)} className='block text-black'>
-                                        //                             {property.location}
-                                        //                         </div>
-                                        //                     </li>
-                                        //                 ))}
-                                        //         </ul>
-                                        //     </div>
-                                        // </div>
-
-                                        // ) : item.title === 'Villas' ? (
-
-                                        //     <div className='relative group flex flex-col items-start gap-2 static'>
-                                        //         <Link
-                                        //             onClick={closeMenu}
-                                        //             to={item.link}
-                                        //             className='hover:text-primary after-effect text-sm md:text-xl font-bold cursor-pointer'
-                                        //         >
-                                        //             {item.title}
-                                        //         </Link>
-                                        //         <div className='absolute top-full left-0 hidden group-hover:block bg-white border shadow-lg rounded-md min-w-[200px] max-h-60 overflow-y-auto z-[9999] transition-all duration-300 mt-1'>
-                                        //             <ul className='py-2'>
-                                        //                 {propertyData
-                                        //                     ?.filter((property) => property.location !== "Apartments")
-                                        //                     ?.map((property) =>
-                                        //                         property.properties?.map((data) => (
-                                        //                             <li key={data.id} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                        //                                 <div onClick={() => handleVillaNavigate(data)} className="block text-black">
-                                        //                                     {data.property_name}
-                                        //                                 </div>
-                                        //                             </li>
-                                        //                         ))
-                                        //                     )}
-                                        //             </ul>
-                                        //         </div>
-                                        //     </div>
-                                        // ) : item.title === 'Apartments' ? (
-
-                                        //     <div className='relative group flex flex-col items-start gap-2 static'>
-                                        //         <Link
-                                        //             onClick={closeMenu}
-                                        //             to={item.link}
-                                        //             className='hover:text-primary after-effect text-sm md:text-xl font-bold cursor-pointer'
-                                        //         >
-                                        //             {item.title}
-                                        //         </Link>
-                                        //         <div className='absolute top-full left-0 hidden group-hover:block bg-white border shadow-lg rounded-md min-w-[200px] max-h-60 overflow-y-auto z-[9999] transition-all duration-300 mt-1'>
-                                        //             <ul className='py-2'>
-                                        //                 {propertyData?.slice(2).map((property, index) =>
-                                        //                     property?.properties.map((data) =>
-                                        //                         <li key={index} className='px-4 py-2 hover:bg-gray-100 cursor-pointer'>
-                                        //                             <div onClick={() => handleVillaNavigate(data)} className='block text-black'>
-                                        //                                 {data.property_name}
-                                        //                             </div>
-                                        //                         </li>
-                                        //                     ))}
-                                        //             </ul>
-                                        //         </div>
-                                        //     </div>
                                     ) : item.title === 'Near By Locations' ? (
-                                        <div className='relative group flex flex-col items-start gap-2 '>
-                                            <span
-                                                className=' text-sm md:text-xl font-bold cursor-pointer'
-                                                onClick={() => setIsNearbyOpen(!isNearbyOpen)}
-                                            >
-                                                {item.title} <span className="text-xs ml-1">{isNearbyOpen ? '▲' : '▼'}</span>
+                                        <div
+                                            className='relative'
+                                            onMouseEnter={() => setIsNearbyOpen(true)}
+                                            onMouseLeave={() => {
+                                                setIsNearbyOpen(false);
+                                                setIsSanskritiOpen(false);
+                                                setIsSanskritiEssentialsOpen(false);
+                                                setIskanakiaOpen(false);
+                                                setIskanakiaEssentialsOpen(false);
+                                            }}
+                                        >
+                                            <span className='text-sm md:text-xl flex items-end gap-0 font-bold cursor-pointer'>
+                                                {item.title}{isNearbyOpen ? <RiArrowDropUpLine /> : <RiArrowDropDownLine />}
                                             </span>
 
                                             {isNearbyOpen && (
-                                                <div id='dropmenus' className={`absolute top-full left-0 ${isScrolled ? "bg-black text-white border-primary" : "bg-white text-black"} border shadow-lg rounded-md min-w-[220px] max-h-80 overflow-y-auto z-[9999] transition-all duration-300 mt-1`}>
-                                                    <ul className='py-2 text-sm'>
-
+                                                <div
+                                                    id='dropmenus'
+                                                    className={`absolute top-full left-0 ${isScrolled ? "bg-black text-white border-white/20" : "bg-white text-black border-gray-200"
+                                                        } border shadow-2xl rounded-md min-w-[180px] max-h-80 overflow-visible z-[9999]`}
+                                                    style={{ marginTop: '0px' }}
+                                                >
+                                                    <ul className='text-sm'>
                                                         {/* Sanskriti */}
                                                         <li
-                                                            className='px-4 py-2 hover:bg-gray-500 cursor-pointer font-semibold flex justify-between items-center'
-                                                            onClick={() => setIsSanskritiOpen(!isSanskritiOpen)}
+                                                            className='relative'
+                                                            onMouseEnter={() => {
+                                                                setIsSanskritiOpen(true);
+                                                                setIskanakiaOpen(false);
+                                                                setIskanakiaEssentialsOpen(false);
+                                                            }}
+                                                            onMouseLeave={() => {
+                                                                setIsSanskritiOpen(false);
+                                                                setIsSanskritiEssentialsOpen(false);
+                                                            }}
                                                         >
-                                                            Sanskriti <span>{isSanskritiOpen ? '▲' : '▼'}</span>
-                                                        </li>
-                                                        {isSanskritiOpen && (
-                                                            <ul className='pl-6 text-sm'>
-                                                                <li className='hover:bg-gray-500 px-2 py-1 cursor-pointer'>Tourism</li>
-                                                                <li
-                                                                    className='px-4 py-2 hover:bg-gray-500 cursor-pointer font-semibold flex justify-between items-center'
-                                                                    onClick={() => setIsSanskritiEssentialsOpen(!isSanskritiEssentialsOpen)}
-                                                                >
-                                                                    Essentials <span>{isSanskritiEssentialsOpen ? '▲' : '▼'}</span>
-                                                                </li>
-                                                                {isSanskritiEssentialsOpen && (
-                                                                    <ul className='pl-4 text-xs'>
-                                                                        <li>
-                                                                            <Link
-                                                                                to="/essentials/sanskruti/food"
-                                                                                className='hover:bg-gray-500 px-2 py-1 cursor-pointer block'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Food
-                                                                            </Link>
-                                                                        </li>
-                                                                        <li>
-                                                                            <Link
-                                                                                to="/essentials/sanskruti/railwaystations"
-                                                                                className='hover:bg-gray-500 px-2 py-1 cursor-pointer block'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Railway
-                                                                            </Link>
-                                                                        </li>
-                                                                        <li>
-                                                                            <Link
-                                                                                to="/essentials/sanskruti/hospitals"
-                                                                                className='hover:bg-gray-500 px-2 py-1 cursor-pointer block'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Hospitals & chemist
-                                                                            </Link>
-                                                                        </li>
-                                                                        <li>
-                                                                            <Link
-                                                                                to="/essentials/sanskruti/petrolpumps"
-                                                                                className='hover:bg-gray-500 px-2 py-1 cursor-pointer block'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Petrol Pumps
-                                                                            </Link>
-                                                                        </li>
-                                                                    </ul>
-                                                                )}
-                                                            </ul>
-                                                        )}
+                                                            <div className={`px-4 py-2.5 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer font-semibold flex justify-between items-center`}>
+                                                                Sanskriti <span className="ml-2">→</span>
+                                                            </div>
 
-                                                        {/* kanakia */}
-                                                        <li
-                                                            className='px-4 py-2 hover:bg-gray-500 cursor-pointer font-semibold flex justify-between items-center'
-                                                            onClick={() => setIskanakiaOpen(!iskanakiaOpen)}
-                                                        >
-                                                            Kanakia <span>{iskanakiaOpen ? '▲' : '▼'}</span>
-                                                        </li>
-                                                        {iskanakiaOpen && (
-                                                            <ul className='pl-6 text-sm'>
-                                                                <li className='hover:bg-gray-500 px-2 py-1 cursor-pointer'>Business</li>
-                                                                <li
-                                                                    className='px-4 py-2 hover:bg-gray-500 cursor-pointer font-semibold flex justify-between items-center'
-                                                                    onClick={() => setIskanakiaEssentialsOpen(!iskanakiaEssentialsOpen)}
+                                                            {/* Submenu appears to the RIGHT */}
+                                                            {isSanskritiOpen && (
+                                                                <div
+                                                                    className={`absolute left-full top-0 ${isScrolled ? "bg-black text-white border-white/20" : "bg-white text-black border-gray-200"
+                                                                        } border shadow-2xl rounded-md min-w-[180px] overflow-visible z-[10000]`}
+                                                                    style={{ marginLeft: '-1px' }}
                                                                 >
-                                                                    Essentials <span>{iskanakiaEssentialsOpen ? '▲' : '▼'}</span>
-                                                                </li>
-                                                                {iskanakiaEssentialsOpen && (
-                                                                    <ul className='pl-4 text-xs'>
-                                                                        <li>
-                                                                            <Link
-                                                                                to="/essentials/Mumbai/food"
-                                                                                className='hover:bg-gray-500 px-2 py-1 cursor-pointer block'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Food
-                                                                            </Link>
+                                                                    <ul className='text-sm'>
+                                                                        <li className={`px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}>
+                                                                            Tourism
                                                                         </li>
-                                                                        <li>
-                                                                            <Link
-                                                                                to="/essentials/Mumbai/railwaystations"
-                                                                                className='hover:bg-gray-500 px-2 py-1 cursor-pointer block'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Railway
-                                                                            </Link>
-                                                                        </li>
-                                                                        <li>
-                                                                            <Link
-                                                                                to="/essentials/Mumbai/hospitals"
-                                                                                className='hover:bg-gray-500 px-2 py-1 cursor-pointer block'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Hospitals & chemist
-                                                                            </Link>
-                                                                        </li>
-                                                                        <li>
-                                                                            <Link
-                                                                                to="/essentials/Mumbai/petrolpumps"
-                                                                                className='hover:bg-gray-500 px-2 py-1 cursor-pointer block'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Petrol Pumps
-                                                                            </Link>
+
+                                                                        {/* Essentials - another level to the right */}
+                                                                        <li
+                                                                            className='relative'
+                                                                            onMouseEnter={() => setIsSanskritiEssentialsOpen(true)}
+                                                                            onMouseLeave={() => setIsSanskritiEssentialsOpen(false)}
+                                                                        >
+                                                                            <div className={`px-4 py-2.5 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer  flex justify-between items-center`}>
+                                                                                Essentials {isNearbyOpen ? <RiArrowDropUpLine /> : <RiArrowDropDownLine />}
+                                                                            </div>
+
+                                                                            {isSanskritiEssentialsOpen && (
+                                                                                <div
+                                                                                    className={`absolute bottom-full top-9 ${isScrolled ? "bg-black text-white border-white/20" : "bg-white text-black border-gray-200"
+                                                                                        } border shadow-2xl rounded-md min-w-[180px] z-[10001]`}
+                                                                                    style={{ marginLeft: '-1px' }}
+                                                                                >
+                                                                                    <ul className={`py-0 text-xs ${isScrolled ? 'bg-black text-white' : 'bg-white text-black'} rounded-md`}>
+                                                                                        <li>
+                                                                                            <Link
+                                                                                                to="/essentials/sanskruti/food"
+                                                                                                className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
+                                                                                                onClick={closeMenu}
+                                                                                            >
+                                                                                                Food
+                                                                                            </Link>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <Link
+                                                                                                to="/essentials/sanskruti/railwaystations"
+                                                                                                className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
+                                                                                                onClick={closeMenu}
+                                                                                            >
+                                                                                                Railway
+                                                                                            </Link>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <Link
+                                                                                                to="/essentials/sanskruti/hospitals"
+                                                                                                className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
+                                                                                                onClick={closeMenu}
+                                                                                            >
+                                                                                                Hospitals & chemist
+                                                                                            </Link>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <Link
+                                                                                                to="/essentials/sanskruti/petrolpumps"
+                                                                                                className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
+                                                                                                onClick={closeMenu}
+                                                                                            >
+                                                                                                Petrol Pumps
+                                                                                            </Link>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            )}
                                                                         </li>
                                                                     </ul>
-                                                                )}
-                                                            </ul>
-                                                        )}
+                                                                </div>
+                                                            )}
+                                                        </li>
+
+                                                        {/* Kanakia */}
+                                                        <li
+                                                            className='relative'
+                                                            onMouseEnter={() => {
+                                                                setIskanakiaOpen(true);
+                                                                setIsSanskritiOpen(false);
+                                                                setIsSanskritiEssentialsOpen(false);
+                                                            }}
+                                                            onMouseLeave={() => {
+                                                                setIskanakiaOpen(false);
+                                                                setIskanakiaEssentialsOpen(false);
+                                                            }}
+                                                        >
+                                                            <div className={`px-4 py-2.5  ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer font-semibold flex justify-between items-center`}>
+                                                                Kanakia <span className="ml-2">→</span>
+                                                            </div>
+
+                                                            {/* Submenu appears to the RIGHT */}
+                                                            {iskanakiaOpen && (
+                                                                <div
+                                                                    className={`absolute left-full top-0 ${isScrolled ? "bg-black text-white border-white/20" : "bg-white text-black border-gray-200"
+                                                                        } border shadow-2xl rounded-md min-w-[180px] overflow-visible z-[10000]`}
+                                                                    style={{ marginLeft: '-1px' }}
+                                                                >
+                                                                    <ul className='text-sm'>
+                                                                        <li className={`px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}>
+                                                                            Business
+                                                                        </li>
+
+                                                                        {/* Essentials */}
+                                                                        <li
+                                                                            className='relative'
+                                                                            onMouseEnter={() => setIskanakiaEssentialsOpen(true)}
+                                                                            onMouseLeave={() => setIskanakiaEssentialsOpen(false)}
+                                                                        >
+                                                                            <div className={`px-4 py-2.5 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer flex justify-between items-center`}>
+                                                                                Essentials {isNearbyOpen ? <RiArrowDropUpLine /> : <RiArrowDropDownLine />}
+                                                                            </div>
+
+                                                                            {iskanakiaEssentialsOpen && (
+                                                                                <div
+                                                                                    className={`absolute bottom-full top-9 ${isScrolled ? "bg-black text-white border-white/20" : "bg-white text-black border-gray-200"
+                                                                                        } border shadow-2xl rounded-md min-w-[180px] z-[10001]`}
+                                                                                    style={{ marginLeft: '-1px' }}
+                                                                                >
+                                                                                    <ul className={`text-xs ${isScrolled ? 'bg-black text-white' : 'bg-white text-black'} rounded-md`}>
+                                                                                        <li>
+                                                                                            <Link
+                                                                                                to="/essentials/Mumbai/food"
+                                                                                                className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
+                                                                                                onClick={closeMenu}
+                                                                                            >
+                                                                                                Food
+                                                                                            </Link>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <Link
+                                                                                                to="/essentials/Mumbai/railwaystations"
+                                                                                                className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
+                                                                                                onClick={closeMenu}
+                                                                                            >
+                                                                                                Railway
+                                                                                            </Link>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <Link
+                                                                                                to="/essentials/Mumbai/hospitals"
+                                                                                                className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
+                                                                                                onClick={closeMenu}
+                                                                                            >
+                                                                                                Hospitals & chemist
+                                                                                            </Link>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <Link
+                                                                                                to="/essentials/Mumbai/petrolpumps"
+                                                                                                className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
+                                                                                                onClick={closeMenu}
+                                                                                            >
+                                                                                                Petrol Pumps
+                                                                                            </Link>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            )}
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            )}
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             )}
                                         </div>
                                     ) :
-                                        <Link onClick={closeMenu} to={item.link} className=' text-sm md:text-xl font-bold cursor-pointer'>
+                                        <Link onClick={closeMenu} to={item.link} className='text-sm md:text-xl font-bold cursor-pointer'>
                                             {item.title}
                                         </Link>
                                 }
@@ -413,7 +408,7 @@ const Navbar = () => {
             {/* Mobile Menu - Fixed positioning */}
             {
                 isMenuOpen && (
-                    <div className='md:hidden  bg-white w-52 absolute top-full left-0 z-50 shadow-lg min-h-screen overflow-y-auto border-t border-gray-200'>
+                    <div className='md:hidden bg-white w-52 absolute top-full left-0 z-50 shadow-lg min-h-screen overflow-y-auto border-t border-gray-200'>
                         <ul className='flex flex-col items-start gap-0'>
                             {navbarData?.navmenu?.map((item) => (
                                 <li key={item.id} className='w-full border-b border-gray-100'>
@@ -505,122 +500,132 @@ const Navbar = () => {
                                                 <div className='bg-gray-50 max-h-80 overflow-y-auto'>
                                                     <ul className='text-sm'>
                                                         {/* Sanskriti */}
-                                                        <li
-                                                            className='px-6 py-3 hover:bg-gray-100 cursor-pointer font-semibold flex justify-between items-center border-b border-gray-200'
-                                                            onClick={() => setIsSanskritiOpen(!isSanskritiOpen)}
-                                                        >
-                                                            Sanskriti <span className="text-xs">{isSanskritiOpen ? '▲' : '▼'}</span>
-                                                        </li>
-                                                        {isSanskritiOpen && (
-                                                            <ul className='bg-gray-100'>
-                                                                <li className='px-8 py-2 hover:bg-gray-200 cursor-pointer border-b border-gray-300'>Tourism</li>
-                                                                <li
-                                                                    className='px-8 py-2 hover:bg-gray-200 cursor-pointer font-medium flex justify-between items-center border-b border-gray-300'
-                                                                    onClick={() => setIsSanskritiEssentialsOpen(!isSanskritiEssentialsOpen)}
-                                                                >
-                                                                    Essentials <span className="text-xs">{isSanskritiEssentialsOpen ? '▲' : '▼'}</span>
-                                                                </li>
-                                                                {isSanskritiEssentialsOpen && (
-                                                                    <ul className='bg-gray-200'>
-                                                                        <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                            <Link
-                                                                                to="/essentials/sanskruti/food"
-                                                                                className='block text-black text-xs'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Food
-                                                                            </Link>
-                                                                        </li>
-                                                                        <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                            <Link
-                                                                                to="/essentials/sanskruti/railwaystations"
-                                                                                className='block text-black text-xs'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Railway
-                                                                            </Link>
-                                                                        </li>
-                                                                        <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                            <Link
-                                                                                to="/essentials/sanskruti/hospitals"
-                                                                                className='block text-black text-xs'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Hospitals & chemist
-                                                                            </Link>
-                                                                        </li>
-                                                                        <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                            <Link
-                                                                                to="/essentials/sanskruti/petrolpumps"
-                                                                                className='block text-black text-xs'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Petrol Pumps
-                                                                            </Link>
-                                                                        </li>
-                                                                    </ul>
-                                                                )}
-                                                            </ul>
-                                                        )}
+                                                        <li>
+                                                            <div
+                                                                className='px-6 py-3 hover:bg-gray-100 cursor-pointer font-semibold flex justify-between items-center border-b border-gray-200'
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    setIsSanskritiOpen(!isSanskritiOpen);
+                                                                }}
+                                                            >
+                                                                Sanskriti <span className="text-xs">{isSanskritiOpen ? '▲' : '▼'}</span>
+                                                            </div>
+                                                            {isSanskritiOpen && (
+                                                                <ul className='bg-gray-100'>
+                                                                    <li className='px-8 py-2 hover:bg-gray-200 cursor-pointer border-b border-gray-300'>Tourism</li>
+                                                                    <li>
+                                                                        <div
+                                                                            className='px-8 py-2 hover:bg-gray-200 cursor-pointer  flex justify-between items-center border-b border-gray-300'
+                                                                            onClick={(e) => {
+                                                                                e.stopPropagation();
+                                                                                setIsSanskritiEssentialsOpen(!isSanskritiEssentialsOpen);
+                                                                            }}
+                                                                        >
+                                                                            Essentials <span className="text-xs">{isSanskritiEssentialsOpen ? '▲' : '▼'}</span>
+                                                                        </div>
+                                                                        {isSanskritiEssentialsOpen && (
+                                                                            <ul className='bg-gray-200'>
+                                                                                <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
+                                                                                    <Link
+                                                                                        to="/essentials/sanskruti/food"
+                                                                                        className='block text-black text-xs'
+                                                                                        onClick={closeMenu}
+                                                                                    >
+                                                                                        Food
+                                                                                    </Link>
+                                                                                </li>
+                                                                                <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
+                                                                                    <Link
+                                                                                        to="/essentials/sanskruti/railwaystations"
+                                                                                        className='block text-black text-xs'
+                                                                                        onClick={closeMenu}
+                                                                                    >
+                                                                                        Railway
+                                                                                    </Link>
+                                                                                </li>
+                                                                                <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
+                                                                                    <Link
+                                                                                        to="/essentials/sanskruti/hospitals"
+                                                                                        className='block text-black text-xs'
+                                                                                        onClick={closeMenu}
+                                                                                    >
+                                                                                        Hospitals & chemist
+                                                                                    </Link>
+                                                                                </li>
+                                                                                <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
+                                                                                    <Link
+                                                                                        to="/essentials/sanskruti/petrolpumps"
+                                                                                        className='block text-black text-xs'
+                                                                                        onClick={closeMenu}
+                                                                                    >
+                                                                                        Petrol Pumps
+                                                                                    </Link>
+                                                                                </li>
+                                                                            </ul>
+                                                                        )}
+                                                                    </li>
+                                                                </ul>
+                                                            )}
 
-                                                        {/* kanakia */}
-                                                        <li
-                                                            className='px-6 py-3 hover:bg-gray-100 cursor-pointer font-semibold flex justify-between items-center border-b border-gray-200'
-                                                            onClick={() => setIskanakiaOpen(!iskanakiaOpen)}
-                                                        >
-                                                            kanakia <span className="text-xs">{iskanakiaOpen ? '▲' : '▼'}</span>
+                                                            {/* kanakia */}
+                                                            <li
+                                                                className='px-6 py-3 hover:bg-gray-100 cursor-pointer font-semibold flex justify-between items-center border-b border-gray-200'
+                                                                onClick={() => setIskanakiaOpen(!iskanakiaOpen)}
+                                                            >
+                                                                Kanakia <span className="text-xs">{iskanakiaOpen ? '▲' : '▼'}</span>
+                                                            </li>
+                                                            {iskanakiaOpen && (
+                                                                <ul className='bg-gray-100'>
+                                                                    <li className='px-8 py-2 hover:bg-gray-200 cursor-pointer border-b border-gray-300'>Business</li>
+                                                                    <li
+                                                                        className='px-8 py-2  hover:bg-gray-200 cursor-pointer flex justify-between items-center border-b border-gray-300'
+                                                                        onClick={() => setIskanakiaEssentialsOpen(!iskanakiaEssentialsOpen)}
+                                                                    >
+                                                                        Essentials <span className="text-xs">{iskanakiaEssentialsOpen ? '▲' : '▼'}</span>
+                                                                    </li>
+                                                                    {iskanakiaEssentialsOpen && (
+                                                                        <ul className='bg-gray-200 py-2'>
+                                                                            <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
+                                                                                <Link
+                                                                                    to="/essentials/kanakia/food"
+                                                                                    className='block text-black text-xs'
+                                                                                    onClick={closeMenu}
+                                                                                >
+                                                                                    Food
+                                                                                </Link>
+                                                                            </li>
+                                                                            <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
+                                                                                <Link
+                                                                                    to="/essentials/kanakia/railwaystations"
+                                                                                    className='block text-black text-xs'
+                                                                                    onClick={closeMenu}
+                                                                                >
+                                                                                    Railway
+                                                                                </Link>
+                                                                            </li>
+                                                                            <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
+                                                                                <Link
+                                                                                    to="/essentials/kanakia/hospitals"
+                                                                                    className='block text-black text-xs'
+                                                                                    onClick={closeMenu}
+                                                                                >
+                                                                                    Hospitals & chemist
+                                                                                </Link>
+                                                                            </li>
+                                                                            <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
+                                                                                <Link
+                                                                                    to="/essentials/kanakia/petrolpumps"
+                                                                                    className='block text-black text-xs'
+                                                                                    onClick={closeMenu}
+                                                                                >
+                                                                                    Petrol Pumps
+                                                                                </Link>
+                                                                            </li>
+                                                                        </ul>
+                                                                    )}
+                                                                </ul>
+                                                            )}
                                                         </li>
-                                                        {iskanakiaOpen && (
-                                                            <ul className='bg-gray-100'>
-                                                                <li className='px-8 py-2 hover:bg-gray-200 cursor-pointer border-b border-gray-300'>Business</li>
-                                                                <li
-                                                                    className='px-8 py-2 hover:bg-gray-200 cursor-pointer font-medium flex justify-between items-center border-b border-gray-300'
-                                                                    onClick={() => setIskanakiaEssentialsOpen(!iskanakiaEssentialsOpen)}
-                                                                >
-                                                                    Essentials <span className="text-xs">{iskanakiaEssentialsOpen ? '▲' : '▼'}</span>
-                                                                </li>
-                                                                {iskanakiaEssentialsOpen && (
-                                                                    <ul className='bg-gray-200'>
-                                                                        <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                            <Link
-                                                                                to="/essentials/kanakia/food"
-                                                                                className='block text-black text-xs'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Food
-                                                                            </Link>
-                                                                        </li>
-                                                                        <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                            <Link
-                                                                                to="/essentials/kanakia/railwaystations"
-                                                                                className='block text-black text-xs'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Railway
-                                                                            </Link>
-                                                                        </li>
-                                                                        <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                            <Link
-                                                                                to="/essentials/kanakia/hospitals"
-                                                                                className='block text-black text-xs'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Hospitals & chemist
-                                                                            </Link>
-                                                                        </li>
-                                                                        <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                            <Link
-                                                                                to="/essentials/kanakia/petrolpumps"
-                                                                                className='block text-black text-xs'
-                                                                                onClick={closeMenu}
-                                                                            >
-                                                                                Petrol Pumps
-                                                                            </Link>
-                                                                        </li>
-                                                                    </ul>
-                                                                )}
-                                                            </ul>
-                                                        )}
                                                     </ul>
                                                 </div>
                                             )}
