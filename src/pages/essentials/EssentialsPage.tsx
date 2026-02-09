@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { essentialsData, EssentialType, Store } from "../../essentialsData";
+import { normalizedEssentialsData as essentialsData, EssentialType, Store } from "../../essentialsData";
 import Essentials from "../../components/commonComponents/essentials/Essentials";
 
 const EssentialsPage = () => {
@@ -7,7 +7,7 @@ const EssentialsPage = () => {
 
   // ✅ Type guard for essential type
   const isEssentialType = (t: string | undefined): t is EssentialType =>
-    ["food", "hospitals", , "railways", "petrolpumps"].includes(t ?? "");
+    ["food", "hospitals", "petrolpumps", "railwaystations", "chemist", "business", "tourism", "shopping", "attractions"].includes(t ?? "");
 
   // ✅ Fetch stores safely
   const stores: Store[] =

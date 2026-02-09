@@ -1,6 +1,6 @@
 import React from 'react';
 import CommonBanner from "../../components/commonComponents/banner/CommonBanner";
-import img1 from "../../assets/cosy_villa_images/img_14.jpeg";
+import img1 from "../../assets/bkc_xyz/img_25.jpeg";
 import img2 from "../../assets/cosy_villa_images/img_4.jpeg";
 import Parallax from "../../components/commonComponents/parallax/Parallax";
 // import NearByPlaces from "../../components/aboutpage_component/nearbyplaces/NearByPlaces";

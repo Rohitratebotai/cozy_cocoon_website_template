@@ -1,15 +1,17 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
 import './navbar.css';
 import { IoIosCall } from 'react-icons/io';
-import { navbarData, propertyData } from '../../../data';
+import { navbarData } from '../../../data';
 import { IoLogoWhatsapp } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { RiArrowDropUpLine } from "react-icons/ri";
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDestinationsDropdownOpen, setIsDestinationsDropdownOpen] = useState(false);
     const [isVillasDropdownOpen, setIsVillasDropdownOpen] = useState(false);
@@ -22,13 +24,20 @@ const Navbar = () => {
     const [openDropdown, setOpenDropdown] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
+    console.log(isDestinationsDropdownOpen,isApartmentsDropdownOpen,isVillasDropdownOpen,"build");
+    
+
     const handleScroll = (id: any) => {
-        const section = document.getElementById(id);
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
-            setOpenDropdown(false);
+        // If already on home page
+        if (location.pathname === "/") {
+            const el = document.getElementById(id);
+            el?.scrollIntoView({ behavior: "smooth" });
+        } else {
+            // Navigate to home with state
+            navigate("/", { state: { scrollTo: id } });
         }
     };
+
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -55,6 +64,8 @@ const Navbar = () => {
         navigate(`/property_details/${property.id}`, { state: { property } });
         closeMenu();
     };
+     console.log(handleDestinationNavigate,handleVillaNavigate,"build");
+     
 
     useEffect(() => {
         const handleScrollEvent = () => {
@@ -161,7 +172,7 @@ const Navbar = () => {
                                                     <div
                                                         onClick={(e) => {
                                                             e.stopPropagation();
-                                                            handleScroll("sanskruti");
+                                                            handleScroll("karjat");
                                                             setOpenDropdown(false);
                                                         }}
                                                         className={`px-4 py-2 cursor-pointer ${isScrolled ? "hover:bg-gray-700" : "hover:bg-gray-100"
@@ -209,7 +220,7 @@ const Navbar = () => {
                                                     style={{ marginTop: '0px' }}
                                                 >
                                                     <ul className='text-sm'>
-                                                        {/* Sanskriti */}
+                                                        {/* Karjat */}
                                                         <li
                                                             className='relative'
                                                             onMouseEnter={() => {
@@ -223,7 +234,7 @@ const Navbar = () => {
                                                             }}
                                                         >
                                                             <div className={`px-4 py-2.5 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer font-semibold flex justify-between items-center`}>
-                                                                Sanskriti <span className="ml-2">→</span>
+                                                                Karjat <span className="ml-2">→</span>
                                                             </div>
 
                                                             {/* Submenu appears to the RIGHT */}
@@ -234,8 +245,14 @@ const Navbar = () => {
                                                                     style={{ marginLeft: '-1px' }}
                                                                 >
                                                                     <ul className='text-sm'>
-                                                                        <li className={`px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}>
-                                                                            Tourism
+                                                                        <li>
+                                                                            <Link
+                                                                                to="/essentials/karjat/tourism"
+                                                                                className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
+                                                                                onClick={closeMenu}
+                                                                            >
+                                                                                Tourism
+                                                                            </Link>
                                                                         </li>
 
                                                                         {/* Essentials - another level to the right */}
@@ -257,7 +274,7 @@ const Navbar = () => {
                                                                                     <ul className={`py-0 text-xs ${isScrolled ? 'bg-black text-white' : 'bg-white text-black'} rounded-md`}>
                                                                                         <li>
                                                                                             <Link
-                                                                                                to="/essentials/sanskruti/food"
+                                                                                                to="/essentials/karjat/food"
                                                                                                 className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
                                                                                                 onClick={closeMenu}
                                                                                             >
@@ -266,7 +283,7 @@ const Navbar = () => {
                                                                                         </li>
                                                                                         <li>
                                                                                             <Link
-                                                                                                to="/essentials/sanskruti/railwaystations"
+                                                                                                to="/essentials/karjat/railwaystations"
                                                                                                 className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
                                                                                                 onClick={closeMenu}
                                                                                             >
@@ -275,7 +292,7 @@ const Navbar = () => {
                                                                                         </li>
                                                                                         <li>
                                                                                             <Link
-                                                                                                to="/essentials/sanskruti/hospitals"
+                                                                                                to="/essentials/karjat/hospitals"
                                                                                                 className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
                                                                                                 onClick={closeMenu}
                                                                                             >
@@ -284,7 +301,7 @@ const Navbar = () => {
                                                                                         </li>
                                                                                         <li>
                                                                                             <Link
-                                                                                                to="/essentials/sanskruti/petrolpumps"
+                                                                                                to="/essentials/karjat/petrolpumps"
                                                                                                 className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
                                                                                                 onClick={closeMenu}
                                                                                             >
@@ -300,7 +317,7 @@ const Navbar = () => {
                                                             )}
                                                         </li>
 
-                                                        {/* Kanakia */}
+                                                        {/* BKC */}
                                                         <li
                                                             className='relative'
                                                             onMouseEnter={() => {
@@ -314,7 +331,7 @@ const Navbar = () => {
                                                             }}
                                                         >
                                                             <div className={`px-4 py-2.5  ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer font-semibold flex justify-between items-center`}>
-                                                                Kanakia <span className="ml-2">→</span>
+                                                                BKC <span className="ml-2">→</span>
                                                             </div>
 
                                                             {/* Submenu appears to the RIGHT */}
@@ -325,8 +342,14 @@ const Navbar = () => {
                                                                     style={{ marginLeft: '-1px' }}
                                                                 >
                                                                     <ul className='text-sm'>
-                                                                        <li className={`px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}>
-                                                                            Business
+                                                                        <li >
+                                                                            <Link
+                                                                                to="/essentials/bkc/business"
+                                                                                className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
+                                                                                onClick={closeMenu}
+                                                                            >
+                                                                                Business
+                                                                            </Link>
                                                                         </li>
 
                                                                         {/* Essentials */}
@@ -348,7 +371,7 @@ const Navbar = () => {
                                                                                     <ul className={`text-xs ${isScrolled ? 'bg-black text-white' : 'bg-white text-black'} rounded-md`}>
                                                                                         <li>
                                                                                             <Link
-                                                                                                to="/essentials/Mumbai/food"
+                                                                                                to="/essentials/bkc/food"
                                                                                                 className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
                                                                                                 onClick={closeMenu}
                                                                                             >
@@ -357,29 +380,29 @@ const Navbar = () => {
                                                                                         </li>
                                                                                         <li>
                                                                                             <Link
-                                                                                                to="/essentials/Mumbai/railwaystations"
+                                                                                                to="/essentials/bkc/attractions"
                                                                                                 className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
                                                                                                 onClick={closeMenu}
                                                                                             >
-                                                                                                Railway
+                                                                                                Major Attractions
                                                                                             </Link>
                                                                                         </li>
                                                                                         <li>
                                                                                             <Link
-                                                                                                to="/essentials/Mumbai/hospitals"
+                                                                                                to="/essentials/bkc/shopping"
+                                                                                                className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
+                                                                                                onClick={closeMenu}
+                                                                                            >
+                                                                                                Shopping
+                                                                                            </Link>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <Link
+                                                                                                to="/essentials/bkc/hospitals"
                                                                                                 className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
                                                                                                 onClick={closeMenu}
                                                                                             >
                                                                                                 Hospitals & chemist
-                                                                                            </Link>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <Link
-                                                                                                to="/essentials/Mumbai/petrolpumps"
-                                                                                                className={`block px-4 py-2 ${isScrolled ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} cursor-pointer`}
-                                                                                                onClick={closeMenu}
-                                                                                            >
-                                                                                                Petrol Pumps
                                                                                             </Link>
                                                                                         </li>
                                                                                     </ul>
@@ -406,245 +429,132 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu - Fixed positioning */}
-            {
-                isMenuOpen && (
-                    <div className='md:hidden bg-white w-52 absolute top-full left-0 z-50 shadow-lg min-h-screen overflow-y-auto border-t border-gray-200'>
-                        <ul className='flex flex-col items-start gap-0'>
-                            {navbarData?.navmenu?.map((item) => (
-                                <li key={item.id} className='w-full border-b border-gray-100'>
-                                    {item.title === 'Destinations' ? (
-                                        <>
-                                            <div
-                                                className='flex justify-between items-center w-full p-4 font-bold cursor-pointer text-black hover:bg-gray-50'
-                                                onClick={() => setIsDestinationsDropdownOpen(!isDestinationsDropdownOpen)}
-                                            >
-                                                {item.title} <span className="text-sm">{isDestinationsDropdownOpen ? '▲' : '▼'}</span>
-                                            </div>
-                                            {isDestinationsDropdownOpen && (
-                                                <ul className='bg-gray-50'>
-                                                    {propertyData?.filter((property) => property.location !== "Apartments")
-                                                        ?.map((property, index) => (
-                                                            <li key={index} className='px-6 py-3 hover:bg-gray-100 cursor-pointer border-b border-gray-200 last:border-b-0'>
-                                                                <div
-                                                                    onClick={() => handleDestinationNavigate(property)}
-                                                                    className='block text-black text-sm'
-                                                                >
-                                                                    {property.location}
-                                                                </div>
-                                                            </li>
-                                                        ))}
-                                                </ul>
-                                            )}
-                                        </>
-                                    ) : item.title === 'Villas' ? (
-                                        <>
-                                            <div
-                                                className='flex justify-between items-center w-full p-4 font-bold cursor-pointer text-black hover:bg-gray-50'
-                                                onClick={() => setIsVillasDropdownOpen(!isVillasDropdownOpen)}
-                                            >
-                                                {item.title} <span className="text-sm">{isVillasDropdownOpen ? '▲' : '▼'}</span>
-                                            </div>
-                                            {isVillasDropdownOpen && (
-                                                <ul className='bg-gray-50 max-h-48 overflow-y-auto'>
-                                                    {propertyData
-                                                        ?.filter((property) => property.location !== "Apartments")
-                                                        ?.map((property) =>
-                                                            property.properties?.map((data) => (
-                                                                <li key={data.id} className='px-6 py-3 hover:bg-gray-100 cursor-pointer border-b border-gray-200 last:border-b-0'>
-                                                                    <div
-                                                                        onClick={() => handleVillaNavigate(data)}
-                                                                        className='block text-black text-sm'
-                                                                    >
-                                                                        {data.property_name}
-                                                                    </div>
-                                                                </li>
-                                                            ))
-                                                        )}
-                                                </ul>
-                                            )}
-                                        </>
-                                    ) : item.title === 'Apartments' ? (
-                                        <>
-                                            <div
-                                                className='flex justify-between items-center w-full p-4 font-bold cursor-pointer text-black hover:bg-gray-50'
-                                                onClick={() => setIsApartmentsDropdownOpen(!isApartmentsDropdownOpen)}
-                                            >
-                                                {item.title} <span className="text-sm">{isApartmentsDropdownOpen ? '▲' : '▼'}</span>
-                                            </div>
-                                            {isApartmentsDropdownOpen && (
-                                                <ul className='bg-gray-50 max-h-48 overflow-y-auto'>
-                                                    {propertyData?.slice(2).map((property, index) =>
-                                                        property?.properties.map((data, dataIndex) => (
-                                                            <li key={`${index}-${dataIndex}`} className='px-6 py-3 hover:bg-gray-100 cursor-pointer border-b border-gray-200 last:border-b-0'>
-                                                                <div
-                                                                    onClick={() => handleVillaNavigate(data)}
-                                                                    className='block text-black text-sm'
-                                                                >
-                                                                    {data.property_name}
-                                                                </div>
-                                                            </li>
-                                                        ))
-                                                    )}
-                                                </ul>
-                                            )}
-                                        </>
-                                    ) : item.title === 'Near By Locations' ? (
-                                        <>
-                                            <div
-                                                className='flex justify-between items-center w-full p-4 font-bold cursor-pointer text-black hover:bg-gray-50'
-                                                onClick={() => setIsNearbyOpen(!isNearbyOpen)}
-                                            >
-                                                {item.title} <span className="text-sm">{isNearbyOpen ? '▲' : '▼'}</span>
-                                            </div>
-                                            {isNearbyOpen && (
-                                                <div className='bg-gray-50 max-h-80 overflow-y-auto'>
-                                                    <ul className='text-sm'>
-                                                        {/* Sanskriti */}
-                                                        <li>
-                                                            <div
-                                                                className='px-6 py-3 hover:bg-gray-100 cursor-pointer font-semibold flex justify-between items-center border-b border-gray-200'
-                                                                onClick={(e) => {
-                                                                    e.stopPropagation();
-                                                                    setIsSanskritiOpen(!isSanskritiOpen);
-                                                                }}
-                                                            >
-                                                                Sanskriti <span className="text-xs">{isSanskritiOpen ? '▲' : '▼'}</span>
-                                                            </div>
-                                                            {isSanskritiOpen && (
-                                                                <ul className='bg-gray-100'>
-                                                                    <li className='px-8 py-2 hover:bg-gray-200 cursor-pointer border-b border-gray-300'>Tourism</li>
-                                                                    <li>
-                                                                        <div
-                                                                            className='px-8 py-2 hover:bg-gray-200 cursor-pointer  flex justify-between items-center border-b border-gray-300'
-                                                                            onClick={(e) => {
-                                                                                e.stopPropagation();
-                                                                                setIsSanskritiEssentialsOpen(!isSanskritiEssentialsOpen);
-                                                                            }}
-                                                                        >
-                                                                            Essentials <span className="text-xs">{isSanskritiEssentialsOpen ? '▲' : '▼'}</span>
-                                                                        </div>
-                                                                        {isSanskritiEssentialsOpen && (
-                                                                            <ul className='bg-gray-200'>
-                                                                                <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                                    <Link
-                                                                                        to="/essentials/sanskruti/food"
-                                                                                        className='block text-black text-xs'
-                                                                                        onClick={closeMenu}
-                                                                                    >
-                                                                                        Food
-                                                                                    </Link>
-                                                                                </li>
-                                                                                <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                                    <Link
-                                                                                        to="/essentials/sanskruti/railwaystations"
-                                                                                        className='block text-black text-xs'
-                                                                                        onClick={closeMenu}
-                                                                                    >
-                                                                                        Railway
-                                                                                    </Link>
-                                                                                </li>
-                                                                                <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                                    <Link
-                                                                                        to="/essentials/sanskruti/hospitals"
-                                                                                        className='block text-black text-xs'
-                                                                                        onClick={closeMenu}
-                                                                                    >
-                                                                                        Hospitals & chemist
-                                                                                    </Link>
-                                                                                </li>
-                                                                                <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                                    <Link
-                                                                                        to="/essentials/sanskruti/petrolpumps"
-                                                                                        className='block text-black text-xs'
-                                                                                        onClick={closeMenu}
-                                                                                    >
-                                                                                        Petrol Pumps
-                                                                                    </Link>
-                                                                                </li>
-                                                                            </ul>
-                                                                        )}
-                                                                    </li>
-                                                                </ul>
-                                                            )}
 
-                                                            {/* kanakia */}
-                                                            <li
-                                                                className='px-6 py-3 hover:bg-gray-100 cursor-pointer font-semibold flex justify-between items-center border-b border-gray-200'
-                                                                onClick={() => setIskanakiaOpen(!iskanakiaOpen)}
-                                                            >
-                                                                Kanakia <span className="text-xs">{iskanakiaOpen ? '▲' : '▼'}</span>
-                                                            </li>
-                                                            {iskanakiaOpen && (
-                                                                <ul className='bg-gray-100'>
-                                                                    <li className='px-8 py-2 hover:bg-gray-200 cursor-pointer border-b border-gray-300'>Business</li>
-                                                                    <li
-                                                                        className='px-8 py-2  hover:bg-gray-200 cursor-pointer flex justify-between items-center border-b border-gray-300'
-                                                                        onClick={() => setIskanakiaEssentialsOpen(!iskanakiaEssentialsOpen)}
-                                                                    >
-                                                                        Essentials <span className="text-xs">{iskanakiaEssentialsOpen ? '▲' : '▼'}</span>
-                                                                    </li>
-                                                                    {iskanakiaEssentialsOpen && (
-                                                                        <ul className='bg-gray-200 py-2'>
-                                                                            <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                                <Link
-                                                                                    to="/essentials/kanakia/food"
-                                                                                    className='block text-black text-xs'
-                                                                                    onClick={closeMenu}
-                                                                                >
-                                                                                    Food
-                                                                                </Link>
-                                                                            </li>
-                                                                            <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                                <Link
-                                                                                    to="/essentials/kanakia/railwaystations"
-                                                                                    className='block text-black text-xs'
-                                                                                    onClick={closeMenu}
-                                                                                >
-                                                                                    Railway
-                                                                                </Link>
-                                                                            </li>
-                                                                            <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                                <Link
-                                                                                    to="/essentials/kanakia/hospitals"
-                                                                                    className='block text-black text-xs'
-                                                                                    onClick={closeMenu}
-                                                                                >
-                                                                                    Hospitals & chemist
-                                                                                </Link>
-                                                                            </li>
-                                                                            <li className='px-10 py-2 hover:bg-gray-300 border-b border-gray-400 last:border-b-0'>
-                                                                                <Link
-                                                                                    to="/essentials/kanakia/petrolpumps"
-                                                                                    className='block text-black text-xs'
-                                                                                    onClick={closeMenu}
-                                                                                >
-                                                                                    Petrol Pumps
-                                                                                </Link>
-                                                                            </li>
-                                                                        </ul>
-                                                                    )}
-                                                                </ul>
-                                                            )}
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            )}
-                                        </>
-                                    ) : (
+            {isMenuOpen && (
+                <div className={`md:hidden fixed inset-0 z-[9999] bg-black/40`}>
+                    <div className={`${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} bg-white w-full h-full overflow-y-auto`}>
+
+                        {/* Header */}
+                        <div className="flex justify-between items-center px-4 py-4 border-b">
+                            {/* Logo */}
+                            <Link to='/'>
+                                <img className='w-14 h-14 md:w-20 md:h-16 rounded-full' src={navbarData.logo[0].image} alt='Logo' />
+                            </Link>
+                            <button onClick={closeMenu} className="text-2xl">✕</button>
+                        </div>
+
+                        <ul className="flex flex-col">
+
+
+
+                            {/* Other normal links */}
+                            {navbarData.navmenu
+                                .filter(item => item.title !== "Near By Locations")
+                                .map(item => (
+                                    <li key={item.id} className="border-b">
                                         <Link
-                                            onClick={closeMenu}
                                             to={item.link}
-                                            className='block w-full p-4 font-bold cursor-pointer text-black hover:bg-gray-50 hover:text-primary transition-all duration-300'
+                                            onClick={closeMenu}
+                                            className="block px-4 py-4 font-bold hover:bg-gray-50"
                                         >
                                             {item.title}
                                         </Link>
-                                    )}
-                                </li>
-                            ))}
+                                    </li>
+                                ))}
+                            {/* Near By Locations */}
+                            <li className="border-b">
+                                <button
+                                    className="w-full flex justify-between px-4 py-4 font-bold"
+                                    onClick={() => setIsNearbyOpen(p => !p)}
+                                >
+                                    Near By Locations
+                                    <span>{isNearbyOpen ? "▲" : "▼"}</span>
+                                </button>
+
+                                {isNearbyOpen && (
+                                    <div className="bg-gray-50">
+
+                                        {/* Karjat */}
+                                        <button
+                                            className="w-full px-6 py-3 flex justify-between font-semibold"
+                                            onClick={() => setIsSanskritiOpen(p => !p)}
+                                        >
+                                            Karjat <span>{isSanskritiOpen ? "▲" : "▼"}</span>
+                                        </button>
+
+                                        {isSanskritiOpen && (
+                                            <div className="bg-gray-100">
+                                                <Link
+                                                    to="/essentials/karjat/tourism"
+                                                    className="block px-8 py-2 text-sm"
+                                                    onClick={closeMenu}
+                                                >
+                                                    Tourism
+                                                </Link>
+
+                                                <button
+                                                    className="w-full px-8 py-2 flex justify-between text-sm"
+                                                    onClick={() => setIsSanskritiEssentialsOpen(p => !p)}
+                                                >
+                                                    Essentials <span>{isSanskritiEssentialsOpen ? "▲" : "▼"}</span>
+                                                </button>
+
+                                                {isSanskritiEssentialsOpen && (
+                                                    <div className="bg-gray-200">
+                                                        <Link to="/essentials/karjat/food" className="block px-10 py-2 text-xs" onClick={closeMenu}>Food</Link>
+                                                        <Link to="/essentials/karjat/railwaystations" className="block px-10 py-2 text-xs" onClick={closeMenu}>Railway</Link>
+                                                        <Link to="/essentials/karjat/hospitals" className="block px-10 py-2 text-xs" onClick={closeMenu}>Hospitals</Link>
+                                                        <Link to="/essentials/karjat/petrolpumps" className="block px-10 py-2 text-xs" onClick={closeMenu}>Petrol Pumps</Link>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
+
+                                        {/* BKC */}
+                                        <button
+                                            className="w-full px-6 py-3 flex justify-between font-semibold border-t"
+                                            onClick={() => setIskanakiaOpen(p => !p)}
+                                        >
+                                            BKC <span>{iskanakiaOpen ? "▲" : "▼"}</span>
+                                        </button>
+
+                                        {iskanakiaOpen && (
+                                            <div className="bg-gray-100">
+                                                <Link
+                                                    to="/essentials/bkc/business"
+                                                    className="block px-8 py-2 text-sm"
+                                                    onClick={closeMenu}
+                                                >
+                                                    Business
+                                                </Link>
+
+                                                <button
+                                                    className="w-full px-8 py-2 flex justify-between text-sm"
+                                                    onClick={() => setIskanakiaEssentialsOpen(p => !p)}
+                                                >
+                                                    Essentials <span>{iskanakiaEssentialsOpen ? "▲" : "▼"}</span>
+                                                </button>
+
+                                                {iskanakiaEssentialsOpen && (
+                                                    <div className="bg-gray-200">
+                                                        <Link to="/essentials/bkc/food" className="block px-10 py-2 text-xs" onClick={closeMenu}>Food</Link>
+                                                        <Link to="/essentials/bkc/attractions" className="block px-10 py-2 text-xs" onClick={closeMenu}>Attractions</Link>
+                                                        <Link to="/essentials/bkc/shopping" className="block px-10 py-2 text-xs" onClick={closeMenu}>Shopping</Link>
+                                                        <Link to="/essentials/bkc/hospitals" className="block px-10 py-2 text-xs" onClick={closeMenu}>Hospitals</Link>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
+
+                                    </div>
+                                )}
+                            </li>
                         </ul>
                     </div>
-                )
-            }
+                </div>
+            )}
+
+
         </section >
     );
 };

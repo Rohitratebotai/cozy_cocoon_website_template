@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
 interface Store {
   id: number;
@@ -6,6 +6,8 @@ interface Store {
   image: string;
   description: string;
   mapSrc?: string;
+  lat?: number;
+  lng?: number;
 }
 
 interface EssentialsProps {
@@ -13,10 +15,17 @@ interface EssentialsProps {
   stores: Store[];
 }
 
-const Essentials: React.FC<EssentialsProps> = ({ title, stores }) => {
-  const [selectedMap, setSelectedMap] = useState<string | null>(null);
 
-  const closeModal = () => setSelectedMap(null);
+
+const Essentials: React.FC<EssentialsProps> = ({ title, stores }) => {
+  // const [selectedMap, setSelectedMap] = useState<string | null>(null);
+  const [mobileView, setMobileView] = React.useState(true);
+  // const closeModal = () => setSelectedMap(null);
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      setMobileView(false);
+    }
+  }, []);
 
   return (
     <>
@@ -38,9 +47,10 @@ const Essentials: React.FC<EssentialsProps> = ({ title, stores }) => {
             const isEven = index % 2 === 0;
 
             return (
-              <div
-                key={store.id}
-                className={`
+              <>
+                <div
+                  key={store.id}
+                  className={`
                   flex flex-col 
                   ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} 
                   items-stretch 
@@ -53,41 +63,39 @@ const Essentials: React.FC<EssentialsProps> = ({ title, stores }) => {
                   transition-shadow 
                   duration-300
                 `}
-              >
-                {/* Store Image */}
-                <div
-                  className="
-                    w-full md:w-2/5 
-                    h-48 md:h-auto 
-                    bg-cover 
-                    bg-center 
-                    relative
-                    flex-shrink-0
-                  "
-                  style={{
-                    backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(${store.image})`,
-                  }}
                 >
-                  {/* Optional overlay for better text contrast if needed */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent md:hidden"></div>
-                </div>
+                  {/* Store Image */}
+                  {store.lat && store.lng ? (
+                    <div className="w-full md:w-1/2 h-64 md:h-auto">
+                      <iframe
+                        src={`https://maps.google.com/maps?q=${store.lat},${store.lng}&z=15&output=embed`}
+                        width="100%"
+                        height={mobileView ? "250px" : "325px"}
+                        style={{ border: 0 }}
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : (
+                    <img src={store.image} alt={store.name} />
+                  )}
 
-                {/* Store Content */}
-                <div className="flex-1 p-4 md:p-8 flex flex-col justify-between">
-                  <div>
-                    <h2 className="text-xl md:text-3xl font-bold text-gray-800 mb-3 md:mb-4 leading-tight">
-                      {store.name}
-                    </h2>
-                    <p className="text-gray-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
-                      {store.description}
-                    </p>
-                  </div>
 
-                  {/* Buttons */}
-                  <div className="flex justify-start">
-                    {store.mapSrc && (
-                      <button
-                        className="
+                  {/* Store Content */}
+                  <div className="flex-1 p-4 md:p-8 flex flex-col justify-between">
+                    <div>
+                      <h2 className="text-xl md:text-3xl font-bold text-gray-800 mb-3 md:mb-4 leading-tight">
+                        {store.name}
+                      </h2>
+                      <p className="text-gray-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
+                        {store.description}
+                      </p>
+                    </div>
+
+                    {/* Buttons */}
+                    {/* <div className="flex justify-start">
+                      {store.mapSrc && (
+                        <button
+                          className="
                           bg-gradient-to-r from-blue-500 to-purple-600 
                           hover:from-blue-600 hover:to-purple-700 
                           text-white 
@@ -106,40 +114,42 @@ const Essentials: React.FC<EssentialsProps> = ({ title, stores }) => {
                           shadow-md
                           hover:shadow-lg
                         "
-                        onClick={() => setSelectedMap(store.mapSrc!)}
-                      >
-                        Show Map
-                      </button>
-                    )}
+                          onClick={() => setSelectedMap(store.mapSrc!)}
+                        >
+                          Show Map
+                        </button>
+                      )}
+                    </div> */}
                   </div>
-                </div>
-              </div>
+                </div >
+              </>
             );
           })}
         </div>
-      </main>
+      </main >
 
       {/* Map Modal - Responsive */}
-      {selectedMap && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-[9998] md:hidden"
-            onClick={closeModal}
-          ></div>
-
-          {/* Modal */}
-          <div className="fixed bottom-4 right-4 md:bottom-4 md:right-4 w-[calc(100vw-2rem)] md:w-96 h-64 md:h-72 bg-white rounded-xl shadow-2xl overflow-hidden z-[9999]">
-            <iframe
-              src={selectedMap}
-              className="w-full h-full border-0"
-              allowFullScreen
-              loading="lazy"
-              title="Store Location Map"
-            />
-            <button
+      {/* {
+        selectedMap && (
+          <>
+            Backdrop
+            <div
+              className="fixed inset-0 bg-black bg-opacity-50 z-[9998] md:hidden"
               onClick={closeModal}
-              className="
+            ></div>
+
+            Modal
+            <div className="fixed bottom-4 right-4 md:bottom-4 md:right-4 w-[calc(100vw-2rem)] md:w-96 h-64 md:h-72 bg-white rounded-xl shadow-2xl overflow-hidden z-[9999]">
+              <iframe
+                src={selectedMap}
+                className="w-full h-full border-0"
+                allowFullScreen
+                loading="lazy"
+                title="Store Location Map"
+              />
+              <button
+                onClick={closeModal}
+                className="
                 absolute 
                 top-2 
                 right-3 
@@ -161,12 +171,13 @@ const Essentials: React.FC<EssentialsProps> = ({ title, stores }) => {
                 duration-200
                 shadow-md
               "
-            >
-              ✕
-            </button>
-          </div>
-        </>
-      )}
+              >
+                ✕
+              </button>
+            </div>
+          </>
+        )
+      } */}
     </>
   );
 };

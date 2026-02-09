@@ -73,10 +73,31 @@ export const propertyData = [
                 property_name: "BKC StayOn ABC",
                 property_deal: "Deal Price",
                 property_logo: dummylogo,
-                property_overview: `Only a couple? Larger Group (20-30 pax)? Longer stays?
-                Connect for customized solutions to all your queries.
-                Our Aim - Add value to your experience ❤️`,
-                property_description: "Located near Karjat on the Mumbai–Pune outskirts, this villa offers a comfortable stay with a private pool and jacuzzi. It accommodates up to 8 adults and is situated within a secure gated resort premises. The villa features premium, cosy, and minimalist interiors and is suitable for families, friends, and couples. It is pet-friendly and easily accessible by road.The property is fully air-conditioned, including the living area and bedrooms, and includes battery backup for power fluctuations. It has three washrooms with geysers and hair dryers, along with a well-equipped kitchen featuring a microwave, refrigerator, induction cooktop, RO water purifier, and hob with gas cylinder.",
+
+                property_overview: `Beautiful and spacious 2BHK apartment in the heart of Bandra Kurla Complex (BKC).
+Ideal for families, business travellers, and groups of friends looking for comfort, convenience, and premium society amenities.`,
+
+                property_description: `Apartment in BKC, Mumbai.
+
+In BKC Mumbai, beautiful 2BHK apartment with 2 bedrooms and 2 washrooms in an elite society in BKC. A clean, spacious living room, fully functional kitchen, and very well setup bedrooms. The house has all the amenities like refrigerator, washing machine, microwave, mixer grinder, coffee maker, aqua guard, AC, TV, hot water geyser, shower, iron, gas and a functional kitchen.
+
+The society in which the apartment is located is a very elite society of BKC with amenities like gym, swimming pool, valet parking, rooftop terrace, squash court, table tennis, snooker area, garden area, kids play area and walking track.
+
+We also offer cook on demand to have your healthy home cooked meals.
+
+Close to US & French consulate, NMACC and airport.
+10 mins to US Consulate
+10 mins to French Consulate
+10 mins to Jio Convention Centre
+11 mins to NMACC
+8 mins to Jio World Garden
+8 mins to BKC offices
+6 mins to Asian Heart Hospital
+15 mins to the airport
+Close to Bandra West for restaurants, cafes and shopping streets of Mumbai.
+
+Paid parking available. Zepto, Blinkit deliver in less than 10 mins. Swiggy and Zomato available 24x7. Vegetable market and chemist are at walking distance.`,
+
                 property_socialicons: {
                     media: [
                         { type: instagram, url: "#" },
@@ -90,13 +111,20 @@ export const propertyData = [
                         { type: makemytrip, url: "#" }
                     ]
                 },
-                property_location: "Kolthare, Dapoli",
-                property_img: [bsimg1, bsimg2, bsimg3, bsimg4, bsimg5, bsimg6, bsimg7, bsimg8, bsimg9, bsimg10],
+
+                property_location: "Bandra Kurla Complex (BKC), Mumbai",
+
+                property_img: [
+                    bsimg1, bsimg2, bsimg3, bsimg4, bsimg5,
+                    bsimg6, bsimg7, bsimg8, bsimg9, bsimg10
+                ],
+
                 property_brandId: "158",
+
                 property_amenities: [
                     { amenities_type: "Bedrooms", amenities_count: 2, amenities_icon: "bed" },
-                    { amenities_type: "Washrooms", amenities_count: 3, amenities_icon: "shower" },
-                    { amenities_type: "Parking", amenities_availablity: "available", amenities_icon: "car" },
+                    { amenities_type: "Washrooms", amenities_count: 2, amenities_icon: "shower" },
+                    { amenities_type: "Parking", amenities_availablity: "paid", amenities_icon: "car" },
                     { amenities_type: "Internet", amenities_availablity: "available", amenities_icon: "wifi" },
                     { amenities_type: "Air condition", amenities_availablity: "available", amenities_icon: "ac" },
                     { amenities_type: "Swimming Pool", amenities_availablity: "available", amenities_icon: "pool" },
@@ -108,8 +136,9 @@ export const propertyData = [
                     { amenities_type: "Garden", amenities_availablity: "available", amenities_icon: "garden" },
                     { amenities_type: "Balcony", amenities_availablity: "available", amenities_icon: "balcony" },
                     { amenities_type: "Housekeeping", amenities_availablity: "available", amenities_icon: "housekeeping" },
-                    { amenities_type: "Pet Friendly", amenities_availablity: "available", amenities_icon: "pet" }
+                    { amenities_type: "Pet Friendly", amenities_availablity: "not available", amenities_icon: "pet" }
                 ],
+
                 property_amenities_img: [
                     {
                         name: "Club House",
@@ -118,18 +147,18 @@ export const propertyData = [
                         points: [
                             "Premium indoor lounge",
                             "Community gatherings",
-                            "Modern seating areas",
-                        ],
+                            "Modern seating areas"
+                        ]
                     },
                     {
                         name: "Swimming Pool",
                         img: pool,
                         icon: "swimming_pool",
                         points: [
-                            "Temperature controlled pool",
-                            "Kids & adults section",
-                            "Poolside seating",
-                        ],
+                            "Large society swimming pool",
+                            "Adults & kids access",
+                            "Poolside seating"
+                        ]
                     },
                     {
                         name: "Yoga Room",
@@ -138,60 +167,63 @@ export const propertyData = [
                         points: [
                             "Calm & peaceful ambiance",
                             "Natural ventilation",
-                            "Daily yoga sessions",
-                        ],
+                            "Community yoga space"
+                        ]
                     },
                     {
                         name: "Spa",
                         img: spa,
                         icon: "spa",
                         points: [
-                            "Relaxation therapies",
+                            "Available in society",
                             "Professional staff",
-                            "Private rooms",
-                        ],
+                            "Private rooms"
+                        ]
                     },
                     {
                         name: "Indoor Games",
                         img: indoorgames,
                         icon: "indoor_games",
                         points: [
-                            "Table tennis & carrom",
+                            "Table tennis & snooker",
                             "Family-friendly games",
-                            "Indoor entertainment",
-                        ],
+                            "Indoor entertainment"
+                        ]
                     },
                     {
                         name: "Party Lawn",
                         img: partylawn,
                         icon: "party_lawn",
                         points: [
-                            "Open-air celebrations",
-                            "Event lighting setup",
-                            "Spacious lawn area",
-                        ],
+                            "Open garden area",
+                            "Suitable for gatherings",
+                            "Well maintained space"
+                        ]
                     },
                     {
                         name: "Restaurant",
                         img: restaurant,
                         icon: "restaurant",
                         points: [
-                            "Multi-cuisine menu",
-                            "Fresh ingredients",
-                            "Indoor & outdoor seating",
-                        ],
+                            "Nearby dining options",
+                            "Food delivery available",
+                            "Multiple cuisines"
+                        ]
                     },
                     {
                         name: "Organic Farm",
                         img: organicfarm,
                         icon: "organic_farm",
                         points: [
-                            "Farm-to-table concept",
-                            "Organic vegetables",
-                            "Eco-friendly living",
-                        ],
-                    },],
+                            "Not applicable for this property",
+                            "City-based apartment stay",
+                            "Urban locality"
+                        ]
+                    }
+                ],
+
                 status: "Available",
+
                 property_nearplaces: [
                     { name: "Peth Fort", img: peth },
                     { name: "Bhimashankar Hills", img: bhimashankar },
@@ -202,88 +234,55 @@ export const propertyData = [
                     { name: "Ulhas Valley", img: ulhas },
                     { name: "Kondeshwar Temple", img: kondeshwar }
                 ],
+
                 property_details: [
-                    {
-                        type: "Luggage Assistance",
-                        value: "available"
-                    },
-                    {
-                        type: "Multilingual Staff",
-                        value: "available"
-                    },
-                    {
-                        type: "Doctor on Call",
-                        value: "available"
-                    },
-                    {
-                        type: "Luggage Storage",
-                        value: "available"
-                    },
+                    { type: "Luggage Assistance", value: "available" },
+                    { type: "Multilingual Staff", value: "available" },
+                    { type: "Doctor on Call", value: "available" },
+                    { type: "Luggage Storage", value: "available" }
                 ],
+
                 property_aditional_details: [
-                    {
-                        type: "CCTV :",
-                        value: "available"
-                    },
-                    {
-                        type: "Fire Extinguishers :",
-                        value: "available"
-                    },
-                    {
-                        type: "Electronic Keycard :",
-                        value: "available"
-                    },
-                    {
-                        type: "Security alarms :",
-                        value: "available"
-                    },
+                    { type: "CCTV :", value: "available" },
+                    { type: "Fire Extinguishers :", value: "available" },
+                    { type: "Electronic Keycard :", value: "available" },
+                    { type: "Security alarms :", value: "available" }
                 ],
+
                 property_address: [
-                    {
-                        type: "Place",
-                        value: "Kolthare"
-                    },
-                    {
-                        type: "City",
-                        value: "Kolthare"
-                    },
-                    {
-                        type: "Area",
-                        value: "Ragvilas Society, Lane, No, C, N Main Rd"
-                    },
-                    {
-                        type: "State",
-                        value: "Maharashtra"
-                    },
-                    {
-                        type: "Postal Code",
-                        value: "415712"
-                    },
-                    {
-                        type: "Country",
-                        value: "India"
-                    }
+                    { type: "Place", value: "Bandra Kurla Complex" },
+                    { type: "City", value: "Mumbai" },
+                    { type: "Area", value: "BKC" },
+                    { type: "State", value: "Maharashtra" },
+                    { type: "Postal Code", value: "400051" },
+                    { type: "Country", value: "India" }
                 ],
-                property_mapSrc: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30414.71946800351!2d73.1139283!3d17.6577386!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be9eb003f8befcd%3A0x2fe54f1634000172!2sBKC ABC%20%40%20Amalfi%20Isle%20of%20Bliss%20-%20Mirchandanis!5e0!3m2!1sen!2sin!4v1744120088901!5m2!1sen!2sin",
+
+                property_mapSrc: "https://www.google.com/maps?q=Bandra+Kurla+Complex+Mumbai&output=embed",
+
                 booking_link: "",
-                property_subtitle: "Cosy Cocoon",
+
                 property_social_links: [
                     { type: "Instagram", url: "https://instagram.com/cosy.cocoon" },
                     { type: "YouTube", url: "https://youtube.com/cosyCocoonVlogs" },
                     { type: "Booking", url: "https://booking.soumilsstays.com/hotel/hotel-details?hotel_id=41" }
                 ],
+
                 host_details: {
                     name: "Soumil Patil",
-                    about: "Friendly and responsive host, passionate about travel and hospitality.",
+                    about: "Friendly and responsive host, passionate about hospitality and guest comfort.",
                     languages: ["English", "Marathi", "Hindi"],
                     profile_image: "https://dummyimage.com/host.jpg"
                 },
+
                 contact_details: {
                     phone: "+91 9876543210",
                     email: "contact@support.com",
                     available_hours: "9 AM to 9 PM"
                 },
-                additional_cost_note: "* Amenities like food and games may be chargeable.",
+
+                additional_cost_note: "* Parking and cook-on-demand services are chargeable.",
+
                 api_display: {
                     icon_left: "📍",
                     icon_right: "ℹ️",
@@ -292,13 +291,25 @@ export const propertyData = [
             },
             {
                 id: 4,
-                property_name: "BKC xyz",
+                property_name: "Bombay StayOn – ABC",
                 property_deal: "Deal Price",
                 property_logo: dummylogo,
-                property_overview: `Only a couple? Larger Group (20-30 pax)? Longer stays?
-                Connect for customized solutions to all your queries.
-                Our Aim - Add value to your experience ❤️`,
-                property_description: "Scenic 2BHK Bungalow in Dapoli with 180° Beach View Unwind at this peaceful bungalow, perched atop a mountain with breathtaking 180° beach views. Designed for relaxation, this cozy retreat is part of a gated community featuring a massive clubhouse with a large swimming pool, pool table, lawn tennis, box cricket, basketball, air hockey, and more. Perfect for those looking to escape the city's hustle and soak in nature, this home offers serenity with modern recreational facilities.",
+
+                property_overview: `A cosy and comfortable private room for female travellers in the heart of Bandra Kurla Complex (BKC).
+Ideal for business trips, visa appointments, events at NMACC, or a short stay before your next flight.`,
+
+                property_description: `Welcome to Bombay StayOn – ABC, a peaceful and comfortable private room in a 2.5 BHK apartment located in BKC, Mumbai.
+
+This stay is perfect for female travellers looking for safety, convenience, and a homely vibe. The apartment is situated in an elite, quiet, and secured gated society in the centre of BKC.
+
+The apartment features a clean and spacious living room, a fully functional kitchen, and a well set up bedroom with panoramic windows that allow natural sunlight. Amenities include refrigerator, washing machine, microwave, mixer grinder, coffee maker, Aqua Guard, AC, TV, hot water geyser, shower, iron, gas, and a functional kitchen.
+
+The society offers premium amenities such as gym, swimming pool, valet parking, rooftop terrace, squash court, table tennis, snooker area, garden area, kids play area, and a walking track.
+
+Cook on demand service is available for guests who prefer healthy home-cooked meals.
+
+Located close to US & French Consulates, NMACC, Jio World Convention Centre, Jio World Garden, airport, and BKC offices. Metro station is just a 2-minute walk, with Uber and Ola available 24x7.`,
+
                 property_socialicons: {
                     media: [
                         { type: instagram, url: "#" },
@@ -312,13 +323,17 @@ export const propertyData = [
                         { type: makemytrip, url: "#" }
                     ]
                 },
-                property_location: "Kolthare, Dapoli",
+
+                property_location: "Bandra Kurla Complex (BKC), Mumbai",
+
                 property_img: [bimg1, bimg2, bimg3, bimg4, bimg5, bimg6, bimg7],
+
                 property_brandId: "158",
+
                 property_amenities: [
-                    { amenities_type: "Bedrooms", amenities_count: 2, amenities_icon: "bed" },
-                    { amenities_type: "Washrooms", amenities_count: 3, amenities_icon: "shower" },
-                    { amenities_type: "Parking", amenities_availablity: "available", amenities_icon: "car" },
+                    { amenities_type: "Bedrooms", amenities_count: 1, amenities_icon: "bed" },
+                    { amenities_type: "Washrooms", amenities_count: 1, amenities_icon: "shower" },
+                    { amenities_type: "Parking", amenities_availablity: "available (chargeable)", amenities_icon: "car" },
                     { amenities_type: "Internet", amenities_availablity: "available", amenities_icon: "wifi" },
                     { amenities_type: "Air condition", amenities_availablity: "available", amenities_icon: "ac" },
                     { amenities_type: "Swimming Pool", amenities_availablity: "available", amenities_icon: "pool" },
@@ -330,91 +345,94 @@ export const propertyData = [
                     { amenities_type: "Garden", amenities_availablity: "available", amenities_icon: "garden" },
                     { amenities_type: "Balcony", amenities_availablity: "available", amenities_icon: "balcony" },
                     { amenities_type: "Housekeeping", amenities_availablity: "available", amenities_icon: "housekeeping" },
-                    { amenities_type: "Pet Friendly", amenities_availablity: "available", amenities_icon: "pet" }
+                    { amenities_type: "Pet Friendly", amenities_availablity: "not available", amenities_icon: "pet" }
                 ],
+
                 property_amenities_img: [
                     {
                         name: "Club House",
                         img: clubhouse,
                         icon: "clubhouse",
                         points: [
-                            "Premium indoor lounge",
-                            "Community gatherings",
-                            "Modern seating areas",
-                        ],
+                            "Elite society clubhouse",
+                            "Indoor lounge",
+                            "Community seating"
+                        ]
                     },
                     {
                         name: "Swimming Pool",
                         img: pool,
                         icon: "swimming_pool",
                         points: [
-                            "Temperature controlled pool",
-                            "Kids & adults section",
-                            "Poolside seating",
-                        ],
+                            "Society swimming pool",
+                            "Well maintained",
+                            "Guest access allowed"
+                        ]
                     },
                     {
                         name: "Yoga Room",
                         img: yogaRoom,
                         icon: "yoga",
                         points: [
-                            "Calm & peaceful ambiance",
-                            "Natural ventilation",
-                            "Daily yoga sessions",
-                        ],
+                            "Quiet society yoga space",
+                            "Peaceful ambiance",
+                            "Well ventilated"
+                        ]
                     },
                     {
                         name: "Spa",
                         img: spa,
                         icon: "spa",
                         points: [
-                            "Relaxation therapies",
-                            "Professional staff",
-                            "Private rooms",
-                        ],
+                            "Available within society",
+                            "Professional services",
+                            "Chargeable"
+                        ]
                     },
                     {
                         name: "Indoor Games",
                         img: indoorgames,
                         icon: "indoor_games",
                         points: [
-                            "Table tennis & carrom",
-                            "Family-friendly games",
-                            "Indoor entertainment",
-                        ],
+                            "Table tennis & snooker",
+                            "Indoor recreation",
+                            "Well maintained area"
+                        ]
                     },
                     {
                         name: "Party Lawn",
                         img: partylawn,
                         icon: "party_lawn",
                         points: [
-                            "Open-air celebrations",
-                            "Event lighting setup",
-                            "Spacious lawn area",
-                        ],
+                            "Open garden space",
+                            "Suitable for gatherings",
+                            "Society maintained lawn"
+                        ]
                     },
                     {
                         name: "Restaurant",
                         img: restaurant,
                         icon: "restaurant",
                         points: [
-                            "Multi-cuisine menu",
-                            "Fresh ingredients",
-                            "Indoor & outdoor seating",
-                        ],
+                            "Nearby restaurants & cafes",
+                            "Swiggy & Zomato available",
+                            "Multiple cuisine options"
+                        ]
                     },
                     {
                         name: "Organic Farm",
                         img: organicfarm,
                         icon: "organic_farm",
                         points: [
-                            "Farm-to-table concept",
-                            "Organic vegetables",
-                            "Eco-friendly living",
-                        ],
-                    },],
+                            "Not applicable for city apartment",
+                            "Urban residential stay",
+                            "BKC location"
+                        ]
+                    }
+                ],
 
                 status: "Available",
+
                 property_nearplaces: [
                     { name: "Peth Fort", img: peth },
                     { name: "Bhimashankar Hills", img: bhimashankar },
@@ -425,94 +443,64 @@ export const propertyData = [
                     { name: "Ulhas Valley", img: ulhas },
                     { name: "Kondeshwar Temple", img: kondeshwar }
                 ],
+
                 property_details: [
-                    {
-                        type: "Luggage Assistance",
-                        value: "available"
-                    },
-                    {
-                        type: "Multilingual Staff",
-                        value: "available"
-                    },
-                    {
-                        type: "Doctor on Call",
-                        value: "available"
-                    },
-                    {
-                        type: "Luggage Storage",
-                        value: "available"
-                    },
+                    { type: "Luggage Assistance", value: "available" },
+                    { type: "Multilingual Staff", value: "available" },
+                    { type: "Doctor on Call", value: "available" },
+                    { type: "Luggage Storage", value: "available" }
                 ],
+
                 property_aditional_details: [
-                    {
-                        type: "CCTV :",
-                        value: "available"
-                    },
-                    {
-                        type: "Fire Extinguishers :",
-                        value: "available"
-                    },
-                    {
-                        type: "Electronic Keycard :",
-                        value: "available"
-                    },
-                    {
-                        type: "Security alarms :",
-                        value: "available"
-                    },
+                    { type: "CCTV :", value: "available" },
+                    { type: "Fire Extinguishers :", value: "available" },
+                    { type: "Electronic Keycard :", value: "available" },
+                    { type: "Security alarms :", value: "available" }
                 ],
+
                 property_address: [
-                    {
-                        type: "Place",
-                        value: "Kolthare"
-                    },
-                    {
-                        type: "City",
-                        value: "Kolthare"
-                    },
-                    {
-                        type: "Area",
-                        value: "Ragvilas Society, Lane, No, C, N Main Rd"
-                    },
-                    {
-                        type: "State",
-                        value: "Maharashtra"
-                    },
-                    {
-                        type: "Postal Code",
-                        value: "415712"
-                    },
-                    {
-                        type: "Country",
-                        value: "India"
-                    }
+                    { type: "Place", value: "Bandra Kurla Complex" },
+                    { type: "City", value: "Mumbai" },
+                    { type: "Area", value: "BKC" },
+                    { type: "State", value: "Maharashtra" },
+                    { type: "Postal Code", value: "400051" },
+                    { type: "Country", value: "India" }
                 ],
-                property_mapSrc: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30414.71946800351!2d73.1139283!3d17.6577386!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be9eb003f8befcd%3A0x2fe54f1634000172!2sBKC xyz%20%40%20Amalfi%20Isle%20of%20Bliss%20-%20Mirchandanis!5e0!3m2!1sen!2sin!4v1744120088901!5m2!1sen!2sin",
+
+                property_mapSrc: "https://www.google.com/maps?q=Bandra+Kurla+Complex+Mumbai&output=embed",
+
                 booking_link: "",
+
                 property_subtitle: "Cosy Cocoon",
+
                 property_social_links: [
                     { type: "Instagram", url: "https://instagram.com/cosy.cocoon" },
                     { type: "YouTube", url: "https://youtube.com/cosyCocoonVlogs" },
                     { type: "Booking", url: "https://booking.soumilsstays.com/hotel/hotel-details?hotel_id=41" }
                 ],
+
                 host_details: {
                     name: "Soumil Patil",
-                    about: "Friendly and responsive host, passionate about travel and hospitality.",
+                    about: "Friendly and responsive host, ensuring a safe and comfortable stay for female travellers.",
                     languages: ["English", "Marathi", "Hindi"],
                     profile_image: "https://dummyimage.com/host.jpg"
                 },
+
                 contact_details: {
                     phone: "+91 9876543210",
                     email: "contact@support.com",
                     available_hours: "9 AM to 9 PM"
                 },
-                additional_cost_note: "* Amenities like food and games may be chargeable.",
+
+                additional_cost_note: "* Parking and cook-on-demand services are chargeable.",
+
                 api_display: {
                     icon_left: "📍",
                     icon_right: "ℹ️",
                     center_text: "Details"
                 }
-            },
+            }
+
         ]
     },
     {

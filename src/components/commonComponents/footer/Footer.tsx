@@ -120,7 +120,7 @@ const Footer = () => {
                 <div className='max-w-7xl mx-auto px-8 py-6'>
                     <div className='text-center text-gray-400'>
                         <p>
-                            © 2025 The Cult Escape. All rights reserved | Designed by{" "}
+                            © {new Date().getFullYear()} The Cult Escape. All rights reserved | Designed by{" "}
                             <a
                                 className='font-semibold text-white hover:underline'
                                 href="https://ratebotai.com"

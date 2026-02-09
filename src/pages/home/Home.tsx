@@ -6,47 +6,35 @@ import Homepage_Properties from "../../components/homepage_components/homepage_P
 import Homepage_Testimonial from "../../components/homepage_components/homepage_testimonial/Homepage_Testimonial"
 import Homepage_WhyChoose from "../../components/homepage_components/homepage_whychoose/Homepage_WhyChoose"
 import Slider from "../../components/homepage_components/slider/Slider"
-import img from '../../assets/cosy_villa_images/img_19.jpeg'
+import img from '../../assets/bkc_stayone_abc/img_2.jpeg'
 import Team from "../../components/homepage_components/team/Team"
+import { useLocation } from "react-router-dom"
+import { useEffect } from "react"
 // import HomePage_Locations from "../../components/homepage_components/homepage_locations/HomePage_Locations"
 // import CounterUp from "../../components/homepage_components/counterup/CounterUp"
 
 
 const Home = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.state?.scrollTo) {
+            const el = document.getElementById(location.state.scrollTo);
+            el?.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [location]);
     // Slider Images 
     return (
         <section className="relative ">
             <div className="w-full h-fit ">
                 <Slider />
             </div>
-            {/* <h2 className="text-4xl md:text-5xl font-bold text-[#0A1A2E] font-[Caveat] leading-tight">
-                All your business on <span className="highlight-yellow">one platform.</span>
-            </h2>
-            <p className="text-xl mt-2 font-[Caveat] text-[#0A1A2E]">
-                <span className="highlight-blue">Simple, efficient, yet affordable!</span>
-            </p>
-
-            <h2 className="text-4xl md:text-5xl font-bold font-[Caveat] text-[#111827]">
-                Grow <span className="highlight-yellow">Smarter</span>, Scale <span className="highlight-yellow">Faster</span>
-            </h2>
-            <p className="text-xl mt-2 font-[Caveat] text-[#1F2937]">
-                <span className="highlight-blue">Tools that automate your success.</span>
-            </p>
-
-            <h2 className="text-4xl md:text-5xl font-bold font-[Caveat] text-[#101820]">
-                Your ideas, <span className="highlight-yellow">Perfectly Built.</span>
-            </h2>
-            <p className="text-xl mt-2 font-[Caveat] text-[#101820]">
-                <span className="highlight-blue">Design. Develop. Deliver.</span>
-            </p>
-
-            <h2 className="text-4xl font-[Pacifico&display]">
-                All your business on <span className="highlight-yellow">one platform.</span>
-            </h2> */}
-
             <div className="">
                 <Homepage_Properties />
             </div>
+            {/* <div>
+                <ImageRevealExample />
+            </div> */}
             {/* <div>
                 <HomePage_Locations />
             </div> */}

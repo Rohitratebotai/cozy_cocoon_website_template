@@ -118,7 +118,7 @@ const Homepage_Properties = () => {
                             )}
                     </div>
                 </section>
-                {/* Karadya BKC Section */}
+                {/* BKC Section */}
                 <section id="BKC" className="">
                     <HighlightedHeading
                         beforeText="BKC "
